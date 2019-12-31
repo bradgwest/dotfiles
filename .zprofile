@@ -1,5 +1,5 @@
 # Load .zshrc
 if [[ -r "${HOME}/.zshrc" ]]; then
-  source "{$HOME}/.zshrc"
+  source "${HOME}/.zshrc"
 fi
 
