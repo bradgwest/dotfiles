@@ -197,6 +197,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+        font pango:Source Code Pro 12px
 }
 
 #######################################################################
@@ -213,3 +214,5 @@ exec i3-config-wizard
 
 # Merge resource for proper color support
 exec xrdb -merge $HOME/.Xresources
+exec xrdb -merge $HOME/.Xdefaults
+

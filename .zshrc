@@ -17,3 +17,8 @@ for file in ~/.{aliases,functions,path,dockerfunc,extra,exports}; do
 done
 unset file
 
+# Start i3
+if systemctl -q is-active graphical.target && [[ ! DISPLAY && XDG_VTNR -eq 1 ]]; then
+  exec /bin/startx
+fi
+
