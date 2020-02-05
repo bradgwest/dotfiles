@@ -18,7 +18,9 @@ done
 unset file
 
 # Start i3
-if systemctl -q is-active graphical.target && [[ ! DISPLAY && XDG_VTNR -eq 1 ]]; then
+if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec /bin/startx
 fi
+
+
 
