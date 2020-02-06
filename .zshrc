@@ -10,7 +10,7 @@ compinit
 # End of lines added by compinstall
 
 # Load env vars and others
-for file in ~/.{aliases,functions,path,dockerfunc,extra,exports}; do
+for file in ~/.{aliases,functions,exports,path,dockerfunc,extra}; do
   if [[ -r "$file" ]] && [[ -f "$file" ]]; then
     source "$file"
   fi
@@ -27,7 +27,7 @@ export ZSH="/home/dubs/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="dubs"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -123,6 +123,14 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # End oh-my-zsh spam
+
+# pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# pyenv virtualenv
+eval "$(pyenv virtualenv-init -)"
 
 # Start i3
 if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
