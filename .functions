@@ -1,2 +1,23 @@
 #!/bin/bash
 
+# ISO08061 UTC timestamp
+timestamp() {
+  date --utc +"%FZ%TZ"
+}
+
+# Write a notes taker
+note() {
+  # if $NOTES doesn't exist, then error
+  if [ -z "${NOTES}" ]; then
+    echo "Please set NOTES env variable"
+    exit 1
+  fi
+
+  if ! (($#)); then
+    # no args, tail
+    tail $NOTES
+  else
+    # add all args to the file
+    printf "$(timestamp) %s\n" "$*" >> $NOTES
+  fi
+}
