@@ -34,3 +34,8 @@ cl() {
   fi
 }
 
+# calculator
+calc() {
+    echo "scale=3;$@" | bc -l
+}
+
