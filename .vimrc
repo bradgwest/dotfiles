@@ -17,3 +17,6 @@ syntax on
 " Set column indicator at 80
 set colorcolumn=80
 
+" Tabs to spaces
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+

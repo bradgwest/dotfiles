@@ -41,23 +41,14 @@ calc() {
 
 # Take a TODO note in cwd
 todo() {
-    if [[ ! -f .todo ]]; then
-        touch .todo
+    if [ -z "$(pwd)/.todo" ]; then
+        touch "$(pwd)/.todo"
     fi
 
     if ! (($#)); then
-        cat .todo
-    elif [[ "$1" == "-l" ]]; then
-        nl -b a .todo
-    elif [[ "$1" == "-c" ]]; then
-        > .todo
-    elif [[ "$1" == "-r" ]]; then
-        nl -b a .todo
-        eval printf %.0s- '{1..'"${COLUMNS:-$(tput cols)}"\}; echo
-        read -p "Type a number to remove: " number
-        sed -i ${number}d .todo .todo
+        cat "$(pwd)/.todo"
     else
-        printf "$(timestamp) %s\n" "$*" >> .todo
+        printf "$(timestamp) %s\n" "$*" >> "$(pwd)/.todo"
     fi
 }
 
