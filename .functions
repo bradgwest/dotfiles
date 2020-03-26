@@ -52,3 +52,15 @@ todo() {
     fi
 }
 
+# delete a line from $HISTFILE. If no arg is passed, then it deletes the
+# previous command, otherwise it attempts to match the args to a line
+forget() {
+  if ! (($#)); then
+    # no args, delete previous
+    history -d $(expr $(history | tail -n 1 | grep -oP '^\s+\d+') - 1);
+  else
+    # implement me
+    echo Not Implemented
+  fi
+}
+
