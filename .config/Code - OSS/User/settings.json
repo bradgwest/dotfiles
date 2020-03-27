@@ -17,6 +17,7 @@
     },
     "editor.wordWrap": "off",
     "files.insertFinalNewline": true,
+    "keyboard.dispatch": "keyCode",
     "vim.cursorStylePerMode.insert": "underline",
     "vim.cursorStylePerMode.normal": "block",
     "vim.cursorStylePerMode.replace": "block-outline",
