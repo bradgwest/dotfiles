@@ -80,5 +80,7 @@
     "workbench.colorTheme": "Solarized Light",
     "editor.lineNumbers": "on",
     "editor.minimap.enabled": false,
-    "workbench.startupEditor": "newUntitledFile"
+    "workbench.startupEditor": "newUntitledFile",
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false
 }
