@@ -41,14 +41,15 @@ calc() {
 
 # Take a TODO note in cwd
 todo() {
-    if [ -z "$(pwd)/.todo" ]; then
-        touch "$(pwd)/.todo"
+    local dir="$PWD/.todo"
+    if [[ -z "$dir" ]]; then
+        touch "$dir"
     fi
 
     if ! (($#)); then
-        cat "$(pwd)/.todo"
+        cat "$dir"
     else
-        printf "$(timestamp) %s\n" "$*" >> "$(pwd)/.todo"
+        printf "$(timestamp) %s\n" "$*" >> "$dir"
     fi
 }
 
