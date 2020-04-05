@@ -41,7 +41,7 @@ calc() {
 
 # Take a TODO note in cwd
 todo() {
-    local dir="$PWD/.todo"
+    local dir="${PWD}/.todo"
     if [[ -z "$dir" ]]; then
         touch "$dir"
     fi
