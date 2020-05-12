@@ -18,5 +18,5 @@ syntax on
 set colorcolumn=80
 
 " Tabs to spaces
-set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+set softtabstop=0 tabstop=4 expandtab shiftwidth=4 smarttab
 
