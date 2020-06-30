@@ -129,9 +129,6 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-# pyenv virtualenv
-eval "$(pyenv virtualenv-init -)"
-
 # The next line updates PATH for the Google Cloud SDK.
 if [[ -f "$HOME/.google-cloud-sdk/path.zsh.inc" ]]; then
   source "$HOME/.google-cloud-sdk/path.zsh.inc";
