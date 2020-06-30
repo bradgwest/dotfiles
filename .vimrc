@@ -15,7 +15,7 @@ set listchars=tab:>-,space:·,trail:~
 syntax on
 
 " Set column indicator at 80, 120 and change it to light gray color
-set colorcolumn=80,120
+set colorcolumn=80
 highlight ColorColumn ctermbg=5
 
 " Tabs to spaces
