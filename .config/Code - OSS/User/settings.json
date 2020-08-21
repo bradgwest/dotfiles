@@ -82,5 +82,13 @@
     "editor.minimap.enabled": false,
     "workbench.startupEditor": "newUntitledFile",
     "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false
+    "explorer.confirmDragAndDrop": false,
+    "search.exclude": {
+        "**/.venv/": true
+    },
+    "python.showStartPage": false,
+    "cSpell.userWords": [
+        "backpropagation"
+    ],
+    "python.dataScience.alwaysTrustNotebooks": true
 }
