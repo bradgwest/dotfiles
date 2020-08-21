@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Better manpager
-export MANPAGER="less";
+export MANPAGER="less --mouse";
 
 # Larger history
 export HISTSIZE=50000000;
@@ -15,7 +15,7 @@ export FZF_BASE=/usr/bin/fzf
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
 # Disable autosuggestions for large buffers
-export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=100
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
