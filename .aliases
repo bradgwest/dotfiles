@@ -1,0 +1,21 @@
+# Delete branches starting with 'pr_'
+alias grmpr="git branch | grep "PR-" | xargs git branch -D"
+# Delete branches that have been merged
+alias grmm="git branch --merged master | grep -v "master" | xargs git branch -d"
+# Delete non-master branches
+alias grm-non-master="git branch | grep -v "master" | xargs git branch -D"
+
+# java11
+alias java11=/usr/local/opt/openjdk@11/bin/java
+
+# Dart
+alias ddev="pub run dart_dev"
+# Dart dependency hell
+alias pubcleanlock='git ls-files pubspec.lock --error-unmatch &>/dev/null && echo "Not removing pubspec.lock - it is tracked" || (rm pubspec.lock && echo "Removed pubspec.lock")'
+alias pubclean='rm -r .pub .dart_tool/pub && echo "Removed .pub/"; find . -name packages | xargs rm -rf && echo "Removed packages/"; rm .packages && echo "Removed .packages"; pubcleanlock'
+alias repub='pubclean; pub get'
+
+# dotfiles
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+# alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+

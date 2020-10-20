@@ -1,0 +1,19 @@
+# functions
+fpath+=$HOME/.zsh_functions
+
+# python
+export PYTHONPATH=$HOME/google-cloud-sdk/platform/google_appengine:$PYTHONPATH
+
+# system
+path+=$HOME/bin
+path+=/usr/local/bin
+path+=/usr/local/opt/ruby/bin
+path+=$HOME/scripts
+path+=$HOME/.cargo/bin
+path+=$HOME/.pub-cache/bin
+path+=$GOPATH
+path+=$GOPATH/bin
+path+=$PYTHONPATH
+
+export PATH
+

@@ -1,0 +1,173 @@
+{
+    "breadcrumbs.enabled": true,
+    "cSpell.ignoreWords": [
+        "Workiva",
+        "dedup"
+    ],
+    "debug.showBreakpointsInOverviewRuler": true,
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.cursorStyle": "underline",
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": true,
+    "editor.fontFamily": "'Source Code Pro', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 12,
+    "editor.formatOnSave": false,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": true,
+        "strings": true
+    },
+    "editor.renderWhitespace": "boundary",
+    "editor.rulers": [
+        88,
+        120
+    ],
+    "editor.snippetSuggestions": "none",
+    "editor.tabSize": 4,
+    "[python]": {
+        "editor.tabSize": 4,
+        "editor.formatOnSave": false,
+    },
+    "editor.wordWrap": "off",
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "extensions.ignoreRecommendations": true,
+    "extensions.showRecommendationsOnlyOnDemand": true,
+    "files.exclude": {
+        "**/._*": true,
+        "**/*.pyc": true
+    },
+    "files.insertFinalNewline": true,
+    "[go]": {
+        "editor.formatOnSave": true,
+        // "editor.codeActionsOnSave": {
+        //     "source.organizeImports": true,
+        // }
+    },
+    "go.testFlags": [
+        "-short", // "-ldflags", // "-s"
+    ],
+    "gopls": {
+        "usePlaceholders": true,
+        "completeUnimported": true,
+        "deepCompletion": true,
+    },
+    "go.formatTool": "goimports",
+    "go.formatFlags": [
+        "-local", "github.com/Workiva,github.com/Workiva/skaardb"
+    ],
+    "go.docsTool": "godoc",
+    // Language server might be exploding things
+    "go.useLanguageServer": false,
+    "go.languageServerExperimentalFeatures": {
+        "format": false,
+        "diagnostics": true,
+        "documentLink": true
+    },
+    "html.format.endWithNewline": true,
+    "html.format.extraLiners": "body",
+    "html.format.indentInnerHtml": true,
+    "html.format.unformatted": "b,em,i,span,strong,wbr",
+    "html.format.wrapLineLength": 0,
+    "editor.parameterHints.enabled": false,
+    "python.formatting.provider": "autopep8",
+    "python.linting.flake8Args": [
+        "--ignore=F405,E501,F403"
+    ],
+    "python.linting.prospectorArgs": [
+        //"--errors-only",
+        "--ignore=W1202"
+    ],
+    "terminal.integrated.cursorStyle": "underline",
+    "vim.cursorStylePerMode.insert": "underline",
+    "vim.cursorStylePerMode.normal": "block",
+    "vim.cursorStylePerMode.replace": "",
+    "vim.cursorStylePerMode.visual": "line",
+    "vim.easymotion": true,
+    "vim.sneak": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "d"
+            ],
+            "after": [
+                "d",
+                "d"
+            ]
+        },
+        {
+            "before": [
+                "<C-n>"
+            ],
+            "commands": [
+                ":nohl"
+            ]
+        }
+    ],
+    "vim.leader": "<space>",
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false
+    },
+    "window.zoomLevel": 0,
+    "workbench.colorCustomizations": {
+        "editorIndentGuide.activeBackground": "#FFA500",
+        "editorCursor.foreground": "#ff00f2",
+        "editorGutter.background": "#9b9b9b85",
+        "editorLineNumber.foreground": "#000000"
+    },
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.startupEditor": "none",
+    // File specific
+    "[markdown]": {
+        "editor.wordWrap": "on",
+        "editor.quickSuggestions": false
+    },
+    "workbench.colorTheme": "Solarized Light",
+    "editor.lineNumbers": "on",
+    "editor.minimap.enabled": false,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "java.configuration.checkProjectSettingsExclusions": false,
+    "python.jediEnabled": false,
+    "dart.checkForSdkUpdates": false,
+    // asdf where dart. see https://github.com/PatOConnor43/asdf-dart
+    "dart.sdkPath": "/Users/bradwest/.asdf/installs/dart/2.8.4/dart-sdk",
+    "java.errors.incompleteClasspath.severity": "ignore",
+    "java.requirements.JDK11Warning": false,
+    "java.semanticHighlighting.enabled": false,
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/*.code-search": true,
+        "**/.venv": true
+    },
+    "python.showStartPage": false,
+    "python.languageServer": "Microsoft",
+    "python.linting.enabled": true,
+    "cSpell.userWords": [
+        "anser",
+        "drydock",
+        "jira",
+        "pubspec",
+        "wdesk"
+    ]
+}

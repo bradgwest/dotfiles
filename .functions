@@ -1,0 +1,164 @@
+create-pkcs8-key() {
+  openssl genrsa -out $1.pem 4096
+  openssl rsa -in $1.pem -pubout -out $1-pub.pem
+  openssl pkcs8 -topk8 -inform PEM -outform PEM -nocrypt -in $1.pem -out $1-pkcs8.pem
+}
+
+# Pull an image from drydock and put it to dataflow gcr
+# $1 - dataflow build tag
+dataflow-to-gcr() {
+  local build_tag=$1
+  docker pull drydock.workiva.net/workiva/dataflow:$build_tag
+  docker tag drydock.workiva.net/workiva/dataflow:$build_tag gcr.io/workiva-analytics-dev/dataflow-launcher:$build_tag
+  docker push gcr.io/workiva-analytics-dev/dataflow-launcher:$build_tag
+}
+
+# Deploy a cloud run image to the test or dev instances
+# $1 - dataflow build tag
+# $2 - optional. test if this should be deployed to the test cloud run instance
+deploy-cloud-run() {
+  build_tag=$1
+
+  if [[ "$2" == "test" ]]; then
+    local suffix="-test"
+  fi
+
+  gcloud run deploy dataflow-launcher$suffix \
+    --image gcr.io/workiva-analytics-dev/dataflow-launcher:$build_tag \
+    --concurrency 1 \
+    --memory 2Gi \
+    --platform managed \
+    --no-allow-unauthenticated \
+    --service-account dataflow-launcher@workiva-analytics-dev.iam.gserviceaccount.com \
+    --timeout 15m \
+    --project workiva-analytics-dev \
+    --command /opt/docker_start.sh \
+    --region us-central1 \
+    --update-env-vars GOOGLE_PROJECT=workiva-analytics-dev
+}
+
+invoke-cloud-run() {
+  local job="analytics_gateway_check"
+  local project="workiva-analytics-dev"
+  echo "Running $job on $project"
+  curl \
+    -H "Authorization: Bearer $(gcloud auth print-identity-token)" \
+    -X POST https://dataflow-launcher-test-cmhn4fjkhq-uc.a.run.app \
+    -d '{"job": "'$job'", "project": "'$project'", "cron": "0 7 * * *", "dataflow_args": {"max_num_workers": 2, "worker_machine_type": "n1-standard-4"}, "job_args": {"environment": "DEV"}}'
+}
+
+# Reading list
+add-to-reading() {
+    echo $1 >> ~/reading.md
+}
+
+# Git
+# clone () {
+#   git fetch upstream pull/$1/head:pr_$1
+#   git checkout pr_$1
+# }
+
+gfpr () {
+  git fetch origin pull/$1/head:PR-$1
+  git checkout PR-$1
+}
+
+# Git - Clone a PR so that you can add commits and push to it
+# $1 -- fork to pull from, like https://github.com/bradwest-wk/dataflow_catapult.git or ssh equivalent
+# $2 -- branch name, like ANSER-8765
+clone-to-contribute () {
+  REMOTE_ALIAS=$(echo $1 | perl -ne 'print "$&\n" if /(?<=github.com[\/:])[a-z\-]+/')
+  git remote add $REMOTE_ALIAS $1 || true
+  git fetch $REMOTE_ALIAS
+  git checkout -b $2 $REMOTE_ALIAS/$2
+  echo "Make changes and run 'git push $REMOTE_ALIAS $2' to update the PR"
+}
+
+note () {
+    # if file doesn't exist, create it
+    if [[ ! -f $HOME/.notes ]]; then
+        touch "$HOME/.notes"
+    fi
+
+    if ! (($#)); then
+        # no arguments, print file
+        cat "$HOME/.notes"
+    elif [[ "$1" == "-c" ]]; then
+        # clear file
+        printf "%s" > "$HOME/.notes"
+    else
+        # add all arguments to file
+        printf "%s\n" "$*" >> "$HOME/.notes"
+    fi
+}
+
+# Create python3 venv in ./.venv
+# $1 - path to python binary
+# $2 - name of virtualenv
+create_venv () {
+  if [[ $# -ne 2 ]]; then
+    echo "Must pass 2 parameters, (1) python binary and (2) name of venv"
+    exit 1
+  fi
+  $1 -m venv $PWD/.venv/$2
+  source $PWD/.venv/$2/bin/activate
+  pip install wheel
+}
+
+# Create python2 venv in ./venv
+# $1 - path to python binary
+# $2 - name of virtualenv
+create_venv2 () {
+  if [[ $# -ne  2 ]]; then
+    echo "Must pass 2 parameters, (1) python binary and (2) name of venv"
+    return 1
+  fi
+  python2 -m virtualenv -p $1 $PWD/.venv/$2
+}
+
+# Activate a virtual env
+# $1 path to venv, within .venv directory
+venv () {
+  local usage="Usage: venv <virtualenv>"
+
+  if [[ ! -d .venv ]]; then
+    echo "ERROR: .venv/ directory does not exist"
+    return 1
+  fi
+
+  if [[ $# > 1 ]]; then
+    echo "Too many args:\n$usage"
+    return 1
+  fi
+
+  local subdirs=$(ls -d -- .venv/*/ | xargs basename)
+
+  if [[ $# -eq 0 && $(echo $subdirs | wc -w) -ne 1 ]]; then
+    echo "Virtualenvs in directory:\n$subdirs"
+    return 0
+  fi
+
+  local venvpath=.venv/
+
+  if [[ $# -eq 1 ]]; then
+    venvpath+=$(echo $1 | sed 's/ *$//g')
+  else
+    venvpath+=subdirs
+  fi
+
+  . ${venvpath}/bin/activate
+}
+
+
+# Merge a bunch of dependabot PRS
+# $@ pr numbers
+merge-dependabot () {
+  for pr in "$@"
+  do
+      echo "Merging $pr"
+      git fetch origin pull/$pr/head:depbot_$pr
+      git merge --no-edit depbot_$pr
+      git branch -D depbot_$pr
+  done
+}
+
