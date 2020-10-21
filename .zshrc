@@ -1,3 +1,8 @@
+# Start tmux automatically
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
+
 for file in ~/.{aliases,functions,secrets,exports,path,dockerfunc,extra}; do
   if [[ -r "$file" ]] && [[ -f "$file" ]]; then
     source "$file"
