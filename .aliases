@@ -5,6 +5,11 @@ alias grmm="git branch --merged master | grep -v "master" | xargs git branch -d"
 # Delete non-master branches
 alias grm-non-master="git branch | grep -v "master" | xargs git branch -D"
 
+# ssh management
+alias ssh-clear="ssh-add -D"
+alias ssh-personal="ssh-clear; ssh-add ~/.ssh/bradgwest_github"
+alias ssh-work="ssh-clear; ssh-add ~/.ssh/id_rsa"
+
 # java11
 alias java11=/usr/local/opt/openjdk@11/bin/java
 
