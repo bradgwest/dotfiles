@@ -143,7 +143,7 @@ venv () {
   if [[ $# -eq 1 ]]; then
     venvpath+=$(echo $1 | sed 's/ *$//g')
   else
-    venvpath+=subdirs
+    venvpath+=$subdirs
   fi
 
   . ${venvpath}/bin/activate
