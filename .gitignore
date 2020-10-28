@@ -3,6 +3,9 @@
 .AppleDouble
 .LSOverride
 
+# asdf
+.tool-versions
+
 # Icon must end with two \r
 Icon
 
