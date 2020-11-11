@@ -41,9 +41,9 @@
     "files.insertFinalNewline": true,
     "[go]": {
         "editor.formatOnSave": true,
-        // "editor.codeActionsOnSave": {
-        //     "source.organizeImports": true,
-        // }
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true,
+        }
     },
     "go.testFlags": [
         "-short", // "-ldflags", // "-s"
