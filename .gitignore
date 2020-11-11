@@ -34,6 +34,7 @@ Temporary Items
 # random files to ignore
 .ignored/
 .ignore/
+.todo
 
 # nose
 .noseids
