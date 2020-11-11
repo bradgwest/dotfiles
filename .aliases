@@ -24,3 +24,9 @@ alias repub='pubclean; pub get'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 # alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
+# black
+alias black120='black --line-length=120'
+
+# isort
+alias isort120='isort --line-length=120 --force-grid-wrap=0 --use-parentheses'
+
