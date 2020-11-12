@@ -21,7 +21,7 @@ alias pubclean='rm -r .pub .dart_tool/pub && echo "Removed .pub/"; find . -name 
 alias repub='pubclean; pub get'
 
 # dotfiles
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 # alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # black
