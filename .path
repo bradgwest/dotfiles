@@ -1,0 +1,6 @@
+export GOPATH=/home/brad/go
+
+path+=$GOPATH
+path+=$HOME/scripts
+path+=$HOME/scripts/diff-so-fancy
+

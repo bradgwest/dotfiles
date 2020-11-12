@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# config for version controling dotfiles
+alias dot='$(which git) --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

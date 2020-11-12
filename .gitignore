@@ -1,0 +1,5 @@
+.dotfiles/
+.venv/
+*key.json
+*pw.txt
+

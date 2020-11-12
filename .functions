@@ -1,0 +1,89 @@
+#!/bin/bash
+
+# ISO08061 UTC timestamp
+timestamp() {
+  date --utc +"%FZ%TZ"
+}
+
+# Write a notes taker
+note() {
+  # if $NOTES doesn't exist, then error
+  if [ -z "${NOTES}" ]; then
+    echo "Please set NOTES env variable"
+    exit 1
+  fi
+
+  if ! (($#)); then
+    # no args, tail
+    tail $NOTES
+  else
+    # add all args to the file
+    printf "$(timestamp) %s\n" "$*" >> $NOTES
+  fi
+}
+
+
+# cd and ls in one
+cl() {
+  local dir="$1"
+  local dir="${dir:=$HOME}"
+  if [[ -d "$dir" ]]; then
+    cd "$dir" >/dev/null; ls
+  else
+    echo "bash: cl: $dir: Directory not found"
+  fi
+}
+
+# calculator
+calc() {
+    echo "scale=3;$@" | bc -l
+}
+
+# Take a TODO note in cwd
+todo() {
+    local dir="${PWD}/.todo"
+    if [[ -z "$dir" ]]; then
+        touch "$dir"
+    fi
+
+    if ! (($#)); then
+        cat "$dir"
+    else
+        printf "$(timestamp) %s\n" "$*" >> "$dir"
+    fi
+}
+
+# delete a line from $HISTFILE. If no arg is passed, then it deletes the
+# previous command, otherwise it attempts to match the args to a line
+forget() {
+  if ! (($#)); then
+    # no args, delete previous
+    history -d $(expr $(history | tail -n 1 | grep -oP '^\s+\d+') - 1);
+  else
+    # implement me
+    echo Not Implemented
+  fi
+}
+
+
+# Create python3 venv in ./.venv/
+# $1 - path to python binary
+# $2 - name of virtualenv
+venv () {
+    if [[ $# -ne 2 ]]; then
+        echo "Must pass 2 args, (1) python binary and (2) name of venv"
+        exit 1
+    fi
+    $1 -m venv $PWD/.venv/$2
+}
+
+# Acvtivate a virtual env
+# $1 - path to venv, within .venv directory
+activate () {
+    if [[ $# -ne 1 ]]; then
+        echo "Must pass 1 arg, (1) name of venv"
+        exit 1
+    fi
+    . .venv/$1/bin/activate
+}
+
