@@ -1,0 +1,28 @@
+---
+- name: Install dotfiles
+  git:
+    repo: git@github.com:bradgwest/dotfiles.git
+    dest: /home/bradwest/.dotfiles
+    bare: yes
+
+- name: Checkout branch
+  shell: |
+    git fetch origin
+    git checkout macos-wk
+  args:
+    chdir: /home/bradwest/.dotfiles
+
+- name: Install project repos
+  git:
+    repo: git@github.com:Workiva/"{{ workiva_repos }}".git
+    dest: "{{ ansible_env.HOME }}"/dvl
+
+- name: Install zsh-auto-notify
+  git:
+    repo: git@github.com:MichaelAquilina/zsh-auto-notify.git
+    dest: "{{ ansible_env.HOME }}"/.oh-my-zsh/plugins/auto-notify
+
+- name: Install zsh-autosuggestions
+  git:
+    repo: git@github.com:zsh-users/zsh-autosuggestions.git
+    dest: "{{ ansible_env.HOME }}"/.oh-my-zsh/plugins/zsh-autosuggestions

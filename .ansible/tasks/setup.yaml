@@ -1,0 +1,11 @@
+---
+- name: Make directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: bradwest
+    group: staff
+    mode: 0775
+  loop:
+    - /home/bradwest/.dotfiles
+    - /home/bradwest/dvl

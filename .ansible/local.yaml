@@ -1,0 +1,25 @@
+---
+- name: MacBook Dev Laptop - Workiva
+  hosts: localhost
+  become: false
+
+  vars_files:
+    - vars.yaml
+
+  pre_tasks:
+    - name: Ensure Homebrew Is Installed
+      stat:
+        path: /usr/local/bin/brew
+      register: homebrew_check
+
+    - name: Fail If Homebrew Is Not Installed and install_homebrew_if_missing Is False
+      fail:
+        msg: Homebrew is missing. Install from http://brew.sh/. Run the pre-setup.sh script.
+      when:
+        - not homebrew_check.stat.exists
+
+  tasks:
+    - include_tasks: tasks/setup.yaml
+    - include_tasks: tasks/brew.yaml
+    - include_tasks: tasks/shell.yaml
+    # - include_tasks: tasks/git.yaml

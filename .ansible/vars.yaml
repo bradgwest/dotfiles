@@ -1,0 +1,53 @@
+brew_taps:
+  - homebrew/cask-fonts
+
+brew_cask_packages:
+  - docker
+  - firefox
+  - google-chrome
+  - google-cloud-sdk
+  - intellij-idea
+  - rectangle
+  - slack
+  - spotify
+  - viscosity
+  - visual-studio-code
+
+brew_packages:
+  - ansible
+  - asdf
+  - awscli
+  - alacritty
+  - curl
+  - diff-so-fancy
+  - docker-compose
+  - fzf
+  - git
+  - helm
+  - kubernetes-cli
+  - maven
+  - tmux
+  - watch
+  - wget
+  - zsh
+
+install_homebrew_if_missing: false
+
+upgrade_homebrew_packages: false
+
+workiva_repos:
+  - analytics
+  - analytics-k8s-jobs
+  - analytics_bigquery_loader
+  - analytics_category_loader
+  - analytics_flat_table_loader
+  - analytics_gateway_frugal
+  - analytics_schema
+  - app_int_audit_service
+  - app_intelligence_dart
+  - app_intelligence_java
+  - app_intelligence_python
+  - dataflow
+  - sdlc_analytics
+  - user_analytics
+  - workiva-build-cl

@@ -1,0 +1,21 @@
+---
+- name: Install oh-my-zsh
+  shell: curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+  args:
+    chdir: "{{ ansible_env.HOME }}"
+
+# - name: Install Workiva Cli
+#   shell: curl https://h.inf.workiva.net/s/wk-backend/install.sh | bash
+
+- name: Install fzf keybindings and fuzzy completion
+  shell: $(brew --prefix)/opt/fzf/install --no-bash --no-fish --all
+
+# - name: Install scripts for getting aws saml tokens
+#   shell: |
+#     mkdir {{ ansible_env.HOME }}/scripts
+#     curl -o {{ ansible_env.HOME }}/scripts/get-aws-token-firefox.sh https://raw.githubusercontent.com/Workiva/it-ops-lambda/master/AWSSamlBroker/get-aws-token-firefox.sh
+#     chmod u+x {{ ansible_env.HOME }}/scripts/get-aws-token-firefox.sh
+
+# - name: Install the skynet cli
+#   shell: eval "$(docker run --rm drydock.workiva.net/workiva/skynet-cli:latest shell)"
+
