@@ -65,25 +65,60 @@ forget() {
   fi
 }
 
-
-# Create python3 venv in ./.venv/
+# Create python3 venv in ./.venv
 # $1 - path to python binary
 # $2 - name of virtualenv
-venv () {
-    if [[ $# -ne 2 ]]; then
-        echo "Must pass 2 args, (1) python binary and (2) name of venv"
-        exit 1
-    fi
-    $1 -m venv $PWD/.venv/$2
+create_venv () {
+  if [[ $# -ne 2 ]]; then
+    echo "Must pass 2 parameters, (1) python binary and (2) name of venv"
+    exit 1
+  fi
+  $1 -m venv $PWD/.venv/$2
+  source $PWD/.venv/$2/bin/activate
+  pip install wheel
 }
 
-# Acvtivate a virtual env
-# $1 - path to venv, within .venv directory
-activate () {
-    if [[ $# -ne 1 ]]; then
-        echo "Must pass 1 arg, (1) name of venv"
-        exit 1
-    fi
-    . .venv/$1/bin/activate
+# Create python2 venv in ./venv
+# $1 - path to python binary
+# $2 - name of virtualenv
+create_venv2 () {
+  if [[ $# -ne  2 ]]; then
+    echo "Must pass 2 parameters, (1) python binary and (2) name of venv"
+    return 1
+  fi
+  python2 -m virtualenv -p $1 $PWD/.venv/$2
+}
+
+# Activate a virtual env
+# $1 path to venv, within .venv directory
+venv () {
+  local usage="Usage: venv <virtualenv>"
+
+  if [[ ! -d .venv ]]; then
+    echo "ERROR: .venv/ directory does not exist"
+    return 1
+  fi
+
+  if [[ $# > 1 ]]; then
+    echo "Too many args:\n$usage"
+    return 1
+  fi
+
+  local subdirs=$(ls -d -- .venv/*/ | xargs basename)
+
+  if [[ $# -eq 0 && $(echo $subdirs | wc -w) -ne 1 ]]; then
+    echo "Virtualenvs in directory:\n$subdirs"
+    return 0
+  fi
+
+  local venvpath=.venv/
+
+  if [[ $# -eq 1 ]]; then
+    venvpath+=$(echo $1 | sed 's/ *$//g')
+  else
+    venvpath+=$subdirs
+  fi
+
+  . ${venvpath}/bin/activate
 }
 
