@@ -2,4 +2,5 @@
 .venv/
 *key.json
 *pw.txt
+.secrets
 
