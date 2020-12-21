@@ -122,3 +122,9 @@ venv () {
   . ${venvpath}/bin/activate
 }
 
+# Run a scheme file, quitely
+# $1 the scheme file to run
+scm () {
+  scheme --quiet < $1
+}
+
