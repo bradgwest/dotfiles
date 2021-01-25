@@ -48,5 +48,6 @@
         "console_right_on_top": false,
         "additional_source_columns": 0
     },
-    "rmd_chunk_output_inline": false
+    "rmd_chunk_output_inline": false,
+    "editor_keybindings": "vim"
 }
