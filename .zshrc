@@ -16,7 +16,7 @@ plugins=(
   asdf
   # Use tmux-notify instead
   # https://github.com/MichaelAquilina/zsh-auto-notify
-  # auto-notify
+  notify
   colored-man-pages
   fzf # fzf will enable the fuzzy autocompletions bound to Ctrl-R
   git
