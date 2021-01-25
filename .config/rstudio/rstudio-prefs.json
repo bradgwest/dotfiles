@@ -2,7 +2,7 @@
     "save_workspace": "never",
     "load_workspace": false,
     "initial_working_directory": "~",
-    "posix_terminal_shell": "bash",
+    "posix_terminal_shell": "zsh",
     "highlight_selected_line": true,
     "show_invisibles": true,
     "show_indent_guides": true,
@@ -16,5 +16,37 @@
     "warn_if_no_such_variable_in_scope": true,
     "warn_variable_defined_but_not_used": true,
     "style_diagnostics": true,
-    "show_diagnostics_other": true
+    "show_diagnostics_other": true,
+    "global_theme": "classic",
+    "editor_theme": "Solarized Light",
+    "panes": {
+        "quadrants": [
+            "Source",
+            "TabSet2",
+            "TabSet1",
+            "Console"
+        ],
+        "tabSet1": [
+            "Environment",
+            "History",
+            "Files",
+            "Plots",
+            "Help",
+            "Viewer",
+            "Presentation"
+        ],
+        "tabSet2": [
+            "Build",
+            "VCS",
+            "Tutorial"
+        ],
+        "hiddenTabSet": [
+            "Connections",
+            "Packages"
+        ],
+        "console_left_on_top": false,
+        "console_right_on_top": false,
+        "additional_source_columns": 0
+    },
+    "rmd_chunk_output_inline": false
 }
