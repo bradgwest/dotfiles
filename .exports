@@ -1,5 +1,15 @@
 #!/bin/bash
 
+export GOPATH=$HOME/go
+
+# Sourcegraph environment variables
+export PGPORT=5432
+export PGHOST=localhost
+export PGUSER=sourcegraph
+export PGPASSWORD=sourcegraph
+export PGDATABASE=sourcegraph
+export PGSSLMODE=disable
+
 # Better manpager
 export MANPAGER="less --mouse";
 
