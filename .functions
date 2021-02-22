@@ -53,10 +53,10 @@ add-to-reading() {
 }
 
 # Git
-# clone () {
-#   git fetch upstream pull/$1/head:pr_$1
-#   git checkout pr_$1
-# }
+clone () {
+  git fetch origin pull/$1/head:pr_$1
+  git checkout pr_$1
+}
 
 gfpr () {
   git fetch origin pull/$1/head:PR-$1
