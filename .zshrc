@@ -3,7 +3,7 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
   exec tmux
 fi
 
-for file in ~/.{aliases,functions,secrets,exports,path,dockerfunc,extra}; do
+for file in ~/.{aliases,functions,secrets,exports,path,extra}; do
   if [[ -r "$file" ]] && [[ -f "$file" ]]; then
     source "$file"
   fi
@@ -12,12 +12,11 @@ unset file
 
 #·Docker
 # cat ~/.drydock-prodpw | docker login drydock-prod.workiva.net -u $DRYDOCK_USER --password-stdin
-# cat ~/.drydockpw | docker login drydock.workiva.net -u $DRYDOCK_USER --password-stdin
+cat ~/.drydockpw | docker login drydock.workiva.net -u $DRYDOCK_USER --password-stdin
 cat ~/.docker.workiva.net-pw | docker login docker.workiva.net -u $DRYDOCK_USER --password-stdin
 
 #·Skynet
-ssh-add -l ~/.ssh/id_rsa
-eval "$(docker run --rm drydock.workiva.net/workiva/skynet-cli:latest shell)"
+# eval "$(docker run --rm drydock.workiva.net/workiva/skynet-cli:latest shell)"
 
 # Set Homebrew autocompletions
 if type brew &>/dev/null; then
@@ -91,6 +90,7 @@ ZSH_THEME="dubs"
 plugins=(
   asdf
   git
+  kubectl
   # brew
   kubectl
   # pip
@@ -102,10 +102,10 @@ plugins=(
   zsh-autosuggestions
   auto-notify
   tmux
-  # virtualenv
+  virtualenv
 )
 
-source $ZSH/oh-my-zsh.sh
+source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
 # User configuration
 
@@ -124,8 +124,8 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+# Add work ssh alias
+ssh-work
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -140,12 +140,13 @@ source $ZSH/oh-my-zsh.sh
 
 if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/bradwest/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/bradwest/google-cloud-sdk/path.zsh.inc'; fi
+# GCLOUD Completions
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/bradwest/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/bradwest/google-cloud-sdk/completion.zsh.inc'; fi
+# Set java home
+. ~/.asdf/plugins/java/set-java-home.zsh
 
 # Autocomplete for the workiva cli
-eval "$(_WK_COMPLETE=source_zsh wk)"
+# eval "$(_WK_COMPLETE=source_zsh wk)"
 
