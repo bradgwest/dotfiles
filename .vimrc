@@ -9,7 +9,8 @@ set background=dark
 
 " View whitespace
 set list
-set listchars=tab:>-,space:·,trail:~
+" Line below makes it annoying to copy from a vim buffer
+" set listchars=tab:>-,space:·,trail:~
 
 " Syntax hilighting is nice
 syntax on
