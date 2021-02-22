@@ -2,7 +2,9 @@
     "breadcrumbs.enabled": true,
     "cSpell.ignoreWords": [
         "Workiva",
-        "dedup"
+        "dedup",
+        "kubernetes",
+        "ANSER"
     ],
     "debug.showBreakpointsInOverviewRuler": true,
     "editor.acceptSuggestionOnEnter": "on",
@@ -55,7 +57,8 @@
     },
     "go.formatTool": "goimports",
     "go.formatFlags": [
-        "-local", "github.com/Workiva,github.com/Workiva/skaardb"
+        "-local",
+        "github.com/Workiva"
     ],
     "go.docsTool": "godoc",
     // Language server might be exploding things
@@ -141,6 +144,16 @@
         "editor.wordWrap": "on",
         "editor.quickSuggestions": false
     },
+    "[json]": {
+        "editor.wordWrap": "on"
+    },
+    "[jsonc]": {
+        "editor.quickSuggestions": {
+            "strings": true
+        },
+        "editor.suggest.insertMode": "replace",
+        "editor.wordWrap": "on"
+    },
     "workbench.colorTheme": "Solarized Light",
     "editor.lineNumbers": "on",
     "editor.minimap.enabled": false,
@@ -155,6 +168,7 @@
     "java.requirements.JDK11Warning": false,
     "java.semanticHighlighting.enabled": false,
     "search.exclude": {
+        "**/.idea": true,
         "**/node_modules": true,
         "**/bower_components": true,
         "**/*.code-search": true,
@@ -167,7 +181,10 @@
         "anser",
         "drydock",
         "jira",
+        "pendo",
         "pubspec",
-        "wdesk"
-    ]
+        "wdesk",
+        "ANSER"
+    ],
+    "plantuml.java": "/Users/bradwest/.asdf/shims/java"
 }
