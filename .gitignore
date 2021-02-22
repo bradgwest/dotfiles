@@ -46,3 +46,9 @@ Temporary Items
 .classpath
 .project
 
+# secrets
+.secrets
+
+# python
+__pycache__/
+
