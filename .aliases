@@ -7,7 +7,7 @@ alias grm-non-master="git branch | grep -v "master" | xargs git branch -D"
 
 # ssh management
 alias ssh-clear="ssh-add -D"
-alias ssh-personal="ssh-clear; ssh-add ~/.ssh/bradgwest_github"
+alias ssh-personal="ssh-clear; ssh-add ~/.ssh/github_bw_id_ed25519"
 alias ssh-work="ssh-clear; ssh-add ~/.ssh/id_rsa"
 
 # java11
@@ -29,4 +29,14 @@ alias black120='black --line-length=120'
 
 # isort
 alias isort120='isort --line-length=120 --force-grid-wrap=0 --use-parentheses'
+
+# Skynet
+alias update-skynet='eval "$(docker run --rm drydock.workiva.net/workiva/skynet-cli:latest shell)"'
+
+# AWS Token
+alias get-aws-token="~/scripts/get-aws-token-firefox.sh dev"
+
+# C4 generation
+# See https://w-dev-blog.appspot.com/posts/2020/06/26/fast-and-easy-architecture-diagrams-with-c4-model/index.html
+alias c4="docker run -v $(pwd):/assets plantuml"
 
