@@ -22,3 +22,8 @@ highlight ColorColumn ctermbg=5
 " Tabs to spaces
 set softtabstop=0 tabstop=4 expandtab shiftwidth=4 smarttab
 
+" Different cursor for insert mode
+" https://superuser.com/a/1234770
+let &t_SI="\033[4 q" " start insert mode
+let &t_EI="\033[1 q" " end insert mode
+
