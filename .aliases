@@ -5,6 +5,10 @@ alias grmm="git branch --merged master | grep -v "master" | xargs git branch -d"
 # Delete non-master branches
 alias grm-non-master="git branch | grep -v "master" | xargs git branch -D"
 
+alias bi-support="python3 -c 'import time;de_team = (\"@brad.west\",\"@nathaniel.foster\",\"@trenton.smith\",\"@justine.troyke\",\"@matthew.dubbert\",\"@matthew.perreault\");epoch_day = int(time.time() / (24 * 60 * 60));print(de_team[epoch_day % len(de_team)]);'"
+alias anser-support="python3 -c 'import time;de_team = (\"@brad.west\",\"@nathaniel.foster\",\"@trenton.smith\");epoch_day = int(time.time() / (24 * 60 * 60));print(de_team[epoch_day % len(de_team)]);'"
+
+
 # ssh management
 alias ssh-clear="ssh-add -D"
 alias ssh-personal="ssh-clear; ssh-add ~/.ssh/github_bw_id_ed25519"
