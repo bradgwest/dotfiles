@@ -3,6 +3,9 @@ fpath+=$HOME/.zsh_functions
 
 # python
 export PYTHONPATH=$HOME/google-cloud-sdk/platform/google_appengine:$PYTHONPATH
+export PYTHONPATH=$HOME/dvl/data_services_etl/Python/src:$PYTHONPATH
+export PYTHONPATH=$HOME/dvl/dataflow/python/dataflow:$PYTHONPATH
+export PYTHONPATH=$HOME/dvl/dataflow/python/scheduler:$PYTHONPATH
 
 # system
 path+=$HOME/bin
