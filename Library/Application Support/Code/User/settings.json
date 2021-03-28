@@ -61,8 +61,6 @@
         "github.com/Workiva"
     ],
     "go.docsTool": "godoc",
-    // Language server might be exploding things
-    "go.useLanguageServer": false,
     "go.languageServerExperimentalFeatures": {
         "format": false,
         "diagnostics": true,
@@ -129,7 +127,6 @@
         "<C-a>": false,
         "<C-f>": false
     },
-    "window.zoomLevel": 0,
     "workbench.colorCustomizations": {
         "editorIndentGuide.activeBackground": "#FFA500",
         "editorCursor.foreground": "#ff00f2",
@@ -186,5 +183,41 @@
         "wdesk",
         "ANSER"
     ],
-    "plantuml.java": "/Users/bradwest/.asdf/shims/java"
+    "plantuml.java": "/Users/bradwest/.asdf/shims/java",
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
+    "yaml.customTags": [
+        "!And",
+        "!And sequence",
+        "!If",
+        "!If sequence",
+        "!Not",
+        "!Not sequence",
+        "!Equals",
+        "!Equals sequence",
+        "!Or",
+        "!Or sequence",
+        "!FindInMap",
+        "!FindInMap sequence",
+        "!Base64",
+        "!Join",
+        "!Join sequence",
+        "!Cidr",
+        "!Ref",
+        "!Sub",
+        "!Sub sequence",
+        "!GetAtt",
+        "!GetAZs",
+        "!ImportValue",
+        "!ImportValue sequence",
+        "!Select",
+        "!Select sequence",
+        "!Split",
+        "!Split sequence"
+    ],
+    "yaml.validate": false
 }
