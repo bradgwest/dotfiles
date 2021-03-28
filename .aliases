@@ -36,11 +36,15 @@ alias isort120='isort --line-length=120 --force-grid-wrap=0 --use-parentheses'
 
 # Skynet
 alias update-skynet='eval "$(docker run --rm drydock.workiva.net/workiva/skynet-cli:latest shell)"'
+# alias skynet='docker run --rm drydock.workiva.net/workiva/skynet-cli:latest'
 
 # AWS Token
-alias get-aws-token="~/scripts/get-aws-token-firefox.sh dev"
+alias aws-token="~/scripts/get-aws-token.sh"
 
 # C4 generation
 # See https://w-dev-blog.appspot.com/posts/2020/06/26/fast-and-easy-architecture-diagrams-with-c4-model/index.html
 alias c4="docker run -v $(pwd):/assets plantuml"
+
+# usage: explicit-newlines file
+alias explicit-newlines="awk '{printf "%s\\n", $0}'"
 
