@@ -11,6 +11,7 @@
 [user]
 	name = Brad West
 	email = brad.west@workiva.com
+	signingkey = CEDA463B71EFCE73
 
 [color "ui"]
   true
@@ -127,3 +128,7 @@
 	templatedir = ~/.git-templates
 [pull]
 	ff = only
+[commit]
+	gpgsign = true
+[gpg]
+	program = /usr/local/bin/gpg
