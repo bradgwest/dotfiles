@@ -16,7 +16,7 @@ cat ~/.drydockpw | docker login drydock.workiva.net -u $DRYDOCK_USER --password-
 cat ~/.docker.workiva.net-pw | docker login docker.workiva.net -u $DRYDOCK_USER --password-stdin
 
 #·Skynet
-# eval "$(docker run --rm drydock.workiva.net/workiva/skynet-cli:latest shell)"
+eval "$(docker run --rm drydock.workiva.net/workiva/skynet-cli:latest shell)"
 
 # Set Homebrew autocompletions
 if type brew &>/dev/null; then
