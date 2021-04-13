@@ -48,6 +48,8 @@ Temporary Items
 
 # secrets
 .secrets
+*.crt
+*.csr
 
 # python
 __pycache__/
