@@ -6,6 +6,7 @@ export PYTHONPATH=$HOME/google-cloud-sdk/platform/google_appengine:$PYTHONPATH
 export PYTHONPATH=$HOME/dvl/data_services_etl/Python/src:$PYTHONPATH
 export PYTHONPATH=$HOME/dvl/dataflow/python/dataflow:$PYTHONPATH
 export PYTHONPATH=$HOME/dvl/dataflow/python/scheduler:$PYTHONPATH
+export PYTHONPATH=$HOME/dvl/data_lake/src:$PYTHONPATH
 
 # system
 path+=$HOME/bin
