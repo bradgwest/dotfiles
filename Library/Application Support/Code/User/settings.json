@@ -219,4 +219,5 @@
         "!Split",
         "!Split sequence"
     ],
+    "yaml.validate": false,
 }
