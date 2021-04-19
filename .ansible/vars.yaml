@@ -3,10 +3,10 @@ brew_taps:
 
 brew_cask_packages:
   - docker
-  - firefox
+  # - firefox
   - google-chrome
   - google-cloud-sdk
-  - intellij-idea
+  - intellij-idea-ce
   - rectangle
   - slack
   - spotify
@@ -17,7 +17,7 @@ brew_packages:
   - ansible
   - asdf
   - awscli
-  - alacritty
+  # - alacritty
   - curl
   - diff-so-fancy
   - docker-compose

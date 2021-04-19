@@ -1,21 +1,21 @@
 ---
-- name: Install dotfiles
-  git:
-    repo: git@github.com:bradgwest/dotfiles.git
-    dest: /home/bradwest/.dotfiles
-    bare: yes
-
-- name: Checkout branch
-  shell: |
-    git fetch origin
-    git checkout macos-wk
-  args:
-    chdir: /home/bradwest/.dotfiles
-
-- name: Install project repos
-  git:
-    repo: git@github.com:Workiva/"{{ workiva_repos }}".git
-    dest: "{{ ansible_env.HOME }}"/dvl
+# - name: Install dotfiles
+#   git:
+#     repo: git@github.com:bradgwest/dotfiles.git
+#     dest: /home/bradwest/.dotfiles
+#     bare: yes
+# 
+# - name: Checkout branch
+#   shell: |
+#     git fetch origin
+#     git checkout macos-wk
+#   args:
+#     chdir: /home/bradwest/.dotfiles
+# 
+# - name: Install project repos
+#   git:
+#     repo: git@github.com:Workiva/"{{ workiva_repos }}".git
+#     dest: "{{ ansible_env.HOME }}"/dvl
 
 - name: Install zsh-auto-notify
   git:
@@ -26,3 +26,8 @@
   git:
     repo: git@github.com:zsh-users/zsh-autosuggestions.git
     dest: "{{ ansible_env.HOME }}"/.oh-my-zsh/plugins/zsh-autosuggestions
+
+- name: Install tpm
+  git:
+    repo: git clone https://github.com/tmux-plugins/tpm
+    dest: "{{ ansible_env.HOME }}"/.tmux/plugins/tpm

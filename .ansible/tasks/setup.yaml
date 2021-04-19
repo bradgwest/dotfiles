@@ -7,5 +7,5 @@
     group: staff
     mode: 0775
   loop:
-    - /home/bradwest/.dotfiles
-    - /home/bradwest/dvl
+    # - /Users/bradwest/.dotfiles
+    - /Users/bradwest/dvl
