@@ -22,6 +22,3 @@ export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=100
 # Notes file
 export NOTES="$HOME/.notes"
 
-# GPG
-export GPG_TTY=$(tty)
-

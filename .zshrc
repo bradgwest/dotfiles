@@ -95,3 +95,6 @@ source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# needs to be here, and not in .exports
+export GPG_TTY=$(tty)
+
