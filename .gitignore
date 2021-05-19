@@ -1,0 +1,29 @@
+.dotfiles
+
+# asdf
+.tool-versions
+
+# Thumbnails
+._*
+
+# vscode
+.vscode/
+
+# random files to ignore
+.ignore/
+.todo
+
+# nose
+.noseids
+
+# venv
+.venv/
+
+# secrets
+.secrets
+*.crt
+*.csr
+
+# python
+__pycache__/
+

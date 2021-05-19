@@ -1,0 +1,48 @@
+[core]
+	excludesfile = /Users/brad.west/.gitignore
+	editor = vim
+	pager = diff-so-fancy | less --tabs=4 -RFX
+
+[user]
+	name = Brad West
+	email = brad.g.west@gmail.com
+	# signingkey = CEDA463B71EFCE73
+
+[color "ui"]
+  true
+
+[color "diff-highlight"]
+  oldNormal = "red bold"
+  oldHighlight = "red bold 52"
+  newNormal = "green bold"
+  newHighlight = "green bold 22"
+
+[color "diff"]
+  meta = "yellow"
+  frag = "magenta bold"
+  commit = "yellow bold"
+  old = "red bold"
+  new = "green bold"
+  whitespace = "red reverse"
+
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
+
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+        showbranch = auto
+	ui = true
+
+[http]
+	postBuffer = 524288000
+# [init]
+# 	templatedir = ~/.git-templates
+[pull]
+	ff = only
+# [commit]
+# 	gpgsign = true
+# [gpg]
+# 	program = /usr/local/bin/gpg
+

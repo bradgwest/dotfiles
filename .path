@@ -1,0 +1,13 @@
+# functions
+fpath+=$HOME/.zsh_functions
+
+# system
+path+=$HOME/bin
+path+=/usr/local/bin
+path+=/usr/local/opt/ruby/bin
+path+=$HOME/scripts
+path+=$GOPATH
+path+=$GOPATH/bin
+path+=$PYTHONPATH
+
+export PATH
