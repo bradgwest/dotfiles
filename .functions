@@ -33,7 +33,7 @@ clone-to-contribute () {
 
 # ISO08061 UTC timestamp
 timestamp() {
-  date --utc +"%FZ%TZ"
+  date -u +"%Y-%m-%dT%H:%M:%SZ"
 }
 
 # Write a notes taker
