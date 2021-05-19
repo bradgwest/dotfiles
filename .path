@@ -9,5 +9,7 @@ path+=$HOME/scripts
 path+=$GOPATH
 path+=$GOPATH/bin
 path+=$PYTHONPATH
+path+=/usr/local/opt/findutils/libexec/gnubin
+path+=/usr/local/opt/coreutils/libexec/gnubin
 
 export PATH
