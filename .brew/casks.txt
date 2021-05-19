@@ -1,7 +1,7 @@
-alacritty
 docker
 font-source-code-pro
 lens
 rectangle
 spotify
+tunnelblick
 visual-studio-code
