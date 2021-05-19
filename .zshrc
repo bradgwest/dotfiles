@@ -97,4 +97,5 @@ source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
 # needs to be here, and not in .exports
 export GPG_TTY=$(tty)
+eval $(ssh-agent)
 
