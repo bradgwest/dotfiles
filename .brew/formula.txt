@@ -11,6 +11,7 @@ coreutils
 curl
 diff-so-fancy
 docker-compose
+findutils
 fzf
 gdbm
 gettext
@@ -20,7 +21,9 @@ gnupg
 gnutls
 guile
 helm
+icu4c
 jemalloc
+krb5
 kubernetes-cli
 libassuan
 libev
@@ -50,6 +53,7 @@ p11-kit
 pcre2
 pinentry
 pkg-config
+postgresql
 python@3.9
 readline
 rtmpdump
@@ -62,4 +66,5 @@ utf8proc
 watch
 wget
 xz
+zlib
 zstd
