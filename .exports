@@ -22,3 +22,8 @@ export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=100
 # Notes file
 export NOTES="$HOME/.notes"
 
+# https://github.com/petal-engineering/shared/blob/c51c42c091322e67414b36988068f69157f86f6b/README.md#on-mac-os-x
+export LDFLAGS="-L/usr/local/opt/zlib/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include"
+export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
+
