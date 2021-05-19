@@ -1,0 +1,7 @@
+alacritty
+docker
+font-source-code-pro
+lens
+rectangle
+spotify
+visual-studio-code
