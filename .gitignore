@@ -30,5 +30,5 @@ __pycache__/
 
 # specific to projects
 .env.prod
-.eng.stg
+.env.stg
 
