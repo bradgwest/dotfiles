@@ -5,8 +5,8 @@
 
 [user]
     name = Brad West
-    email = brad.g.west@gmail.com
-	signingkey = EB1B7D05CCBA7BAE
+    email = brad.west@petalcard.com
+	signingkey = DED9BA6CF18D03A8
 
 [color "ui"]
   true

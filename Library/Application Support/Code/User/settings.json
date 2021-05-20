@@ -1,166 +1,178 @@
 {
     "breadcrumbs.enabled": true,
-    "cSpell.ignoreWords": [
-        "dedup",
-        "kubernetes"
-    ],
-    "debug.showBreakpointsInOverviewRuler": true,
-    "editor.acceptSuggestionOnEnter": "on",
-    "editor.cursorStyle": "underline",
-    "editor.detectIndentation": false,
-    "editor.insertSpaces": true,
+     "cSpell.ignoreWords": [
+         "dedup",
+         "kubernetes"
+     ],
+     "debug.showBreakpointsInOverviewRuler": true,
+     "editor.acceptSuggestionOnEnter": "on",
+     "editor.cursorStyle": "underline",
+     "editor.detectIndentation": false,
+     "editor.insertSpaces": true,
     "editor.fontFamily": "'Source Code Pro', Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontSize": 12,
-    "editor.formatOnSave": false,
-    "editor.multiCursorModifier": "ctrlCmd",
-    "editor.quickSuggestions": {
-        "other": true,
-        "comments": true,
-        "strings": true
-    },
-    "editor.renderWhitespace": "boundary",
-    "editor.rulers": [
-        88,
-        120
-    ],
-    // "editor.snippetSuggestions": "none",
-    "editor.tabSize": 4,
-    "editor.wordWrap": "off",
-    "explorer.confirmDragAndDrop": false,
-    "explorer.confirmDelete": false,
-    "extensions.ignoreRecommendations": true,
-    "editor.parameterHints.enabled": false,
-    "files.exclude": {
-        "**/._*": true,
-        "**/*.pyc": true
-    },
-    "files.insertFinalNewline": true,
-    "[go]": {
-        "editor.formatOnSave": true,
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": true,
-        }
-    },
-    "go.testFlags": [
-        "-short", // "-ldflags", // "-s"
-    ],
-    "gopls": {
-        "usePlaceholders": true,
-        "completeUnimported": true,
-        "deepCompletion": true,
-    },
-    "go.formatTool": "goimports",
-    "go.formatFlags": [
-        "-local",
-        "github.com/Workiva"
-    ],
-    "go.docsTool": "godoc",
-    "go.languageServerExperimentalFeatures": {
-        "format": false,
-        "diagnostics": true,
-        "documentLink": true
-    },
-    "html.format.endWithNewline": true,
-    "html.format.extraLiners": "body",
-    "html.format.indentInnerHtml": true,
-    "html.format.unformatted": "b,em,i,span,strong,wbr",
-    "html.format.wrapLineLength": 0,
-    "[python]": {
-        "editor.tabSize": 4,
-        // "editor.formatOnSave": false,
-    },
-    "python.formatting.provider": "autopep8",
-    "python.showStartPage": false,
-    "python.languageServer": "Microsoft",
-    "python.linting.enabled": true,
-    // "python.linting.flake8Args": [
-    //    "--ignore=F405,E501,F403"
-    // ],
-    // "python.linting.prospectorArgs": [
-        //"--errors-only",
-    //    "--ignore=W1202"
-    // ],
-    "terminal.integrated.cursorStyle": "underline",
-    "vim.cursorStylePerMode.insert": "underline",
-    "vim.cursorStylePerMode.normal": "block",
-    "vim.cursorStylePerMode.replace": "",
-    "vim.cursorStylePerMode.visual": "line",
-    "vim.easymotion": true,
-    "vim.sneak": true,
-    "vim.incsearch": true,
-    "vim.useSystemClipboard": true,
-    "vim.useCtrlKeys": true,
-    "vim.hlsearch": true,
-    "vim.insertModeKeyBindings": [
+    "workbench.editorAssociations": [
         {
-            "before": [
-                "j",
-                "j"
-            ],
-            "after": [
-                "<Esc>"
-            ]
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
         }
     ],
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": [
-                "<leader>",
-                "d"
-            ],
-            "after": [
-                "d",
-                "d"
-            ]
-        },
-        {
-            "before": [
-                "<C-n>"
-            ],
-            "commands": [
-                ":nohl"
-            ]
-        }
-    ],
-    "vim.leader": "<space>",
-    "vim.handleKeys": {
-        "<C-a>": false,
-        "<C-f>": false
-    },
-    "workbench.colorCustomizations": {
-        "editorIndentGuide.activeBackground": "#FFA500",
-        "editorCursor.foreground": "#ff00f2",
-        "editorGutter.background": "#9b9b9b85",
-        "editorLineNumber.foreground": "#000000"
-    },
-    "workbench.editor.tabSizing": "shrink",
-    "workbench.editor.enablePreviewFromQuickOpen": false,
-    "workbench.startupEditor": "none",
-    // File specific
-    "[markdown]": {
-        "editor.wordWrap": "on",
-        "editor.quickSuggestions": false
-    },
-    "[json]": {
-        "editor.wordWrap": "on"
-    },
-    // "[jsonc]": {
-    //     "editor.quickSuggestions": {
-    //         "strings": true
-    //     },
-    //     "editor.suggest.insertMode": "replace",
-    //     "editor.wordWrap": "on"
-    // },
-    "workbench.colorTheme": "Solarized Light",
-    "editor.lineNumbers": "on",
-    "editor.minimap.enabled": false,
-    "editor.suggestSelection": "first",
-    "search.exclude": {
-        "**/.idea": true,
-        "**/node_modules": true,
-        "**/bower_components": true,
-        "**/*.code-search": true,
-        "**/.venv": true
-    },
-    "plantuml.java": "/Users/bradwest/.asdf/shims/java"
+     "editor.fontSize": 12,
+     "editor.formatOnSave": false,
+     "editor.multiCursorModifier": "ctrlCmd",
+     "editor.quickSuggestions": {
+         "other": true,
+         "comments": true,
+         "strings": true
+     },
+     "editor.renderWhitespace": "boundary",
+     "editor.rulers": [
+         88,
+         120
+     ],
+     // "editor.snippetSuggestions": "none",
+     "editor.tabSize": 4,
+     "editor.wordWrap": "off",
+     "explorer.confirmDragAndDrop": false,
+     "explorer.confirmDelete": false,
+     "extensions.ignoreRecommendations": true,
+     "editor.parameterHints.enabled": false,
+     "files.exclude": {
+         "**/._*": true,
+         "**/*.pyc": true
+     },
+     "files.insertFinalNewline": true,
+     "[go]": {
+         "editor.formatOnSave": true,
+         "editor.codeActionsOnSave": {
+             "source.organizeImports": true,
+         }
+     },
+     "go.testFlags": [
+         "-short", // "-ldflags", // "-s"
+     ],
+     "gopls": {
+         "usePlaceholders": true,
+         "completeUnimported": true,
+         "deepCompletion": true,
+     },
+     "go.formatTool": "goimports",
+     "go.formatFlags": [
+         "-local",
+         "github.com/Workiva"
+     ],
+     "go.docsTool": "godoc",
+     "go.languageServerExperimentalFeatures": {
+         "format": false,
+         "diagnostics": true,
+         "documentLink": true
+     },
+     "html.format.endWithNewline": true,
+     "html.format.extraLiners": "body",
+     "html.format.indentInnerHtml": true,
+     "html.format.unformatted": "b,em,i,span,strong,wbr",
+     "html.format.wrapLineLength": 0,
+     "[python]": {
+         "editor.tabSize": 4,
+         // "editor.formatOnSave": false,
+     },
+     "python.formatting.provider": "autopep8",
+     "python.showStartPage": false,
+     "python.languageServer": "Microsoft",
+     "python.linting.enabled": true,
+     // "python.linting.flake8Args": [
+     //    "--ignore=F405,E501,F403"
+     // ],
+     // "python.linting.prospectorArgs": [
+         //"--errors-only",
+     //    "--ignore=W1202"
+     // ],
+     "terminal.integrated.cursorStyle": "underline",
+     "vim.cursorStylePerMode.insert": "underline",
+     "vim.cursorStylePerMode.normal": "block",
+     "vim.cursorStylePerMode.replace": "",
+     "vim.cursorStylePerMode.visual": "line",
+     "vim.easymotion": true,
+     "vim.sneak": true,
+     "vim.incsearch": true,
+     "vim.useSystemClipboard": true,
+     "vim.useCtrlKeys": true,
+     "vim.hlsearch": true,
+     "vim.insertModeKeyBindings": [
+         {
+             "before": [
+                 "j",
+                 "j"
+             ],
+             "after": [
+                 "<Esc>"
+             ]
+         }
+     ],
+     "vim.normalModeKeyBindingsNonRecursive": [
+         {
+             "before": [
+                 "<leader>",
+                 "d"
+             ],
+             "after": [
+                 "d",
+                 "d"
+             ]
+         },
+         {
+             "before": [
+                 "<C-n>"
+             ],
+             "commands": [
+                 ":nohl"
+             ]
+         }
+     ],
+     "vim.leader": "<space>",
+     "vim.handleKeys": {
+         "<C-a>": false,
+         "<C-f>": false
+     },
+     "workbench.colorCustomizations": {
+         "editorIndentGuide.activeBackground": "#FFA500",
+         "editorCursor.foreground": "#ff00f2",
+         "editorGutter.background": "#9b9b9b85",
+         "editorLineNumber.foreground": "#000000"
+     },
+     "workbench.editor.tabSizing": "shrink",
+     "workbench.editor.enablePreviewFromQuickOpen": false,
+     "workbench.startupEditor": "none",
+     // File specific
+     "[markdown]": {
+         "editor.wordWrap": "on",
+         "editor.quickSuggestions": false
+     },
+     "[json]": {
+         "editor.wordWrap": "on"
+     },
+     // "[jsonc]": {
+     //     "editor.quickSuggestions": {
+     //         "strings": true
+     //     },
+     //     "editor.suggest.insertMode": "replace",
+     //     "editor.wordWrap": "on"
+     // },
+     "workbench.colorTheme": "Solarized Light",
+     "editor.lineNumbers": "on",
+     "editor.minimap.enabled": false,
+     "editor.suggestSelection": "first",
+     "search.exclude": {
+         "**/.idea": true,
+         "**/node_modules": true,
+         "**/bower_components": true,
+         "**/*.code-search": true,
+         "**/.venv": true
+     },
+     "plantuml.java": "/Users/bradwest/.asdf/shims/java",
+     "workbench.editorAssociations": [
+         {
+             "viewType": "jupyter.notebook.ipynb",
+             "filenamePattern": "*.ipynb"
+         }
+    ]
 }

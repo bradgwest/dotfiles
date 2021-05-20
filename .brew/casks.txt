@@ -1,5 +1,4 @@
 docker
-font-source-code-pro
 lens
 rectangle
 spotify

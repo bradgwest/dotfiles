@@ -17,5 +17,5 @@ alias c4="docker run -v $(pwd):/assets plantuml"
 # usage: explicit-newlines file
 alias explicit-newlines="awk '{printf "%s\\n", $0}'"
 
-alias python=python3
+alias brew-export="brew list --formula -1 > .brew/formula.txt && brew list --cask -1 > .brew/casks.txt"
 

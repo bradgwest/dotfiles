@@ -1,3 +1,4 @@
+# bare repo for dotfiles
 .dotfiles
 
 # asdf
@@ -26,4 +27,8 @@
 
 # python
 __pycache__/
+
+# specific to projects
+.env.prod
+.eng.stg
 
