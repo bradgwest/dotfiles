@@ -3,7 +3,7 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
   exec tmux
 fi
 
-for file in ~/.{aliases,functions,secrets,exports,path,extra}; do
+for file in ~/.{secrets,exports,aliases,functions,path,extra}; do
   if [[ -r "$file" ]] && [[ -f "$file" ]]; then
     source "$file"
   fi
