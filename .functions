@@ -176,3 +176,25 @@ venv () {
   . ${venvpath}/bin/activate
 }
 
+# Query production redshift
+#
+# Requires that you have a 'redshift-prod' alias setup that connects and
+# executes the psql command
+# $1 input file
+# $2 output file. If left off, then wil write as csv to stdout
+queryrs () {
+    if [[ $# -eq 0 ]]; then
+        echo "usage queryrs <input-file> <output-file> ..."
+        return 1
+    fi
+ 
+    if [[ $# -eq 1 ]]; then
+        local args="-f ${1}"
+    else
+        local args="-f ${1} -o ${2}"
+    fi
+
+    cmd="redshift-prod --csv ${args} ${@:3}"
+    eval $cmd
+}
+
