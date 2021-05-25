@@ -3,7 +3,7 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
   exec tmux
 fi
 
-for file in ~/.{secrets,exports,aliases,functions,path,extra}; do
+for file in ~/.{path,secrets,exports,aliases,functions,extra}; do
   if [[ -r "$file" ]] && [[ -f "$file" ]]; then
     source "$file"
   fi
@@ -97,9 +97,10 @@ source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
 # needs to be here, and not in .exports
 export GPG_TTY=$(tty)
-eval $(ssh-agent)
 
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
 fi
 
+# start asdf
+. /usr/local/opt/asdf/asdf.sh
