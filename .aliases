@@ -20,6 +20,10 @@ alias explicit-newlines="awk '{printf "%s\\n", $0}'"
 alias brew-export="brew list --formula -1 > .brew/formula.txt && brew list --cask -1 > .brew/casks.txt"
 
 # redshift
-alias redshift-stg="PGPASSWORD=\"${REDSHIFT_STG_RUN_PW}\" psql -h \"analytics-staging.cgao5gb7j8l6.us-east-1.redshift.amazonaws.com\" -U \"${REDSHIFT_STG_RUN_USER}\" -d dev -p 5439"
+alias redshift-stg="PGPASSWORD=\"${REDSHIFT_STG_RUN_PW}\" psql -h \"analytics-staging.cgao5gb7j8l6.us-east-1.redshift.amazonaws.com\" -U \"${REDSHIFT_STG_RUN_USER}\" -d staging_analytics -p 5439"
 alias redshift-prod="PGPASSWORD=\"${REDSHIFT_PROD_READ_ONLY_PW}\" psql -h \"analytics-database1.production.petalcard.com\" -U \"${REDSHIFT_PROD_READ_ONLY_USER}\" -d analytics -p 5439"
+
+# postgres
+alias pg-prod="PGPASSWORD=\"${PG_PROD_PW}\" psql -h \"${PG_PROD_HOST}\" -U \"${PG_PROD_USER}\" -d \"${PG_PROD_DB}\" -p \"${PG_PROD_PORT}\""
+alias pg-ddl-table="PGPASSWORD=\"${PG_PROD_PW}\" pg_dump -h \"${PG_PROD_HOST}\" -U \"${PG_PROD_USER}\" -d \"${PG_PROD_DB}\" -p \"${PG_PROD_PORT}\" --schema-only -t"
 
