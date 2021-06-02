@@ -182,7 +182,7 @@ venv () {
 # executes the psql command
 # $1 input file
 # $2 output file. If left off, then wil write as csv to stdout
-queryrs () {
+qrs () {
     if [[ $# -eq 0 ]]; then
         echo "usage queryrs <input-file> <output-file> ..."
         return 1
@@ -194,7 +194,7 @@ queryrs () {
         local args="-f ${1} -o ${2}"
     fi
 
-    cmd="redshift-prod --csv ${args} ${@:3}"
+    cmd="redshift-prod-ro --csv ${args} ${@:3}"
     eval $cmd
 }
 
