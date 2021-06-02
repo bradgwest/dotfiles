@@ -175,5 +175,8 @@
              "filenamePattern": "*.ipynb"
          }
     ],
-    "workbench.editor.untitled.hint": "hidden"
+    "workbench.editor.untitled.hint": "hidden",
+    "cSpell.enableFiletypes": [
+        "sql"
+    ]
 }
