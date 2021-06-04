@@ -1,3 +1,5 @@
+#!/bin/bash
+
 create-pkcs8-key() {
   openssl genrsa -out $1.pem 4096
   openssl rsa -in $1.pem -pubout -out $1-pub.pem
@@ -176,15 +178,102 @@ venv () {
   . ${venvpath}/bin/activate
 }
 
+# Set redshift creds
+_set-rs() {
+    if [[ $# -ne 5 ]]; then
+        echo "usage: _set_rs <host> <db> <port> <user> <pw>"
+        return 1
+    fi
+
+    export REDSHIFT_HOST="$1"
+    export REDSHIFT_DB="$2"
+    export REDSHIFT_PORT="$3"
+    export REDSHIFT_USER="$4"
+    export REDSHIFT_PW="$5"
+}
+
+# Switch redshift users
+#
+# Requires a number of env vars to be set
+# $1 the environment to set
+# $2 the user to set
+rs-user () {
+    case "$1:$2" in
+
+    stg:ro)
+        _set-rs \
+            $_REDSHIFT_STG_HOST \
+            $_REDSHIFT_STG_DB \
+            $_REDSHIFT_STG_PORT \
+            $_REDSHIFT_STG_READ_ONLY_USER \
+            $_REDSHIFT_STG_READ_ONLY_PW
+        ;;
+
+
+    stg:run)
+        _set-rs \
+            $_REDSHIFT_STG_HOST \
+            $_REDSHIFT_STG_DB \
+            $_REDSHIFT_STG_PORT \
+            $_REDSHIFT_STG_RUN_USER \
+            $_REDSHIFT_STG_RUN_PW
+        ;;
+
+    stg:dbt)
+        _set-rs \
+            $_REDSHIFT_STG_HOST \
+            $_REDSHIFT_STG_DB \
+            $_REDSHIFT_STG_PORT \
+            $_REDSHIFT_STG_DBT_USER \
+            $_REDSHIFT_STG_DBT_PW
+        ;;
+
+
+    prod:ro)
+        _set-rs \
+            $_REDSHIFT_PROD_HOST \
+            $_REDSHIFT_PROD_DB \
+            $_REDSHIFT_PROD_PORT \
+            $_REDSHIFT_PROD_READ_ONLY_USER \
+            $_REDSHIFT_PROD_READ_ONLY_PW
+        ;;
+
+    prod:run)
+        _set-rs \
+            $_REDSHIFT_PROD_HOST \
+            $_REDSHIFT_PROD_DB \
+            $_REDSHIFT_PROD_PORT \
+            $_REDSHIFT_PROD_RUN_USER \
+            $_REDSHIFT_PROD_RUN_PW
+        ;;
+
+    prod:dbt)
+        _set-rs \
+            $_REDSHIFT_PROD_HOST \
+            $_REDSHIFT_PROD_DB \
+            $_REDSHIFT_PROD_PORT \
+            $_REDSHIFT_PROD_DBT_USER \
+            $_REDSHIFT_PROD_DBT_PW
+        ;;
+
+    *)
+        echo "usage: rs-user <stg|prod> <run|ro|dbt>"
+        return 1
+
+    esac
+
+}
+
+
 # Query production redshift
 #
 # Requires that you have a 'redshift-prod' alias setup that connects and
 # executes the psql command
 # $1 input file
-# $2 output file. If left off, then wil write as csv to stdout
+# $2 output file. If left off, then will write as csv to stdout
 qrs () {
     if [[ $# -eq 0 ]]; then
-        echo "usage queryrs <input-file> <output-file> ..."
+        echo "usage qrs <input-file> <output-file> ..."
         return 1
     fi
  
@@ -194,7 +283,7 @@ qrs () {
         local args="-f ${1} -o ${2}"
     fi
 
-    cmd="redshift-prod-ro --csv ${args} ${@:3}"
+    cmd="rs-psql --csv ${args} ${@:3}"
     eval $cmd
 }
 
