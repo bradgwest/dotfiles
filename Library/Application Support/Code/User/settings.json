@@ -178,5 +178,6 @@
     "workbench.editor.untitled.hint": "hidden",
     "cSpell.enableFiletypes": [
         "sql"
-    ]
+    ],
+    "workbench.panel.opensMaximized": "never"
 }
