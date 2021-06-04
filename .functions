@@ -264,26 +264,45 @@ rs-user () {
 
 }
 
-
 # Query production redshift
 #
 # Requires that you have a 'redshift-prod' alias setup that connects and
 # executes the psql command
 # $1 input file
 # $2 output file. If left off, then will write as csv to stdout
+# $3
+# TODO
+# * implement a log
+# * write to results directory
+# * write same filename
+# * add timestamp if no filename passed
 qrs () {
     if [[ $# -eq 0 ]]; then
-        echo "usage qrs <input-file> <output-file> ..."
+        echo "usage: qrs <input-file> <output-file> ...\nuse rs-psql to get a pqsl terminal"
         return 1
     fi
+
+    # create a results directory
+    if [ ! -d "results" ]; then
+        mkdir results
+    fi
  
+    # if no output file passed, write results to a csv file with same name in results directory
     if [[ $# -eq 1 ]]; then
-        local args="-f ${1}"
+        # local bn=$(basename $1)
+        echo $1
+        local args="-f ${1}" # -o results/${bn}_$(timestamp).csv"
     else
         local args="-f ${1} -o ${2}"
     fi
 
-    cmd="rs-psql --csv ${args} ${@:3}"
+    cmd="PGPASSWORD=\"${REDSHIFT_PW}\" psql \
+        -h \"${REDSHIFT_HOST}\" \
+        -U \"${REDSHIFT_USER}\" \
+        -d \"${REDSHIFT_DB}\" \
+        -p \"${REDSHIFT_PORT}\" \
+        --csv ${args} ${@:3}"
+
     eval $cmd
 }
 

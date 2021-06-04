@@ -27,9 +27,6 @@ alias vault-prod="export VAULT_ADDR=${VAULT_ADDR_PROD};export VAULT_TOKEN=${VAUL
 # switch vault creds to stg
 alias vault-stg="export VAULT_ADDR=${VAULT_ADDR_STG};export VAULT_TOKEN=${VAULT_TOKEN_STG}; export CONSUL_HTTP_ADDR=${CONSUL_HTTP_ADDR_STG}"
 
-# redshift (use rs-user to switch users) 
-alias rs-psql="PGPASSWORD='${REDSHIFT_PW}' psql -h \"${REDSHIFT_HOST}\" -U \"${REDSHIFT_USER}\" -d \"${REDSHIFT_DB}\" -p \"${REDSHIFT_PORT}\""
-
 # run psql against prod postgres db
 alias pg-prod="PGPASSWORD='${PG_PROD_PW}' psql -h \"${PG_PROD_HOST}\" -U \"${PG_PROD_USER}\" -d \"${PG_PROD_DB}\" -p \"${PG_PROD_PORT}\""
 # dump a postgres table schema
