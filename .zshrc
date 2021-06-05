@@ -105,5 +105,7 @@ fi
 # set VAULT_TOKEN, VAULT_ADDR, CONSUL_HTTP_ADDR
 vault-prod
 
+eval "$(pyenv init -)"
+
 # start asdf
 . /usr/local/opt/asdf/asdf.sh
