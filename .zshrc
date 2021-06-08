@@ -105,6 +105,9 @@ fi
 # set VAULT_TOKEN, VAULT_ADDR, CONSUL_HTTP_ADDR
 vault-prod
 
+# add redshift user env vars
+rs-user prod ro
+
 eval "$(pyenv init -)"
 
 # start asdf
