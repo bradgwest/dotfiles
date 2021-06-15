@@ -6,16 +6,13 @@
      ],
      "debug.showBreakpointsInOverviewRuler": true,
      "editor.acceptSuggestionOnEnter": "on",
-     "editor.cursorStyle": "underline",
+     "editor.cursorStyle": "line",
      "editor.detectIndentation": false,
      "editor.insertSpaces": true,
-    "editor.fontFamily": "'Source Code Pro', Menlo, Monaco, 'Courier New', monospace",
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ],
+     "editor.fontFamily": "'Source Code Pro', Menlo, Monaco, 'Courier New', monospace",
+     "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
      "editor.fontSize": 12,
      "editor.formatOnSave": false,
      "editor.multiCursorModifier": "ctrlCmd",
@@ -26,11 +23,9 @@
      },
      "editor.renderWhitespace": "boundary",
      "editor.rulers": [
-         88,
+         79,
          120
-     ],
-     // "editor.snippetSuggestions": "none",
-     "editor.tabSize": 4,
+],
      "editor.wordWrap": "off",
      "explorer.confirmDragAndDrop": false,
      "explorer.confirmDelete": false,
@@ -45,7 +40,8 @@
          "editor.formatOnSave": true,
          "editor.codeActionsOnSave": {
              "source.organizeImports": true,
-         }
+         },
+         "editor.insertSpaces": false
      },
      "go.testFlags": [
          "-short", // "-ldflags", // "-s"
@@ -148,7 +144,8 @@
          "editor.quickSuggestions": false
      },
      "[json]": {
-         "editor.wordWrap": "on"
+         "editor.wordWrap": "on",
+         "editor.tabSize": 4,
      },
      // "[jsonc]": {
      //     "editor.quickSuggestions": {
@@ -179,5 +176,9 @@
     "cSpell.enableFiletypes": [
         "sql"
     ],
-    "workbench.panel.opensMaximized": "never"
+    "workbench.panel.opensMaximized": "never",
+    "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+    "editor.autoClosingDelete": "never",
+"editor.autoClosingQuotes": "always",
+"markdown.extension.toc.levels": "2..6",
 }
