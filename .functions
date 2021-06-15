@@ -192,6 +192,43 @@ _set-rs() {
     export REDSHIFT_PW="$5"
 }
 
+# set dbt user
+_set-dbt() {
+    if [[ $# -ne 2 ]]; then
+        echo "usage: _set-dbt <user> <pw>"
+    fi
+
+    export DBT_USER="$1"
+    export DBT_PASSWORD="$2"
+}
+
+# Switch dbt user
+#
+# $1 the user to set
+dbt-user () {
+    case "$1" in
+
+    dev)
+        _set-dbt \
+            $_REDSHIFT_PROD_DBT_USER \
+            $_REDSHIFT_PROD_DBT_PW
+        ;;
+
+
+    admin)
+        _set-dbt \
+            $_REDSHIFT_PROD_READ_WRITE_USER \
+            $_REDSHIFT_PROD_READ_WRITE_PW
+        ;;
+
+
+    *)
+        echo "usage: dbt-user <admin|dev>"
+        return 1
+
+    esac
+}
+
 # Switch redshift users
 #
 # Requires a number of env vars to be set
@@ -255,6 +292,16 @@ rs-user () {
             $_REDSHIFT_PROD_DBT_USER \
             $_REDSHIFT_PROD_DBT_PW
         ;;
+
+    prod:rw)
+        _set-rs \
+            $_REDSHIFT_PROD_HOST \
+            $_REDSHIFT_PROD_DB \
+            $_REDSHIFT_PROD_PORT \
+            $_REDSHIFT_PROD_READ_WRITE_USER \
+            $_REDSHIFT_PROD_READ_WRITE_PW
+        ;;
+
 
     *)
         echo "usage: rs-user <stg|prod> <run|ro|dbt>"
