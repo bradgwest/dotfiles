@@ -4,6 +4,9 @@ imap jj <ESC>
 " show numbers
 set number
 
+" show the ruler
+set ruler
+
 " We're probably using a dark background
 set background=dark
 
