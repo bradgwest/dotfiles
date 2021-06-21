@@ -214,6 +214,11 @@ dbt-user () {
             $_REDSHIFT_PROD_DBT_PW
         ;;
 
+    prod)
+        _set-dbt \
+            $_REDSHIFT_PROD_RUN_USER \
+            $_REDSHIFT_PROD_RUN_PW
+        ;;
 
     admin)
         _set-dbt \
@@ -265,6 +270,14 @@ rs-user () {
             $_REDSHIFT_STG_DBT_PW
         ;;
 
+    stg:migrate)
+        _set-rs \
+            $_REDSHIFT_STG_HOST \
+            $_REDSHIFT_STG_DB \
+            $_REDSHIFT_STG_PORT \
+            $_REDSHIFT_STG_MIGRATE_USER \
+            $_REDSHIFT_STG_MIGRATE_PW
+        ;;
 
     prod:ro)
         _set-rs \
