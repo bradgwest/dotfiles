@@ -130,14 +130,19 @@
          "<C-f>": false
      },
      "workbench.colorCustomizations": {
-         "editorIndentGuide.activeBackground": "#FFA500",
-         "editorCursor.foreground": "#ff00f2",
-         "editorGutter.background": "#9b9b9b85",
-         "editorLineNumber.foreground": "#000000"
-     },
+        "editorIndentGuide.activeBackground": "#FFA500",
+        "editorCursor.foreground": "#ff00f2",
+        "editorGutter.background": "#9b9b9b85",
+        "editorLineNumber.foreground": "#000000",
+        "statusBar.background": "#B48EAD",
+        "statusBar.noFolderBackground": "#B48EAD",
+        "statusBar.debuggingBackground": "#B48EAD",
+        "statusBar.foreground": "#000000"
+    },
      "workbench.editor.tabSizing": "shrink",
      "workbench.editor.enablePreviewFromQuickOpen": false,
      "workbench.startupEditor": "none",
+     "workbench.editor.showTabs": true,
      // File specific
      "[markdown]": {
          "editor.wordWrap": "on",
@@ -163,7 +168,13 @@
          "**/node_modules": true,
          "**/bower_components": true,
          "**/*.code-search": true,
-         "**/.venv": true
+         "**/.venv": true,
+         "**/.eggs": true,
+         "**/node_modules": true,
+         "**/data_eng.egg_info": true,
+         ".coverage": true,
+         "coverage.xml": true
+
      },
      "plantuml.java": "/Users/bradwest/.asdf/shims/java",
      "workbench.editorAssociations": [
@@ -179,6 +190,8 @@
     "workbench.panel.opensMaximized": "never",
     "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
     "editor.autoClosingDelete": "never",
-"editor.autoClosingQuotes": "always",
-"markdown.extension.toc.levels": "2..6",
+    "editor.autoClosingQuotes": "always",
+    "markdown.extension.toc.levels": "2..6",
+    "security.workspace.trust.untrustedFiles": "open",
+    "comments.openPanel": "neverOpen",
 }
