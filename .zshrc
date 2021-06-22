@@ -82,7 +82,6 @@ ZSH_THEME="dubs"
 plugins=(
   git
   # kubectl
-  # brew
   colored-man-pages
   fzf
   zsh-autosuggestions
