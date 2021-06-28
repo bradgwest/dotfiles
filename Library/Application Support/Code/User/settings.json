@@ -171,7 +171,7 @@
          "**/.venv": true,
          "**/.eggs": true,
          "**/node_modules": true,
-         "**/data_eng.egg_info": true,
+         "**/data_eng.egg-info": true,
          ".coverage": true,
          "coverage.xml": true
 
@@ -189,9 +189,17 @@
     ],
     "workbench.panel.opensMaximized": "never",
     "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
-    "editor.autoClosingDelete": "never",
-    "editor.autoClosingQuotes": "always",
     "markdown.extension.toc.levels": "2..6",
     "security.workspace.trust.untrustedFiles": "open",
     "comments.openPanel": "neverOpen",
+    "[yaml]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.autoIndent": "keep",
+        "editor.quickSuggestions": {
+            "other": false,
+            "comments": false,
+            "strings": false
+        }
+    },
 }
