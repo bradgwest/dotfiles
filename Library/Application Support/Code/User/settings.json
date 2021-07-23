@@ -4,22 +4,21 @@
          "dedup",
          "kubernetes"
      ],
-     "debug.showBreakpointsInOverviewRuler": true,
-     "editor.acceptSuggestionOnEnter": "on",
+    "debug.showBreakpointsInOverviewRuler": true,
      "editor.cursorStyle": "line",
      "editor.detectIndentation": false,
      "editor.insertSpaces": true,
      "editor.fontFamily": "'Source Code Pro', Menlo, Monaco, 'Courier New', monospace",
      "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb"
+        "*.ipynb": "jupyter-notebook"
     },
      "editor.fontSize": 12,
      "editor.formatOnSave": false,
      "editor.multiCursorModifier": "ctrlCmd",
      "editor.quickSuggestions": {
          "other": true,
-         "comments": true,
-         "strings": true
+         "comments": false,
+         "strings": false
      },
      "editor.renderWhitespace": "boundary",
      "editor.rulers": [
@@ -67,10 +66,13 @@
      "html.format.indentInnerHtml": true,
      "html.format.unformatted": "b,em,i,span,strong,wbr",
      "html.format.wrapLineLength": 0,
-     "[python]": {
-         "editor.tabSize": 4,
-         // "editor.formatOnSave": false,
-     },
+     // "[python]": {
+     //    "editor.tabSize": 4,
+     //    "editor.formatOnSave": true,
+     //    "editor.codeActionsOnSave": {
+     //        "source.organizeImports": true
+     //    },
+     // },
      "python.formatting.provider": "autopep8",
      "python.showStartPage": false,
      "python.languageServer": "Microsoft",
@@ -202,4 +204,13 @@
             "strings": false
         }
     },
+    "files.associations": {
+        "[Dd]ockerfile*": "dockerfile",
+        "docker-compose*": "yaml"
+    },
+    "editor.acceptSuggestionOnEnter": "smart",
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    }
 }
