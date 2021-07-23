@@ -105,7 +105,7 @@ fi
 vault-prod
 
 # add redshift user env vars
-rs-user prod ro
+rsu prod dbt
 
 eval "$(pyenv init -)"
 
