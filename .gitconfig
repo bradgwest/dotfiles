@@ -50,3 +50,5 @@
 [gpg]
 	program = gpg
 
+[init]
+	defaultBranch = master
