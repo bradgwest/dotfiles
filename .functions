@@ -205,7 +205,7 @@ _set-dbt() {
 # Switch dbt user
 #
 # $1 the user to set
-dbt-user () {
+dbtu () {
     case "$1" in
 
     dev)
@@ -239,7 +239,7 @@ dbt-user () {
 # Requires a number of env vars to be set
 # $1 the environment to set
 # $2 the user to set
-rs-user () {
+rsu () {
     case "$1:$2" in
 
     stg:ro)
@@ -315,9 +315,17 @@ rs-user () {
             $_REDSHIFT_PROD_READ_WRITE_PW
         ;;
 
+    prod:master)
+        _set-rs \
+            $_REDSHIFT_PROD_HOST \
+            $_REDSHIFT_PROD_DB \
+            $_REDSHIFT_PROD_PORT \
+            $_REDSHIFT_PROD_MASTER_USER \
+            $_REDSHIFT_PROD_MASTER_PW
+        ;;
 
     *)
-        echo "usage: rs-user <stg|prod> <run|ro|dbt>"
+        echo "usage: rs-user <stg|prod> <run|ro|dbt|migrate|master>"
         return 1
 
     esac
@@ -325,13 +333,16 @@ rs-user () {
 }
 
 # Redshift psql
-rspsql () {
+rpsql () {
    PGPASSWORD="${REDSHIFT_PW}" \
     psql \
     -h ${REDSHIFT_HOST} \
     -U ${REDSHIFT_USER} \
     -d ${REDSHIFT_DB} \
     -p ${REDSHIFT_PORT} 
+
+    # return to read/only user
+    rsu prod ro
 }
 
 # Query production redshift
@@ -376,3 +387,43 @@ qrs () {
     eval $cmd
 }
 
+# Get prod aws creds
+get-prod-legacy-aws-creds() {
+    AWS_PATH=secret/data_eng/aws
+    AWS_ACCESS_KEY_ID=$(vault kv get -field=access_key_id "$AWS_PATH")
+    AWS_SECRET_ACCESS_KEY=$(vault kv get -field=secret_access_key "$AWS_PATH")
+    AWS_DEFAULT_REGION=us-east-1
+    export AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_DEFAULT_REGION
+}
+
+# Hit Redash API
+#
+# $1 prod or stg
+# $2 method, passed to curl
+# $3 route to get, like /api/admins/queries/outdated
+# $4 Passed to curl
+redash-api() {
+    USAGE="usage: redash-api [prod|stg] METHOD ROUTE ..."
+    if [[ $# -lt 3 ]]; then
+        echo $USAGE 1>&2
+        return 1
+    fi
+
+    ENV=$1
+    METHOD=$2
+    ROUTE=$3
+    shift 3
+
+    if [[ $ENV == "prod" ]]; then
+        URL="https://redash.production.petalcard.com"
+        API_KEY=$REDASH_PROD_API_KEY
+    elif [[ $ENV == "stg" ]]; then
+        URL="https://redash.staging.petalcard.com"
+        API_KEY=$REDASH_STG_API_KEY
+    else
+        echo $USAGE
+        return 1
+    fi
+
+    curl -X $METHOD "$URL$ROUTE?api_key=$API_KEY" $@
+}
