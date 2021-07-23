@@ -6,6 +6,9 @@ alias grmpr="git branch | grep "PR-" | xargs git branch -D"
 alias grmm="git branch --merged master | grep -v "master" | xargs git branch -d"
 # Delete non-master branches
 alias grm-non-master="git branch | grep -v "master" | xargs git branch -D"
+# cleanup squashed and merged branches
+alias grmsm='git checkout -q master && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done'
+
 
 # ssh management
 alias ssh-clear="ssh-add -D"
@@ -32,5 +35,4 @@ alias pg-prod="PGPASSWORD='${PG_PROD_PW}' psql -h \"${PG_PROD_HOST}\" -U \"${PG_
 # dump a postgres table schema
 alias pg-ddl-table="PGPASSWORD='${PG_PROD_PW}' pg_dump -h \"${PG_PROD_HOST}\" -U \"${PG_PROD_USER}\" -d \"${PG_PROD_DB}\" -p \"${PG_PROD_PORT}\" --schema-only -t"
 alias pg-stg-ddl-table="PGPASSWORD='${PG_STG_PW}' pg_dump -h \"${PG_STG_HOST}\" -U \"${PG_STG_USER}\" -d \"${PG_STG_DB}\" -p \"${PG_STG_PORT}\" --schema-only -t"
-
 
