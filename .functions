@@ -400,8 +400,8 @@ get-prod-legacy-aws-creds() {
 #
 # $1 prod or stg
 # $2 method, passed to curl
-# $3 route to get, like /api/admins/queries/outdated
-# $4 Passed to curl
+# $3 route to hit, like /api/admins/queries/outdated
+# ... Passed to curl
 redash-api() {
     USAGE="usage: redash-api [prod|stg] METHOD ROUTE ..."
     if [[ $# -lt 3 ]]; then
