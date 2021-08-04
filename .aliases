@@ -36,3 +36,6 @@ alias pg-prod="PGPASSWORD='${PG_PROD_PW}' psql -h \"${PG_PROD_HOST}\" -U \"${PG_
 alias pg-ddl-table="PGPASSWORD='${PG_PROD_PW}' pg_dump -h \"${PG_PROD_HOST}\" -U \"${PG_PROD_USER}\" -d \"${PG_PROD_DB}\" -p \"${PG_PROD_PORT}\" --schema-only -t"
 alias pg-stg-ddl-table="PGPASSWORD='${PG_STG_PW}' pg_dump -h \"${PG_STG_HOST}\" -U \"${PG_STG_USER}\" -d \"${PG_STG_DB}\" -p \"${PG_STG_PORT}\" --schema-only -t"
 
+alias engops-stg="ssh -p 2222 -i ~/.ssh/id_rsa brad.west@engops.staging.petalcard.com"
+alias engops-prod="ssh -p 2222 -i ~/.ssh/id_rsa brad.west@engops.production.petalcard.com"
+
