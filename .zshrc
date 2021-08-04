@@ -111,3 +111,5 @@ eval "$(pyenv init -)"
 
 # start asdf
 . /usr/local/opt/asdf/asdf.sh
+. ~/.asdf/plugins/java/set-java-home.zsh
+
