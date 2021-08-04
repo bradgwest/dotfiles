@@ -6,10 +6,6 @@
         "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown'"
     },
     {
-        "key": "ctrl+a \\",
-        "command": "workbench.action.splitEditorRight"
-    },
-    {
         "key": "ctrl+a -",
         "command": "workbench.action.splitEditorDown"
     },
@@ -78,5 +74,9 @@
     {
         "key": "ctrl+a l",
         "command": "workbench.action.focusRightGroupWithoutWrap"
+    },
+    {
+        "key": "ctrl+a \\",
+        "command": "workbench.action.moveEditorToRightGroup"
     }
 ]
