@@ -1,6 +1,8 @@
 # functions
 fpath+=$HOME/.zsh_functions
 
+export GOPATH="$HOME/go"
+
 # system
 path=('/usr/local/opt/findutils/libexec/gnubin' $path)
 path=('/usr/local/opt/coreutils/libexec/gnubin' $path)
