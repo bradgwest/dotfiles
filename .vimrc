@@ -15,6 +15,9 @@ set list
 " Line below makes it annoying to copy from a vim buffer
 " set listchars=tab:>-,space:·,trail:~
 
+" Highlight searches
+set hlsearch
+
 " Syntax hilighting is nice
 syntax on
 
