@@ -81,7 +81,7 @@ ZSH_THEME="dubs"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  # kubectl
+  kubectl
   colored-man-pages
   fzf
   zsh-autosuggestions
@@ -106,6 +106,7 @@ vault-prod
 
 # add redshift user env vars
 rsu prod dbt
+dbtu dev
 
 eval "$(pyenv init -)"
 
