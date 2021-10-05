@@ -168,7 +168,7 @@
         "coverage.xml": true
 
     },
-    "plantuml.java": "/Users/bradwest/.asdf/shims/java",
+    "plantuml.java": "/Users/brad.west/.asdf/shims/java",
     "workbench.editorAssociations": {
         "viewType": "jupyter.notebook.ipynb",
         "filenamePattern": "*.ipynb"
