@@ -18,6 +18,10 @@ export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
 # Disable autosuggestions for large buffers
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=100
+export ZSH_TMUX_AUTOSTART=true
+
+# vi-mode zsh
+export VI_MODE_SET_CURSOR=true
 
 # Notes file
 export NOTES="$HOME/.notes"
