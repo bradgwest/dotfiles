@@ -181,7 +181,7 @@ venv () {
 # Set redshift creds
 _set-rs() {
     if [[ $# -ne 5 ]]; then
-        echo "usage: _set_rs <host> <db> <port> <user> <pw>"
+        echo "usage: _set-rs <host> <db> <port> <user> <pw>"
         return 1
     fi
 
@@ -194,41 +194,79 @@ _set-rs() {
 
 # set dbt user
 _set-dbt() {
-    if [[ $# -ne 2 ]]; then
-        echo "usage: _set-dbt <user> <pw>"
+    if [[ $# -ne 5 ]]; then
+        echo "usage: _set-dbt <host> <db> <port> <user> <pw>"
     fi
 
-    export DBT_USER="$1"
-    export DBT_PASSWORD="$2"
+    export DBT_HOST="$1"
+    export DBT_DB_NAME="$2"
+    export DBT_PORT="$3"
+    export DBT_USER="$4"
+    export DBT_PASSWORD="$5"
 }
 
 # Switch dbt user
 #
 # $1 the user to set
 dbtu () {
-    case "$1" in
+    case "$1:$2" in
 
-    dev)
+    stg:dbt)
         _set-dbt \
+            $_DBT_STG_HOST \
+            $_DBT_STG_DB_NAME \
+            $_DBT_STG_PORT \
+            $_REDSHIFT_STG_DBT_USER \
+            $_REDSHIFT_STG_DBT_PW
+        ;;
+
+     stg:run)
+        _set-dbt \
+            $_DBT_STG_HOST \
+            $_DBT_STG_DB_NAME \
+            $_DBT_STG_PORT \
+            $_REDSHIFT_STG_RUN_USER \
+            $_REDSHIFT_STG_RUN_PW
+        ;;
+
+     stg:rw)
+        _set-dbt \
+            $_DBT_STG_HOST \
+            $_DBT_STG_DB_NAME \
+            $_DBT_STG_PORT \
+            $_REDSHIFT_STG_READ_WRITE_USER \
+            $_REDSHIFT_STG_READ_WRITE_PW
+        ;;
+
+    prod:dbt)
+        _set-dbt \
+            $_DBT_PROD_HOST \
+            $_DBT_PROD_DB_NAME \
+            $_DBT_PROD_PORT \
             $_REDSHIFT_PROD_DBT_USER \
             $_REDSHIFT_PROD_DBT_PW
         ;;
 
-    prod)
+    prod:run)
         _set-dbt \
+            $_DBT_PROD_HOST \
+            $_DBT_PROD_DB_NAME \
+            $_DBT_PROD_PORT \
             $_REDSHIFT_PROD_RUN_USER \
             $_REDSHIFT_PROD_RUN_PW
         ;;
 
-    admin)
+    prod:rw)
         _set-dbt \
+            $_DBT_PROD_HOST \
+            $_DBT_PROD_DB_NAME \
+            $_DBT_PROD_PORT \
             $_REDSHIFT_PROD_READ_WRITE_USER \
             $_REDSHIFT_PROD_READ_WRITE_PW
         ;;
 
-
     *)
-        echo "usage: dbt-user <admin|dev>"
+        echo "usage: dbtu <stg|prod> <dbt|run|rw>"
         return 1
 
     esac
@@ -279,6 +317,24 @@ rsu () {
             $_REDSHIFT_STG_MIGRATE_PW
         ;;
 
+    stg:master)
+        _set-rs \
+            $_REDSHIFT_STG_HOST \
+            $_REDSHIFT_STG_DB \
+            $_REDSHIFT_STG_PORT \
+            $_REDSHIFT_STG_MASTER_USER \
+            $_REDSHIFT_STG_MASTER_PW
+        ;;
+
+    stg:xpn)
+        _set-rs \
+            $_REDSHIFT_STG_HOST \
+            $_REDSHIFT_STG_DB \
+            $_REDSHIFT_STG_PORT \
+            $_REDSHIFT_STG_XPN_USER \
+            $_REDSHIFT_STG_XPN_PW
+        ;;
+
     prod:ro)
         _set-rs \
             $_REDSHIFT_PROD_HOST \
@@ -325,7 +381,7 @@ rsu () {
         ;;
 
     *)
-        echo "usage: rs-user <stg|prod> <run|ro|dbt|migrate|master>"
+        echo "usage: rsu <stg|prod> <run|ro|dbt|migrate|master>"
         return 1
 
     esac
@@ -340,9 +396,6 @@ rpsql () {
     -U ${REDSHIFT_USER} \
     -d ${REDSHIFT_DB} \
     -p ${REDSHIFT_PORT} 
-
-    # return to read/only user
-    rsu prod ro
 }
 
 # Query production redshift
