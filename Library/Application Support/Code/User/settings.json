@@ -2,7 +2,11 @@
     "breadcrumbs.enabled": true,
     "cSpell.ignoreWords": [
         "dedup",
-        "kubernetes"
+        "kubernetes",
+        "detokenize",
+        "expn",
+        "detokenizing",
+        "detokenized"
     ],
     "debug.showBreakpointsInOverviewRuler": true,
     "editor.cursorStyle": "line",
@@ -25,6 +29,7 @@
     "editor.wordWrap": "off",
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
+    "editor.guides.bracketPairs": true,
     "extensions.ignoreRecommendations": true,
     "editor.parameterHints.enabled": false,
     "files.exclude": {
@@ -32,6 +37,8 @@
         "**/*.pyc": true
     },
     "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
     "[go]": {
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
@@ -68,6 +75,7 @@
         "editor.codeActionsOnSave": {
             "source.organizeImports": true
         },
+        "editor.defaultFormatter": "ms-python.python",
     },
     "python.formatting.provider": "autopep8",
     "python.showStartPage": false,
@@ -203,5 +211,7 @@
     },
     "debug.internalConsoleOptions": "neverOpen",
     "workbench.colorTheme": "Solarized Light",
-    "redhat.telemetry.enabled": false
+    "redhat.telemetry.enabled": false,
+    "editor.inlineSuggest.enabled": true,
+    "editor.unicodeHighlight.ambiguousCharacters": false
 }
