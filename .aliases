@@ -17,7 +17,7 @@ alias ssh-clear="ssh-add -D"
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # C4 generation
-alias c4="docker run -v $(pwd):/assets plantuml"
+alias c4='docker run -v $(pwd):/assets plantuml /assets'
 
 # usage: explicit-newlines file
 alias explicit-newlines="awk '{printf "%s\\n", $0}'"
@@ -35,6 +35,7 @@ alias pg-prod="PGPASSWORD='${PG_PROD_PW}' psql -h \"${PG_PROD_HOST}\" -U \"${PG_
 # dump a postgres table schema
 alias pg-ddl-table="PGPASSWORD='${PG_PROD_PW}' pg_dump -h \"${PG_PROD_HOST}\" -U \"${PG_PROD_USER}\" -d \"${PG_PROD_DB}\" -p \"${PG_PROD_PORT}\" --schema-only -t"
 alias pg-stg-ddl-table="PGPASSWORD='${PG_STG_PW}' pg_dump -h \"${PG_STG_HOST}\" -U \"${PG_STG_USER}\" -d \"${PG_STG_DB}\" -p \"${PG_STG_PORT}\" --schema-only -t"
+alias rs-dump="PGPASSWORD='${_REDSHIFT_PROD_READ_ONLY_PW}' pg_dump -h \"${_REDSHIFT_PROD_HOST}\" -U \"${_REDSHIFT_PROD_READ_ONLY_USER}\" -d \"${_REDSHIFT_PROD_DB}\" -p \"${_REDSHIFT_PROD_PORT}\" --schema-only -t"
 
 alias engops-stg="ssh -p 2222 -i ~/.ssh/id_rsa brad.west@engops.staging.petalcard.com"
 alias engops-prod="ssh -p 2222 -i ~/.ssh/id_rsa brad.west@engops.production.petalcard.com"
