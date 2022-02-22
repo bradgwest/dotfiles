@@ -88,6 +88,7 @@ plugins=(
   auto-notify
   tmux
   virtualenv
+  vi-mode
 )
 
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
@@ -106,11 +107,16 @@ vault-prod
 
 # add redshift user env vars
 rsu prod dbt
-dbtu dev
+dbtu prod dbt
 
 eval "$(pyenv init -)"
 
 # start asdf
 . /usr/local/opt/asdf/asdf.sh
 . ~/.asdf/plugins/java/set-java-home.zsh
+
+# use vim mode for zle
+bindkey -v
+# support ^e
+bindkey '^f' vi-forward-char
 
