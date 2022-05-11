@@ -31,4 +31,10 @@ __pycache__/
 # specific to projects
 .env.prod
 .env.stg
+.data/
 
+# python
+build/
+
+# pytest
+.coverage*
