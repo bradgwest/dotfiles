@@ -40,3 +40,5 @@ alias rs-dump="PGPASSWORD='${_REDSHIFT_PROD_READ_ONLY_PW}' pg_dump -h \"${_REDSH
 alias engops-stg="ssh -p 2222 -i ~/.ssh/id_rsa brad.west@engops.staging.petalcard.com"
 alias engops-prod="ssh -p 2222 -i ~/.ssh/id_rsa brad.west@engops.production.petalcard.com"
 
+# dbt container
+alias dbtc="docker run --rm -v $(pwd):/dbt -v /tmp:/tmp --env-file env.list dbt"
