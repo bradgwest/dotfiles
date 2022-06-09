@@ -41,4 +41,10 @@ alias engops-stg="ssh -p 2222 -i ~/.ssh/id_rsa brad.west@engops.staging.petalcar
 alias engops-prod="ssh -p 2222 -i ~/.ssh/id_rsa brad.west@engops.production.petalcard.com"
 
 # dbt container
-alias dbtc="docker run --rm -v $(pwd):/dbt -v /tmp:/tmp --env-file env.list dbt"
+alias dbtc='docker run --rm -v /Users/brad.west/src/shared/data_warehouse:/dbt -v /tmp:/tmp --env-file env.list dbt'
+
+# sso login
+alias awsso-legacy='aws sso login --profile=legacy.prod.1-data-eng'
+alias awsso-di-stg='aws sso login --profile=data-inf.stg.1-data-eng'
+alias awsso-di-prod='aws sso login --profile=data-inf.prod.1-data-eng'
+
