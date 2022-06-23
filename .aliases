@@ -48,3 +48,5 @@ alias awsso-legacy='aws sso login --profile=legacy.prod.1-data-eng'
 alias awsso-di-stg='aws sso login --profile=data-inf.stg.1-data-eng'
 alias awsso-di-prod='aws sso login --profile=data-inf.prod.1-data-eng'
 
+alias launch-lens='open -a /Applications/Lens.app --hide'
+
