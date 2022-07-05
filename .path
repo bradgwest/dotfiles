@@ -1,0 +1,13 @@
+# functions
+fpath+=$HOME/.zsh_functions
+
+export GOPATH="$HOME/go"
+
+# system
+path+=$HOME/bin
+path+=/opt/homebrew/bin
+path+=$HOME/scripts
+path+=$GOPATH
+path+=$GOPATH/bin
+path+=$PYTHONPATH
+

@@ -1,0 +1,7 @@
+docker
+lens
+microsoft-teams
+rectangle
+spotify
+tunnelblick
+visual-studio-code

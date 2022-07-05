@@ -1,0 +1,217 @@
+{
+    "breadcrumbs.enabled": true,
+    "cSpell.ignoreWords": [
+        "dedup",
+        "kubernetes",
+        "detokenize",
+        "expn",
+        "detokenizing",
+        "detokenized"
+    ],
+    "debug.showBreakpointsInOverviewRuler": true,
+    "editor.cursorStyle": "line",
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": true,
+    "editor.fontFamily": "'Source Code Pro', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 12,
+    "editor.formatOnSave": false,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": false
+    },
+    "editor.renderWhitespace": "boundary",
+    "editor.rulers": [
+        79,
+        120
+    ],
+    "editor.wordWrap": "off",
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "editor.guides.bracketPairs": true,
+    "extensions.ignoreRecommendations": true,
+    "editor.parameterHints.enabled": false,
+    "files.exclude": {
+        "**/._*": true,
+        "**/*.pyc": true
+    },
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "[go]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true,
+        },
+        "editor.insertSpaces": false
+    },
+    "go.testFlags": [],
+    "gopls": {
+        "usePlaceholders": true,
+        "completeUnimported": true,
+        "deepCompletion": true,
+    },
+    "go.formatTool": "goimports",
+    "go.formatFlags": [
+        "-local",
+    ],
+    "go.autocompleteUnimportedPackages": true,
+    "go.docsTool": "godoc",
+    "go.languageServerExperimentalFeatures": {
+        "format": true,
+        "diagnostics": true,
+        "documentLink": true
+    },
+    "html.format.endWithNewline": true,
+    "html.format.extraLiners": "body",
+    "html.format.indentInnerHtml": true,
+    "html.format.unformatted": "b,em,i,span,strong,wbr",
+    "html.format.wrapLineLength": 0,
+    "[python]": {
+        "editor.semanticHighlighting.enabled": false,
+        "editor.tabSize": 4,
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
+        "editor.defaultFormatter": "ms-python.python",
+    },
+    "python.formatting.provider": "autopep8",
+    "python.showStartPage": false,
+    "python.linting.enabled": true,
+    // "python.linting.flake8Args": [
+    //    "--ignore=F405,E501,F403"
+    // ],
+    // "python.linting.prospectorArgs": [
+        //"--errors-only",
+    //    "--ignore=W1202"
+    // ],
+    "terminal.integrated.cursorStyle": "underline",
+    "vim.cursorStylePerMode.insert": "underline",
+    "vim.cursorStylePerMode.normal": "block",
+    "vim.cursorStylePerMode.replace": "",
+    "vim.cursorStylePerMode.visual": "line",
+    "vim.easymotion": true,
+    "vim.sneak": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "d"
+            ],
+            "after": [
+                "d",
+                "d"
+            ]
+        },
+        {
+            "before": [
+                "<C-n>"
+            ],
+            "commands": [
+                ":nohl"
+            ]
+        }
+    ],
+    "vim.leader": "<space>",
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false
+    },
+    "workbench.colorCustomizations": {
+       "editorIndentGuide.activeBackground": "#FFA500",
+       "editorCursor.foreground": "#ff00f2",
+       "editorGutter.background": "#9b9b9b85",
+       "editorLineNumber.foreground": "#000000",
+       "statusBar.background": "#B48EAD",
+       "statusBar.noFolderBackground": "#B48EAD",
+       "statusBar.debuggingBackground": "#B48EAD",
+       "statusBar.foreground": "#000000"
+    },
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.startupEditor": "none",
+    "workbench.editor.showTabs": true,
+    // File specific
+    "[markdown]": {
+        "editor.wordWrap": "on",
+        "editor.quickSuggestions": false
+    },
+    "[json]": {
+        "editor.wordWrap": "on",
+        "editor.tabSize": 4,
+    },
+    "[groovy]": {
+        "editor.tabSize": 2,
+    },
+    "editor.lineNumbers": "on",
+    "editor.minimap.enabled": false,
+    "editor.suggestSelection": "first",
+    "search.exclude": {
+        "**/.idea": true,
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/*.code-search": true,
+        "**/.venv": true,
+        "**/.eggs": true,
+        "**/node_modules": true,
+        "**/data_eng.egg-info": true,
+        ".coverage": true,
+        "coverage.xml": true
+
+    },
+    "plantuml.java": "/Users/brad.west/.asdf/shims/java",
+    "workbench.editorAssociations": {
+        "viewType": "jupyter.notebook.ipynb",
+        "filenamePattern": "*.ipynb"
+    },
+    "workbench.editor.untitled.hint": "hidden",
+    "cSpell.enableFiletypes": [
+        "sql"
+    ],
+    "workbench.panel.opensMaximized": "never",
+    "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+    "markdown.extension.toc.levels": "2..6",
+    "security.workspace.trust.untrustedFiles": "open",
+    "comments.openPanel": "neverOpen",
+    "[yaml]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.autoIndent": "keep",
+        "editor.quickSuggestions": {
+            "other": false,
+            "comments": false,
+            "strings": false
+        }
+    },
+    "files.associations": {
+        "[Dd]ockerfile*": "dockerfile",
+        "docker-compose*": "yaml"
+    },
+    "editor.acceptSuggestionOnEnter": "smart",
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "debug.internalConsoleOptions": "neverOpen",
+    "workbench.colorTheme": "Solarized Light",
+    "redhat.telemetry.enabled": false,
+    "editor.inlineSuggest.enabled": true,
+    "editor.unicodeHighlight.ambiguousCharacters": false
+}

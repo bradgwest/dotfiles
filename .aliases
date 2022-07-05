@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Delete branches starting with 'pr_'
+alias grmpr="git branch | grep "PR-" | xargs git branch -D"
+# Delete branches that have been merged
+alias grmm="git branch --merged master | grep -v "master" | xargs git branch -d"
+# Delete non-master branches
+alias grm-non-master="git branch | grep -v "master" | xargs git branch -D"
+# cleanup squashed and merged branches
+alias grmsm='git checkout -q master && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done'
+
+# ssh management
+alias ssh-clear="ssh-add -D"
+
+# dotfiles
+alias dot='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+# C4 generation
+alias c4='docker run -v $(pwd):/assets plantuml /assets'
+
+# usage: explicit-newlines file
+alias explicit-newlines="awk '{printf "%s\\n", $0}'"
+
+# export list of brew formulas and casks for versioning
+alias brew-export="brew list --formula -1 > .brew/formula.txt && brew list --cask -1 > .brew/casks.txt"
+
+alias launch-lens='open -a /Applications/Lens.app --hide'
+
