@@ -80,13 +80,6 @@
     "python.formatting.provider": "autopep8",
     "python.showStartPage": false,
     "python.linting.enabled": true,
-    // "python.linting.flake8Args": [
-    //    "--ignore=F405,E501,F403"
-    // ],
-    // "python.linting.prospectorArgs": [
-        //"--errors-only",
-    //    "--ignore=W1202"
-    // ],
     "terminal.integrated.cursorStyle": "underline",
     "vim.cursorStylePerMode.insert": "underline",
     "vim.cursorStylePerMode.normal": "block",
@@ -151,7 +144,11 @@
     // File specific
     "[markdown]": {
         "editor.wordWrap": "on",
-        "editor.quickSuggestions": false
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "strings": "off",
+            "other": "off"
+        }
     },
     "[json]": {
         "editor.wordWrap": "on",
