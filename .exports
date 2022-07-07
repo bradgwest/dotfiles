@@ -29,3 +29,8 @@ export NOTES="$HOME/.notes"
 # M1 stuff for terraform
 export ASDF_HASHICORP_OVERWRITE_ARCH=amd64
 
+export GIT_PROJECTS_WORKDIR="$HOME/src"
+
+export TELEPORT_PROXY='dbtlabs.teleport.sh'
+export TELEPORT_AUTH='okta'
+
