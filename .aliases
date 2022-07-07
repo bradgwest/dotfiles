@@ -26,3 +26,6 @@ alias brew-export="brew list --formula -1 > .brew/formula.txt && brew list --cas
 
 alias launch-lens='open -a /Applications/Lens.app --hide'
 
+# teleport
+alias tsh-login='tsh login --proxy=dbtlabs.teleport.sh --auth=okta'
+
