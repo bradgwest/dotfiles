@@ -45,3 +45,11 @@ bindkey -v
 # support ^e
 bindkey '^f' vi-forward-char
 
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
+
+# forge (internal infrastructure management tool) autocompletions
+source ~/src/forge/forge_completion.zsh
+
