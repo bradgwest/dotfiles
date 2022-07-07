@@ -1,7 +1,8 @@
 docker
+firefox
+font-source-code-pro
+gpg-suite-no-mail
+keybase
 lens
-microsoft-teams
 rectangle
-spotify
-tunnelblick
 visual-studio-code
