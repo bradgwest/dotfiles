@@ -24,7 +24,8 @@ plugins=(
   colored-man-pages
   fzf
   zsh-autosuggestions
-  auto-notify
+  # using startship.rs to push desktop notifications
+  # auto-notify
   tmux
   virtualenv
   vi-mode
