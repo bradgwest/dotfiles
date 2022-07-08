@@ -16,7 +16,7 @@ if type brew &>/dev/null; then
   compinit
 fi
 
-ZSH_THEME="dubs"
+# ZSH_THEME="dubs"
 
 plugins=(
   git
@@ -52,4 +52,7 @@ autoload -Uz compinit && compinit
 
 # forge (internal infrastructure management tool) autocompletions
 source ~/src/forge/forge_completion.zsh
+
+# starship start up
+eval "$(starship init zsh)"
 
