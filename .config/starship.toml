@@ -1,5 +1,8 @@
 # https://starship.rs/config/#prompt
 
+[package]
+disabled = true
+
 command_timeout = 1000
 
 [cmd_duration]
