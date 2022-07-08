@@ -1,8 +1,8 @@
 docker
 firefox
+font-sauce-code-pro-nerd-font
 font-source-code-pro
 gpg-suite-no-mail
-keybase
 lens
 rectangle
 visual-studio-code
