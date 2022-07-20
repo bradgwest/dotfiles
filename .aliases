@@ -24,11 +24,11 @@ alias explicit-newlines="awk '{printf "%s\\n", $0}'"
 # export list of brew formulas and casks for versioning
 alias brew-export="brew list --formula -1 > .brew/formula.txt && brew list --cask -1 > .brew/casks.txt"
 
-alias launch-lens='open -a /Applications/Lens.app --hide'
+alias lens='open -a /Applications/Lens.app --hide'
 
 # teleport
 alias tsh-login='tsh login --proxy=dbtlabs.teleport.sh --auth=okta'
 
 # sort settings.json
-alias sort-vscode-settings='python3 -c "import json;f = open(\"Library/Application Support/Code/User/settings.json\");d = json.load(f);f.close();print(json.dumps(d, indent=4, sort_keys=True))"'
+alias sort-vscode-settings='python3 -c "import json;f = open(\"/Users/bw/Library/Application Support/Code/User/settings.json\");d = json.load(f);f.close();print(json.dumps(d, indent=4, sort_keys=True))"'
 
