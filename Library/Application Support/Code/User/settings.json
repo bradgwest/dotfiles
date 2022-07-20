@@ -1,5 +1,49 @@
 {
+    "[go]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
+        "editor.formatOnSave": true,
+        "editor.insertSpaces": false
+    },
+    "[groovy]": {
+        "editor.tabSize": 2
+    },
+    "[json]": {
+        "editor.tabSize": 4,
+        "editor.wordWrap": "on"
+    },
+    "[markdown]": {
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "other": "off",
+            "strings": "off"
+        },
+        "editor.wordWrap": "on"
+    },
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
+        "editor.defaultFormatter": "ms-python.python",
+        "editor.formatOnSave": true,
+        "editor.semanticHighlighting.enabled": false,
+        "editor.tabSize": 4
+    },
+    "[yaml]": {
+        "editor.autoIndent": "keep",
+        "editor.insertSpaces": true,
+        "editor.quickSuggestions": {
+            "comments": false,
+            "other": false,
+            "strings": false
+        },
+        "editor.tabSize": 2
+    },
     "breadcrumbs.enabled": true,
+    "cSpell.enableFiletypes": [
+        "sql"
+    ],
     "cSpell.ignoreWords": [
         "dedup",
         "kubernetes",
@@ -8,17 +52,25 @@
         "detokenizing",
         "detokenized"
     ],
+    "comments.openView": "never",
+    "debug.internalConsoleOptions": "neverOpen",
     "debug.showBreakpointsInOverviewRuler": true,
+    "editor.acceptSuggestionOnEnter": "smart",
     "editor.cursorStyle": "line",
     "editor.detectIndentation": false,
-    "editor.insertSpaces": true,
     "editor.fontFamily": "'Source Code Pro', Menlo, Monaco, 'Courier New', monospace",
     "editor.fontSize": 12,
     "editor.formatOnSave": false,
+    "editor.guides.bracketPairs": true,
+    "editor.inlineSuggest.enabled": true,
+    "editor.insertSpaces": true,
+    "editor.lineNumbers": "on",
+    "editor.minimap.enabled": false,
     "editor.multiCursorModifier": "ctrlCmd",
+    "editor.parameterHints.enabled": false,
     "editor.quickSuggestions": {
-        "other": true,
         "comments": false,
+        "other": true,
         "strings": false
     },
     "editor.renderWhitespace": "boundary",
@@ -26,88 +78,97 @@
         79,
         120
     ],
+    "editor.suggestSelection": "first",
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
     "editor.wordWrap": "off",
-    "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
-    "editor.guides.bracketPairs": true,
+    "explorer.confirmDragAndDrop": false,
     "extensions.ignoreRecommendations": true,
-    "editor.parameterHints.enabled": false,
+    "files.associations": {
+        "[Dd]ockerfile*": "dockerfile",
+        "docker-compose*": "yaml"
+    },
     "files.exclude": {
-        "**/._*": true,
-        "**/*.pyc": true
+        "**/*.pyc": true,
+        "**/._*": true
     },
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
-    "[go]": {
-        "editor.formatOnSave": true,
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": true,
-        },
-        "editor.insertSpaces": false
+    "go.autocompleteUnimportedPackages": true,
+    "go.docsTool": "godoc",
+    "go.formatFlags": [
+        "-local"
+    ],
+    "go.formatTool": "goimports",
+    "go.languageServerExperimentalFeatures": {
+        "diagnostics": true,
+        "documentLink": true,
+        "format": true
     },
     "go.testFlags": [],
     "gopls": {
-        "usePlaceholders": true,
         "completeUnimported": true,
         "deepCompletion": true,
-    },
-    "go.formatTool": "goimports",
-    "go.formatFlags": [
-        "-local",
-    ],
-    "go.autocompleteUnimportedPackages": true,
-    "go.docsTool": "godoc",
-    "go.languageServerExperimentalFeatures": {
-        "format": true,
-        "diagnostics": true,
-        "documentLink": true
+        "usePlaceholders": true
     },
     "html.format.extraLiners": "body",
     "html.format.indentInnerHtml": true,
     "html.format.unformatted": "b,em,i,span,strong,wbr",
     "html.format.wrapLineLength": 0,
-    "[python]": {
-        "editor.semanticHighlighting.enabled": false,
-        "editor.tabSize": 4,
-        "editor.formatOnSave": true,
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": true
-        },
-        "editor.defaultFormatter": "ms-python.python",
+    "markdown.extension.toc.levels": "2..6",
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
     },
+    "plantuml.java": "/Users/bw/.asdf/shims/java",
     "python.formatting.provider": "autopep8",
     "python.linting.enabled": true,
+    "search.exclude": {
+        "**/*.code-search": true,
+        "**/.eggs": true,
+        "**/.idea": true,
+        "**/.venv": true,
+        "**/bower_components": true,
+        "**/data_eng.egg-info": true,
+        "**/node_modules": true,
+        ".coverage": true,
+        "coverage.xml": true
+    },
+    "security.workspace.trust.untrustedFiles": "open",
     "terminal.integrated.cursorStyle": "underline",
     "vim.cursorStylePerMode.insert": "underline",
     "vim.cursorStylePerMode.normal": "block",
     "vim.cursorStylePerMode.replace": "",
     "vim.cursorStylePerMode.visual": "line",
     "vim.easymotion": true,
-    "vim.sneak": true,
-    "vim.incsearch": true,
-    "vim.useSystemClipboard": true,
-    "vim.useCtrlKeys": true,
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false
+    },
     "vim.hlsearch": true,
+    "vim.incsearch": true,
     "vim.insertModeKeyBindings": [
         {
+            "after": [
+                "<Esc>"
+            ],
             "before": [
                 "j",
                 "j"
-            ],
-            "after": [
-                "<Esc>"
             ]
         }
     ],
+    "vim.leader": "<space>",
     "vim.normalModeKeyBindingsNonRecursive": [
         {
-            "before": [
-                "<leader>",
-                "d"
-            ],
             "after": [
                 "d",
+                "d"
+            ],
+            "before": [
+                "<leader>",
                 "d"
             ]
         },
@@ -120,90 +181,28 @@
             ]
         }
     ],
-    "vim.leader": "<space>",
-    "vim.handleKeys": {
-        "<C-a>": false,
-        "<C-f>": false
-    },
+    "vim.sneak": true,
+    "vim.useCtrlKeys": true,
+    "vim.useSystemClipboard": true,
     "workbench.colorCustomizations": {
-        "editorIndentGuide.activeBackground": "#FFA500",
         "editorCursor.foreground": "#ff00f2",
         "editorGutter.background": "#9b9b9b85",
+        "editorIndentGuide.activeBackground": "#FFA500",
         "editorLineNumber.foreground": "#000000",
         "statusBar.background": "#B48EAD",
-        "statusBar.noFolderBackground": "#B48EAD",
         "statusBar.debuggingBackground": "#B48EAD",
-        "statusBar.foreground": "#000000"
+        "statusBar.foreground": "#000000",
+        "statusBar.noFolderBackground": "#B48EAD"
     },
-    "workbench.editor.tabSizing": "shrink",
-    "workbench.editor.enablePreviewFromQuickOpen": false,
-    "workbench.startupEditor": "none",
-    "workbench.editor.showTabs": true,
-    "[markdown]": {
-        "editor.wordWrap": "on",
-        "editor.quickSuggestions": {
-            "comments": "off",
-            "strings": "off",
-            "other": "off"
-        }
-    },
-    "[json]": {
-        "editor.wordWrap": "on",
-        "editor.tabSize": 4,
-    },
-    "[groovy]": {
-        "editor.tabSize": 2,
-    },
-    "editor.lineNumbers": "on",
-    "editor.minimap.enabled": false,
-    "editor.suggestSelection": "first",
-    "search.exclude": {
-        "**/.idea": true,
-        "**/node_modules": true,
-        "**/bower_components": true,
-        "**/*.code-search": true,
-        "**/.venv": true,
-        "**/.eggs": true,
-        "**/node_modules": true,
-        "**/data_eng.egg-info": true,
-        ".coverage": true,
-        "coverage.xml": true
-    },
-    "plantuml.java": "/Users/bw/.asdf/shims/java",
-    "workbench.editorAssociations": {
-        "viewType": "jupyter.notebook.ipynb",
-        "filenamePattern": "*.ipynb"
-    },
-    "workbench.editor.untitled.hint": "hidden",
-    "cSpell.enableFiletypes": [
-        "sql"
-    ],
-    "workbench.panel.opensMaximized": "never",
-    "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
-    "markdown.extension.toc.levels": "2..6",
-    "security.workspace.trust.untrustedFiles": "open",
-    "comments.openPanel": "neverOpen",
-    "[yaml]": {
-        "editor.insertSpaces": true,
-        "editor.tabSize": 2,
-        "editor.autoIndent": "keep",
-        "editor.quickSuggestions": {
-            "other": false,
-            "comments": false,
-            "strings": false
-        }
-    },
-    "files.associations": {
-        "[Dd]ockerfile*": "dockerfile",
-        "docker-compose*": "yaml"
-    },
-    "editor.acceptSuggestionOnEnter": "smart",
-    "notebook.cellToolbarLocation": {
-        "default": "right",
-        "jupyter-notebook": "left"
-    },
-    "debug.internalConsoleOptions": "neverOpen",
     "workbench.colorTheme": "Solarized Light",
-    "editor.inlineSuggest.enabled": true,
-    "editor.unicodeHighlight.ambiguousCharacters": false
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.editor.showTabs": true,
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.editor.untitled.hint": "hidden",
+    "workbench.editorAssociations": {
+        "filenamePattern": "*.ipynb",
+        "viewType": "jupyter.notebook.ipynb"
+    },
+    "workbench.panel.opensMaximized": "never",
+    "workbench.startupEditor": "none"
 }
