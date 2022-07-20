@@ -2,7 +2,7 @@
 
 branch="$(git rev-parse --abbrev-ref HEAD)"
 
-if [ "$branch" = "master" || "$branch" = "main" || "$branch" = "trunk" ]; then
+if [[ "$branch" == "master" || "$branch" == "main" || "$branch" == "trunk" ]]; then
   echo "You're committing to master, you nincompoop."
   exit 1
 fi
