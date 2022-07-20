@@ -19,6 +19,7 @@ fi
 # ZSH_THEME="dubs"
 
 plugins=(
+  aws
   git
   kubectl
   colored-man-pages
@@ -26,6 +27,7 @@ plugins=(
   zsh-autosuggestions
   # using startship.rs to push desktop notifications
   # auto-notify
+  terraform
   tmux
   virtualenv
   vi-mode
