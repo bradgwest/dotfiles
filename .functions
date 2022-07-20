@@ -161,3 +161,12 @@ fda() {
   local dir
   dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
 }
+
+# opr - Open a PR
+opr() {
+        org=$(git config --get remote.origin.url | sed -e 's,.*:\(.*\)/.*,\1,')
+        repo=$(git config --get remote.origin.url | sed -e 's,.*/\(.*\)\..*,\1,')
+        branch=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+        open "https://github.com/${org}/${repo}/compare/${branch}?expand=1"
+}
+
