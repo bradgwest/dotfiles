@@ -34,3 +34,4 @@ export GIT_PROJECTS_WORKDIR="$HOME/src"
 export TELEPORT_PROXY='dbtlabs.teleport.sh'
 export TELEPORT_AUTH='okta'
 
+export GODEBUG=asyncpreemptoff=1
