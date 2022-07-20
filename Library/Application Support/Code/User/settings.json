@@ -63,7 +63,6 @@
         "diagnostics": true,
         "documentLink": true
     },
-    "html.format.endWithNewline": true,
     "html.format.extraLiners": "body",
     "html.format.indentInnerHtml": true,
     "html.format.unformatted": "b,em,i,span,strong,wbr",
@@ -78,7 +77,6 @@
         "editor.defaultFormatter": "ms-python.python",
     },
     "python.formatting.provider": "autopep8",
-    "python.showStartPage": false,
     "python.linting.enabled": true,
     "terminal.integrated.cursorStyle": "underline",
     "vim.cursorStylePerMode.insert": "underline",
@@ -128,20 +126,19 @@
         "<C-f>": false
     },
     "workbench.colorCustomizations": {
-       "editorIndentGuide.activeBackground": "#FFA500",
-       "editorCursor.foreground": "#ff00f2",
-       "editorGutter.background": "#9b9b9b85",
-       "editorLineNumber.foreground": "#000000",
-       "statusBar.background": "#B48EAD",
-       "statusBar.noFolderBackground": "#B48EAD",
-       "statusBar.debuggingBackground": "#B48EAD",
-       "statusBar.foreground": "#000000"
+        "editorIndentGuide.activeBackground": "#FFA500",
+        "editorCursor.foreground": "#ff00f2",
+        "editorGutter.background": "#9b9b9b85",
+        "editorLineNumber.foreground": "#000000",
+        "statusBar.background": "#B48EAD",
+        "statusBar.noFolderBackground": "#B48EAD",
+        "statusBar.debuggingBackground": "#B48EAD",
+        "statusBar.foreground": "#000000"
     },
     "workbench.editor.tabSizing": "shrink",
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "workbench.startupEditor": "none",
     "workbench.editor.showTabs": true,
-    // File specific
     "[markdown]": {
         "editor.wordWrap": "on",
         "editor.quickSuggestions": {
@@ -171,9 +168,8 @@
         "**/data_eng.egg-info": true,
         ".coverage": true,
         "coverage.xml": true
-
     },
-    "plantuml.java": "/Users/brad.west/.asdf/shims/java",
+    "plantuml.java": "/Users/bw/.asdf/shims/java",
     "workbench.editorAssociations": {
         "viewType": "jupyter.notebook.ipynb",
         "filenamePattern": "*.ipynb"
@@ -208,7 +204,6 @@
     },
     "debug.internalConsoleOptions": "neverOpen",
     "workbench.colorTheme": "Solarized Light",
-    "redhat.telemetry.enabled": false,
     "editor.inlineSuggest.enabled": true,
     "editor.unicodeHighlight.ambiguousCharacters": false
 }
