@@ -1,3 +1,4 @@
+act
 apr
 apr-util
 awscli
@@ -8,16 +9,26 @@ fzf
 gdbm
 gettext
 git
+go-task
+helm
+icu4c
+jq
+krb5
+kubectl-argo-rollouts
 libevent
+libpq
 lz4
 mpdecimal
 ncurses
+oniguruma
 openssl@1.1
 pcre2
 poetry
+postgresql
 python@3.10
 readline
 six
+sops
 sqlite
 starship
 subversion
@@ -25,4 +36,5 @@ teleport
 tmux
 tree
 utf8proc
+watch
 xz
