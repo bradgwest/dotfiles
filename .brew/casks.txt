@@ -1,3 +1,4 @@
+1password
 docker
 firefox
 font-sauce-code-pro-nerd-font
