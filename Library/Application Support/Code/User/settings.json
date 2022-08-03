@@ -30,6 +30,9 @@
         "editor.semanticHighlighting.enabled": false,
         "editor.tabSize": 4
     },
+    "[terraform]": {
+        "editor.formatOnSave": true
+    },
     "[yaml]": {
         "editor.autoIndent": "keep",
         "editor.insertSpaces": true,
@@ -122,6 +125,10 @@
         "default": "right",
         "jupyter-notebook": "left"
     },
+    "openInGitHub.defaultBranch": "master",
+    "openInGitHub.defaultRemote": "origin",
+    "openInGithub.maxBuffer": 512000,
+    "openInGitHub.excludeCurrentRevision": false,
     "plantuml.java": "/Users/bw/.asdf/shims/java",
     "python.formatting.provider": "autopep8",
     "python.linting.enabled": true,
