@@ -59,3 +59,13 @@ source ~/src/forge/forge_completion.zsh
 # starship start up
 eval "$(starship init zsh)"
 
+hash -d mt=$HOME/src/dbt-cloud-infra-terraform
+hash -d st=$HOME/src/dbt-cloud-infra-single-tenant
+hash -d hv=$HOME/src/dbt-cloud-helm-values
+hash -d api=$HOME/src/dbt-cloud-api-gateway
+hash -d tfm=$HOME/src/dbt-cloud-infra-terraform-modules
+hash -d tfaws=$HOME/src/terraform-aws-dbt-cloud-single-tenant-internal
+hash -d tfaz=$HOME/src/terraform-azurerm-dbt-cloud-single-tenant
+hash -d tfddog=$HOME/src/terraform-datadog
+hash -d hc=$HOME/src/helm-charts
+
