@@ -53,7 +53,8 @@
         "detokenize",
         "expn",
         "detokenizing",
-        "detokenized"
+        "detokenized",
+        "multitenant"
     ],
     "comments.openView": "never",
     "debug.internalConsoleOptions": "neverOpen",
