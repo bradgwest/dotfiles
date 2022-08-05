@@ -29,3 +29,7 @@ format = "[!!! DON'T FUCK UP, YOU'RE IN PROD !!!]($style)"
 [aws]
 style = "bold #f0c9b7"
 
+# [kubernetes]
+# disabled = true
+# style = "#50c878 bold"
+
