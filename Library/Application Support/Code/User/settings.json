@@ -54,7 +54,8 @@
         "expn",
         "detokenizing",
         "detokenized",
-        "multitenant"
+        "multitenant",
+        "uncordon"
     ],
     "comments.openView": "never",
     "debug.internalConsoleOptions": "neverOpen",
@@ -133,6 +134,10 @@
     "plantuml.java": "/Users/bw/.asdf/shims/java",
     "python.formatting.provider": "autopep8",
     "python.linting.enabled": true,
+    "python.venvFolders": [
+        ".venv",
+        "/Users/bw/src/dev-tools/scripts/k8s_update_version/.venv"
+    ],
     "search.exclude": {
         "**/*.code-search": true,
         "**/.eggs": true,
