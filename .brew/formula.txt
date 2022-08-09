@@ -15,9 +15,11 @@ icu4c
 jq
 krb5
 kubectl-argo-rollouts
+kubernetes-cli
 libevent
 libpq
 lz4
+minikube
 mpdecimal
 ncurses
 oniguruma
@@ -38,3 +40,4 @@ tree
 utf8proc
 watch
 xz
+yq
