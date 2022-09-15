@@ -69,4 +69,6 @@ hash -d tfaz=$HOME/src/terraform-azurerm-dbt-cloud-single-tenant
 hash -d tfddog=$HOME/src/terraform-datadog
 hash -d hc=$HOME/src/helm-charts
 hash -d dt=$HOME/src/dev-tools
+hash -d it=$HOME/src/infra-tools
+hash -d forge=$HOME/src/forge
 
