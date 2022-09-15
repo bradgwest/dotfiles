@@ -1,9 +1,6 @@
 # bare repo for dotfiles
 .cfg
 
-# asdf
-.tool-versions
-
 # Thumbnails
 ._*
 
@@ -28,4 +25,5 @@
 # python
 __pycache__/
 
+.bak
 
