@@ -41,7 +41,7 @@
             "other": false,
             "strings": false
         },
-        "editor.tabSize": 2
+        "editor.tabSize": 2,
     },
     "breadcrumbs.enabled": true,
     "cSpell.enableFiletypes": [
@@ -55,7 +55,8 @@
         "detokenizing",
         "detokenized",
         "multitenant",
-        "uncordon"
+        "uncordon",
+        "Rollouts"
     ],
     "comments.openView": "never",
     "debug.internalConsoleOptions": "neverOpen",
@@ -80,7 +81,8 @@
     },
     "editor.renderWhitespace": "boundary",
     "editor.rulers": [
-        79,
+        80,
+        88,
         120
     ],
     "editor.suggestSelection": "first",
@@ -101,6 +103,7 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
+    "git.mergeEditor": false,
     "go.autocompleteUnimportedPackages": true,
     "go.docsTool": "godoc",
     "go.formatFlags": [
@@ -217,5 +220,15 @@
         "viewType": "jupyter.notebook.ipynb"
     },
     "workbench.panel.opensMaximized": "never",
-    "workbench.startupEditor": "none"
+    "workbench.startupEditor": "none",
+    "yaml.schemas": {
+        "https://github.com/SchemaStore/schemastore/blob/master/src/schemas/json/github-workflow.json": "/.github/workflows/",
+    },
+    "redhat.telemetry.enabled": false,
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": true,
+        "plaintext": false,
+        "markdown": true
+    }
 }
