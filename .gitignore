@@ -19,7 +19,7 @@
 
 # secrets
 .secrets
-*.crt
+*.key
 *.csr
 
 # python
