@@ -198,3 +198,8 @@ secret () {
         echo "${secret_key} for ${context} copied to clipboard..."
 }
 
+kpod () {
+        rand=$(openssl rand -hex 3)
+        kubectl run -i -t --rm "testpod-${rand}" --image=alpine:latest -- /bin/ash
+}
+
