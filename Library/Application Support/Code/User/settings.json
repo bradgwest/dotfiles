@@ -56,7 +56,8 @@
         "detokenized",
         "multitenant",
         "uncordon",
-        "Rollouts"
+        "Rollouts",
+        "backoff"
     ],
     "comments.openView": "never",
     "debug.internalConsoleOptions": "neverOpen",
