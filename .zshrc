@@ -71,4 +71,5 @@ hash -d hc=$HOME/src/helm-charts
 hash -d dt=$HOME/src/dev-tools
 hash -d it=$HOME/src/infra-tools
 hash -d forge=$HOME/src/forge
+hash -d adc=$HOME/src/argo-deployment-configs
 
