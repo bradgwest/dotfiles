@@ -1,6 +1,50 @@
 version: '3'
 
+vars:
+  VENV: ".venv/venv"
+  BIN: "{{.VENV}}/bin"
+
 tasks:
+  venv:
+    desc: Create a virtual environment for python tooling.
+    cmds:
+      - '[ -d "{{.VENV}}" ] || python -m venv "{{.VENV}}"'
+
+  deps:
+    desc: Install dev dependencies for repo.
+    deps: [venv]
+    cmds:
+      - "{{.BIN}}/pip install --upgrade pip"
+      - "{{.BIN}}/pip install -r requirements.txt"
+
   lint:
+    desc: Lint code.
+    deps: [deps]
     cmds:
       - shellcheck *.sh
+      - "{{.BIN}}/black --check *.py"
+      - "{{.BIN}}/isort --profile black --check *.py"
+      - "{{.BIN}}/flake8 *.py"
+      - "{{.BIN}}/pyright *.py"
+
+  fmt:
+    desc: Format code.
+    deps: [deps]
+    cmds:
+      - "{{.BIN}}/black *.py"
+      - "{{.BIN}}/isort --profile black *.py"
+
+  test:
+    desc: Run tests.
+    deps: [dev-deps]
+    cmds:
+      - "{{.BIN}}/pytest scripts/workflows"
+
+  touch:
+    cmds:
+      # todo: actually template _template.sh
+      - cp _template.sh {{.NAME}}.sh
+
+  docgen:
+    cmds:
+      - echo 'NOT IMPLEMENTED' && exit 1
