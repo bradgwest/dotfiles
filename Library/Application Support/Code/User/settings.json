@@ -28,7 +28,8 @@
         "editor.defaultFormatter": "ms-python.python",
         "editor.formatOnSave": true,
         "editor.semanticHighlighting.enabled": false,
-        "editor.tabSize": 4
+        "editor.tabSize": 4,
+        "editor.formatOnType": true
     },
     "[terraform]": {
         "editor.formatOnSave": true
