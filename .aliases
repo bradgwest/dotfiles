@@ -24,7 +24,7 @@ alias explicit-newlines="awk '{printf "%s\\n", $0}'"
 # export list of brew formulas and casks for versioning
 alias brew-export="brew list --formula -1 > .brew/formula.txt && brew list --cask -1 > .brew/casks.txt"
 
-alias lens='open -a /Applications/Lens.app --hide'
+alias lens='open -a /Applications/OpenLens.app --hide'
 
 # teleport
 alias tsh-login='tsh login --proxy=dbtlabs.teleport.sh --auth=okta'
