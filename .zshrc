@@ -74,5 +74,6 @@ hash -d forge=$HOME/src/forge
 hash -d adc=$HOME/src/argo-deployment-configs
 hash -d ia=$HOME/src/internal-actions
 hash -d cloud=$HOME/src/dbt-cloud
+hash -d stdocs=$HOME/src/dbt-cloud-single-tenant-docs
 
-
+source /Users/bw/.docker/init-zsh.sh || true # Added by Docker Desktop
