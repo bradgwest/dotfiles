@@ -170,36 +170,26 @@ opr() {
         open "https://github.com/${org}/${repo}/compare/${branch}?expand=1"
 }
 
-# Grab Terraform generated Secrets for individual single tenant accounts
-# This supports the kots-admin, superuser password explicitly, and will work 
-# with the RDS password
-secret () {
-        if [ -z $1 ]
-        then
-                echo "need name of secret to copy to clipboard..."
-                return 1
-        elif [[ $1 =~ 'adm' ]]
-        then
-                secret_key="admin_console_password"
-        elif [[ $1 =~ 'super' ]]
-        then
-                secret_key="superuser_password"
-        else
-                secret_key="${1}_password"
-        fi
-        context=$(kubectl config current-context)
-        parsed_context=$(echo $context|sed 's/aks-//'|sed 's/-/\//')
-        secrets_json=$(aws --profile=infra-root secretsmanager get-secret-value --secret-id "${parsed_context}/terraform")
-        password=$(echo $secrets_json |jq -r '.SecretString| fromjson.'${secret_key})
-        if [[ $2 == 'debug' ]]
-        then
-                echo $secrets_json
-        fi
-        echo "${secret_key} for ${context} copied to clipboard..."
-}
-
 kpod () {
         rand=$(openssl rand -hex 3)
         kubectl run -i -t --rm "testpod-${rand}" --image=alpine:latest -- /bin/ash
+}
+
+# get-secret
+#
+# Fetch a secret from infra-root Secretsmanager account
+# $1 - secret id
+# $2 - value
+# $3 - region
+get-secret() {
+    local ID=$1
+    local VALUE=$2
+    local REGION=${3-us-east-1}
+
+    aws secretsmanager get-secret-value \
+        --profile=infra-root \
+        --region=${REGION} \
+        --secret-id=${ID} \
+        | jq --raw-output '.SecretString' | jq -r ".${VALUE}"
 }
 
