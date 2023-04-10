@@ -232,5 +232,6 @@
         "yaml": true,
         "plaintext": false,
         "markdown": true
-    }
+    },
+    "python.analysis.typeCheckingMode": "basic"
 }
