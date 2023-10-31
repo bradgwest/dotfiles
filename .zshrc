@@ -77,6 +77,6 @@ hash -d ia=$HOME/src/internal-actions
 hash -d cloud=$HOME/src/dbt-cloud
 hash -d stdocs=$HOME/src/dbt-cloud-single-tenant-docs
 hash -d ii=$HOME/src/internal-images
-
+hash -d rw=$HOME/src/reverse-words
 
 source /Users/bw/.docker/init-zsh.sh || true # Added by Docker Desktop
