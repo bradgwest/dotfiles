@@ -233,5 +233,6 @@
         "plaintext": false,
         "markdown": true
     },
-    "python.analysis.typeCheckingMode": "basic"
+    "python.analysis.typeCheckingMode": "basic",
+    "workbench.editor.empty.hint": "hidden"
 }
