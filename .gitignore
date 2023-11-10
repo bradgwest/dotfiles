@@ -1,9 +1,6 @@
 # bare repo for dotfiles
 .dotfiles
 
-# asdf
-.tool-versions
-
 # Thumbnails
 ._*
 
@@ -19,6 +16,7 @@
 
 # venv
 .venv/
+venv/
 
 # secrets
 .secrets
