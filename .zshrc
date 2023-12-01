@@ -16,16 +16,15 @@ if type brew &>/dev/null; then
   compinit
 fi
 
-ZSH_THEME="dubs"
+# ZSH_THEME="dubs"
 
 plugins=(
   git
-  kubectl
   colored-man-pages
   fzf
   zsh-autosuggestions
-  auto-notify
   tmux
+  auto-notify
   virtualenv
   vi-mode
 )
@@ -38,10 +37,18 @@ source $HOME/.oh-my-zsh/oh-my-zsh.sh
 export GPG_TTY=$(tty)
 
 # start asdf
-. $HOME/.asdf/asdf.sh
+# use pkgx instead for now
+# . $HOME/.asdf/asdf.sh
 
 # use vim mode for zle
 bindkey -v
 # support ^e
 bindkey '^f' vi-forward-char
 
+# starship start up
+eval "$(starship init zsh)"
+
+source <(pkgx --shellcode)  #docs.pkgx.sh/shellcode
+
+hash -d jn=$HOME/src/job-notifier
+hash -d swe=$HOME/src/swepay
