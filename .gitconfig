@@ -1,12 +1,12 @@
 [core]
-	excludesfile = /Users/bw/.gitignore
+    excludesfile = /Users/bw/.gitignore
     editor = vim
     pager = diff-so-fancy | less --tabs=4 -RFX
 
 [user]
     name = Brad West
     email = brad.g.west@gmail.com
-	# signingkey = DED9BA6CF18D03A8
+# signingkey = DED9BA6CF18D03A8
 
 [color "ui"]
   true
@@ -38,17 +38,16 @@
 [http]
     postBuffer = 524288000
 
-# [init]
-# 	templatedir = ~/.git-templates
+[init]
+    defaultBranch = master
+    templatedir = ~/.git-templates
 
 [pull]
     ff = only
 
 [commit]
-	gpgsign = false
+    gpgsign = false
 
 [gpg]
-	program = gpg
+    program = gpg
 
-[init]
-	defaultBranch = master
