@@ -1,0 +1,7 @@
+firefox
+mactex
+qbittorrent
+rectangle
+spotify
+visual-studio-code
+vlc
