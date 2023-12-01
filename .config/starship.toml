@@ -1,0 +1,21 @@
+# https://starship.rs/config/#prompt
+
+[package]
+disabled = true
+command_timeout = 1000
+
+[cmd_duration]
+min_time = 1_000
+style = "#f0f4b7"
+show_notifications = true
+min_time_to_notify = 10_000
+
+[time]
+disabled = false
+format = "[$time]($style) "
+style = "#9cc9b7"
+
+[directory]
+truncate_to_repo = false
+truncation_length = 10
+
