@@ -36,9 +36,12 @@ source $HOME/.oh-my-zsh/oh-my-zsh.sh
 # needs to be here, and not in .exports
 export GPG_TTY=$(tty)
 
-# start asdf
-# use pkgx instead for now
+# start asdf - use pkgx for most stuff, asdf as backup
 # . $HOME/.asdf/asdf.sh
+# asdf completions
+# # fpath=(${ASDF_DIR}/completions $fpath)
+# # initialise completions with ZSH's compinit
+# autoload -Uz compinit && compinit
 
 # use vim mode for zle
 bindkey -v
