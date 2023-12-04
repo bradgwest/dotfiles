@@ -40,7 +40,6 @@
 
 [init]
     defaultBranch = master
-    templatedir = ~/.git-templates
 
 [pull]
     ff = only
