@@ -1,7 +1,7 @@
 {
     "[go]": {
         "editor.codeActionsOnSave": {
-            "source.organizeImports": true
+            "source.organizeImports": "explicit"
         },
         "editor.formatOnSave": true,
         "editor.insertSpaces": false
@@ -23,7 +23,7 @@
     },
     "[python]": {
         "editor.codeActionsOnSave": {
-            "source.organizeImports": false
+            "source.organizeImports": "never"
         },
         "editor.defaultFormatter": "ms-python.python",
         "editor.formatOnSave": true,
@@ -96,7 +96,8 @@
     "extensions.ignoreRecommendations": true,
     "files.associations": {
         "[Dd]ockerfile*": "dockerfile",
-        "docker-compose*": "yaml"
+        "docker-compose*": "yaml",
+        "*.md.jinja": "markdown"
     },
     "files.exclude": {
         "**/*.pyc": true,
@@ -214,9 +215,8 @@
     },
     "workbench.colorTheme": "Solarized Light",
     "workbench.editor.enablePreviewFromQuickOpen": false,
-    "workbench.editor.showTabs": true,
+    "workbench.editor.showTabs": "multiple",
     "workbench.editor.tabSizing": "shrink",
-    "workbench.editor.untitled.hint": "hidden",
     "workbench.editorAssociations": {
         "filenamePattern": "*.ipynb",
         "viewType": "jupyter.notebook.ipynb"
