@@ -80,3 +80,5 @@ hash -d ii=$HOME/src/internal-images
 hash -d rw=$HOME/src/reverse-words
 
 source /Users/bw/.docker/init-zsh.sh || true # Added by Docker Desktop
+
+source <(pkgx --shellcode)  #docs.pkgx.sh/shellcode
