@@ -30,3 +30,6 @@ __pycache__/
 # todo
 todo
 todo.*
+
+# pkgx
+pkgx.yaml
