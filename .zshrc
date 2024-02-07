@@ -55,3 +55,4 @@ source <(pkgx --shellcode)  #docs.pkgx.sh/shellcode
 
 hash -d jn=$HOME/src/job-notifier
 hash -d swe=$HOME/src/swepay
+hash -d resume=$HOME/src/resume
