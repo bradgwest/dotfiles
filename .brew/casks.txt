@@ -1,5 +1,8 @@
+emacs
 firefox
 mactex
+microsoft-auto-update
+microsoft-teams
 qbittorrent
 rectangle
 spotify
