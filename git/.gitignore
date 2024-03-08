@@ -29,3 +29,4 @@ todo.txt
 *.elc
 auto-save-list
 tramp
+.\#*
