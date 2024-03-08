@@ -1,0 +1,50 @@
+[core]
+    excludesfile = /home/bw/.gitignore
+    editor = vim
+    pager = diff-so-fancy | less --tabs=4 -RFX
+
+[user]
+    name = Brad West
+    email = bradwest@microsoft.com
+
+[color "ui"]
+  true
+
+[color "diff-highlight"]
+  oldNormal = "red bold"
+  oldHighlight = "red bold 52"
+  newNormal = "green bold"
+  newHighlight = "green bold 22"
+
+[color "diff"]
+  meta = "yellow"
+  frag = "magenta bold"
+  commit = "yellow bold"
+  old = "red bold"
+  new = "green bold"
+  whitespace = "red reverse"
+
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
+
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+    showbranch = auto
+    ui = true
+
+[http]
+    postBuffer = 524288000
+
+[init]
+    defaultBranch = master
+
+[pull]
+    ff = only
+
+[commit]
+    gpgsign = false
+
+[gpg]
+    program = gpg

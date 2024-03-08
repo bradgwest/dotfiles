@@ -1,0 +1,31 @@
+# random files to ignore
+.ignore/
+.todo
+
+# nose
+.noseids
+
+# venv
+.venv/
+venv/
+
+# secrets
+.secrets
+*.crt
+*.csr
+
+# python
+__pycache__/
+.coverage
+.pytest*
+
+todo.txt
+
+# emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp

@@ -1,0 +1,7 @@
+# functions
+fpath+=$HOME/.zsh_functions
+
+# system
+path+=$HOME/bin
+path+=$HOME/scripts
+path+=$PYTHONPATH
