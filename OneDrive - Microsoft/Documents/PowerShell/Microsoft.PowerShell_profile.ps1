@@ -79,7 +79,7 @@ function GitAdd { git add @args }
 New-Alias -Name ga -Value GitAdd
 
 function GitCheckoutBranch { git checkout -b @args }
-Remove-Alias gcb -Force # Get-Clipboard
+Remove-Alias gcb -Force -ErrorAction SilentlyContinue  # Get-Clipboard
 New-Alias -Name gcb -Value GitCheckoutBranch
 
 function GitPull { git pull @args }
