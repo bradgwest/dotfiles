@@ -1,46 +1,4 @@
-# --- Helper functions for load --- #
-function Install-ModuleIfNotPresent {
-    param (
-        [Parameter(Mandatory=$true)]
-        [string]$ModuleName
-    )
-
-    if (Get-Module -ListAvailable -Name $ModuleName) {
-        return
-    }
-
-    
-    Write-Host "'$ModuleName' not found"
-    try {
-        Install-Module -Name $ModuleName -Force -Scope CurrentUser
-        Write-Host "'$ModuleName' successfully installed"
-    }
-    catch {
-        Write-Error "'$ModuleName' failed to install. Error: $_"
-    }
-}
-
-function Install-WingetAppIfNotPresent {
-    param (
-        [Parameter(Mandatory=$true)]
-        [string]$WingetId
-    )
-
-    $installed = winget list --id $WingetId --accept-source-agreements | Select-String -Pattern "$WingetId"
-
-    if ($installed) {
-        return
-    }
-
-    Write-Host "'$WingetId' not found"
-    try {
-        winget install --id $WingetId --accept-package-agreements --accept-source-agreements
-        Write-Host "'$WingetId' successfully installed."
-    }
-    catch {
-        Write-Error "'$WingetId' failed to install. Error: $_"
-    }
-}
+$MaximumHistoryCount = 32767 # 32768 items is the max
 
 # --- Modules --- #
 Install-ModuleIfNotPresent PSFzf
@@ -144,7 +102,7 @@ function Get-DotfilesRepo {
         [string]$RepoUrl
     )
 
-    git clone --bare $RepoUrl $env:USERPROFILE
+    git clone --bare $RepoUrl $env:USERPROFILE/.dotfiles
     
     Invoke-DotfilesGit config --local status.showUntrackedFiles no
 }
