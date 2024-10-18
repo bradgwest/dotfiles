@@ -125,9 +125,11 @@ New-Alias -Name ggf -Value GitPushOriginCurrentBranchForce
 function GitRebaseOntoDefaultBranch { git rebase $(GitDefaultBranch) @args }
 New-Alias -Name grbm -Value GitRebaseOntoDefaultBranch
 
+# PlantUML
 function Invoke-PlantUML { java -jar C:\Users\bradwest\AppData\Roaming\PlantUML\plantuml-1.2024.5.jar @args }
 New-Alias -Name plantuml -Value Invoke-PlantUML
 
+# Dotfiles
 function Invoke-DotfilesGit { git --git-dir=$env:USERPROFILE/.dotfiles/ --work-tree=$env:USERPROFILE @args }
 New-Alias -Name dot -Value Invoke-DotfilesGit
 
@@ -143,8 +145,11 @@ function Get-DotfilesRepo {
     )
 
     git clone --bare $RepoUrl $env:USERPROFILE
+    
+    Invoke-DotfilesGit config --local status.showUntrackedFiles no
 }
 
+# Conversions
 function ConvertFrom-Base64String {
     param (
         [Parameter(Mandatory=$true)]
@@ -223,6 +228,7 @@ function ConvertTo-Base64Cab {
     return $base64Encoded
 }
 
+# Version Control
 function New-PullRequest {
     param (
         [string]$organization = "msdata",
