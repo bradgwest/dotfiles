@@ -1,0 +1,133 @@
+{
+  "custom-layouts": [
+    {
+      "uuid": "{F2365F00-DDBC-4B42-A3BB-7B5860925379}",
+      "name": "threes",
+      "type": "grid",
+      "info": {
+        "rows": 2,
+        "columns": 2,
+        "rows-percentage": [
+          5024,
+          4976
+        ],
+        "columns-percentage": [
+          3333,
+          6667
+        ],
+        "cell-child-map": [
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "show-spacing": true,
+        "spacing": 0,
+        "sensitivity-radius": 16
+      }
+    },
+    {
+      "uuid": "{3A849D48-88C9-4C4B-816F-BBD1917D2F02}",
+      "name": "fours",
+      "type": "grid",
+      "info": {
+        "rows": 2,
+        "columns": 2,
+        "rows-percentage": [
+          4962,
+          5038
+        ],
+        "columns-percentage": [
+          5010,
+          4990
+        ],
+        "cell-child-map": [
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            3
+          ]
+        ],
+        "show-spacing": true,
+        "spacing": 0,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "uuid": "{E3AA14C0-12C1-49AC-8BED-53CB62529EBB}",
+      "name": "sixes",
+      "type": "grid",
+      "info": {
+        "rows": 2,
+        "columns": 3,
+        "rows-percentage": [
+          5002,
+          4998
+        ],
+        "columns-percentage": [
+          3333,
+          3333,
+          3334
+        ],
+        "cell-child-map": [
+          [
+            0,
+            2,
+            4
+          ],
+          [
+            1,
+            3,
+            5
+          ]
+        ],
+        "show-spacing": true,
+        "spacing": 0,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "uuid": "{9E26D8B1-A50C-4BEF-84E3-1C6DB7DC0BE8}",
+      "name": "eights",
+      "type": "grid",
+      "info": {
+        "rows": 2,
+        "columns": 4,
+        "rows-percentage": [
+          4986,
+          5014
+        ],
+        "columns-percentage": [
+          2504,
+          2479,
+          2480,
+          2537
+        ],
+        "cell-child-map": [
+          [
+            0,
+            2,
+            4,
+            6
+          ],
+          [
+            1,
+            3,
+            5,
+            7
+          ]
+        ],
+        "show-spacing": true,
+        "spacing": 0,
+        "sensitivity-radius": 20
+      }
+    }
+  ]
+}
