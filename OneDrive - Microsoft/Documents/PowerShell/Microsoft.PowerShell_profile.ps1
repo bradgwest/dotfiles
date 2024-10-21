@@ -27,16 +27,13 @@ function Update-EmacsPath {
       ForEach-Object { Join-Path $_.FullName "bin" }
 
     if (-not $versions) {
+        Write-Warning "No Emacs versions found"
         return
     }
 
-    $currentPath = [Environment]::GetEnvironmentVariable("Path", "User")
-    $newPath = ($currentPath -split ';' + $versions) -join ';'
-    [Environment]::SetEnvironmentVariable("Path", $newPath, "User")
-
-    # Update current session
-    $env:Path = [Environment]::GetEnvironmentVariable("Path", "User")
+    $env:Path += ';' + $versions -join ';'
 }
+# Update-EmacsPath
 
 # --- Aliases --- #
 # Git
