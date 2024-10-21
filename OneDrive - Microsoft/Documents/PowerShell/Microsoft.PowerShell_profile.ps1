@@ -1,8 +1,6 @@
 $MaximumHistoryCount = 32767 # 32768 items is the max
 
 # --- Modules --- #
-Install-ModuleIfNotPresent PSFzf
-
 Import-Module CompletionPredictor
 Import-Module PSFzf
 
