@@ -21,9 +21,22 @@ Invoke-Expression (&starship init powershell)
 # PSfzf
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 
-
 # --- Path --- #
-$env:Path += ";${Env:ProgramFiles}\Emacs\emacs-29.2\bin\"
+function Update-EmacsPath {
+    $versions = Get-ChildItem -Path ${Env:ProgramFiles}\Emacs -Directory -Filter "emacs-*" | 
+      ForEach-Object { Join-Path $_.FullName "bin" }
+
+    if (-not $versions) {
+        return
+    }
+
+    $currentPath = [Environment]::GetEnvironmentVariable("Path", "User")
+    $newPath = ($currentPath -split ';' + $versions) -join ';'
+    [Environment]::SetEnvironmentVariable("Path", $newPath, "User")
+
+    # Update current session
+    $env:Path = [Environment]::GetEnvironmentVariable("Path", "User")
+}
 
 # --- Aliases --- #
 # Git
