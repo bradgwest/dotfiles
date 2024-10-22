@@ -33,7 +33,7 @@ function Update-EmacsPath {
 
     $env:Path += ';' + $versions -join ';'
 }
-# Update-EmacsPath
+Update-EmacsPath
 
 # --- Aliases --- #
 # Git
