@@ -168,6 +168,7 @@
 ;;   Invoke-WebRequest -Uri https://cgit.freedesktop.org/libreoffice/dictionaries/plain/en/en_US.dic -OutFile "path/where/hunspell/looks/en_US.dic"
 ;;   Invoke-WebRequest -Uri https://cgit.freedesktop.org/libreoffice/dictionaries/plain/en/en_US.aff -OutFile "path/where/hunspell/looks/en_US.aff"
 (use-package ispell
+  :defer t
   :config
   (setenv "DICTIONARY" "en_US")
   (setq ispell-dictionary "en_US")
