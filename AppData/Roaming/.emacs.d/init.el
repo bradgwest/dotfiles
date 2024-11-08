@@ -1,10 +1,17 @@
-;; TODO speed up load times
 ;; TODO consider moving off ivy, counsel, swiper
 ;; TODO better projectile support
 ;; TODO flyspell on all text files
 ;; TODO lsp for C#
 ;; TODO format this file
 ;; TODO show current window more clearly (update mode line)
+;; TODO can we just use rg instead of swiper?
+
+;; Set garbage collection threshold higher during startup
+(setq gc-cons-threshold (* 50 1024 1024))
+;; Lower it after startup
+(add-hook 'after-init-hook
+          (lambda ()
+            (setq gc-cons-threshold (* 8 1024 1024))))
 
 (setq inhibit-startup-message t)
 
@@ -38,7 +45,7 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-(use-package all-the-icons)
+;; (use-package all-the-icons)
 ;; tango is a good builtin theme
 
 (use-package doom-themes
@@ -48,7 +55,6 @@
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics univerally disabled
   (load-theme 'doom-acario-light)
-
   (doom-themes-visual-bell-config)
   ;; (setq doom-themes-treemacs-theme "doom-atom")
   ;; TODO: re-enable when you figure out why no icons
@@ -105,8 +111,13 @@
               (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
 
 ;; optionally
-(use-package lsp-ui :commands lsp-ui-mode)
-(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+(use-package lsp-ui
+  :hook (lsp-mode . lsp-ui-mode)
+  :custom
+  (lsp-ui-doc-position 'bottom))
+
+;; need to learn how to use this
+;; (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
 ;; (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 
 (use-package nerd-icons) ; (required for doom-modeline)
@@ -130,11 +141,12 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
-;; Show what keys I can press next
+;; Do we need this?
 (use-package which-key
-  :init (which-key-mode)
+  :defer 0
   :diminish which-key-mode
-  :config (setq which-key-idle-delay 0.5))
+  :config (which-key-mode)
+  :config (setq which-key-idle-delay 1))
 
 ;; Maybe add this later
 ;; (use-package ivy-rich
@@ -146,8 +158,7 @@
   :commands (lsp lsp-deferred)
   :init
   (setq lsp-keymap-prefix "C-c l")
-  :hook (
-         (powershell-mode . lsp)
+  :hook ((powershell-mode . lsp)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration)))
 
@@ -188,7 +199,8 @@
 ;;   (setq projectile-switch-project-action #'projectile-dired))
 
 ;; Need to install ripgrep: winget install --id BurntSushi.ripgrep.MSVC
-(use-package rg)
+(use-package rg
+  :defer t)
 
 (defun bgw/org-mode-setup ()
   (setq fill-column 120)
@@ -202,7 +214,6 @@
   (setq org-ellipsis " ▼"))
 
 (use-package org-bullets
-  :after org
   :hook (org-mode . org-bullets-mode)
   :custom
   (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
@@ -220,6 +231,15 @@
   :custom
   (plantuml-jar-path "C:/Users/bradwest/AppData/Roaming/PlantUML/plantuml-1.2024.5.jar")
   (plantuml-default-exec-mode 'jar))
+
+;; startup timing
+(defun bgw/display-startup-time ()
+  (message "Emacs loaded in %s with %d garbage collections."
+           (format "%.2f seconds"
+                   (float-time
+                    (time-subtract after-init-time before-init-time)))
+           gcs-done))
+(add-hook 'emacs-startup-hook #'bgw/display-startup-time)
  
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
