@@ -1,15 +1,43 @@
+
 $MaximumHistoryCount = 32767 # 32768 items is the max
 
 # --- Modules --- #
-Import-Module CompletionPredictor
+# Import-Module CompletionPredictor
 Import-Module PSFzf
+Import-Module PSReadline
 
 # allow scripts to run
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
-# PSReadline Predictors
-Set-PSReadLineOption -PredictionViewStyle ListView
-Set-PSReadLineKeyHandler -Chord "Ctrl+f" -Function ForwardWord
+# PSReadline
+Set-PSReadLineOption -EditMode Emacs
+Set-PSReadLineOption -BellStyle None
+Set-PSReadLineOption -PredictionViewStyle InlineView # use fzf for searching history in list view
+
+# Page through history with Emacs keys
+Set-PSReadLineKeyHandler -Key "Alt+p" -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key "Alt+n" -Function HistorySearchForward
+# Set-PSReadLineKeyHandler -Chord "Ctrl+f" -Function ForwardWord
+
+# see https://github.com/PowerShell/PSReadLine/blob/e87a265ef8d2c6c5498500deb155bf6258b34629/PSReadLine/SamplePSReadLineProfile.ps1
+# for PSReadLine tips and key handlers
+
+# Sometimes you enter a command but realize you forgot to do something else first.
+# This binding will let you save that command in the history so you can recall it,
+# but it doesn't actually execute.  It also clears the line with RevertLine so the
+# undo stack is reset - though redo will still reconstruct the command line.
+Set-PSReadLineKeyHandler -Key Alt+w `
+                         -BriefDescription SaveInHistory `
+                         -LongDescription "Save current line in history but do not execute" `
+                         -ScriptBlock {
+    param($key, $arg)
+
+    $line = $null
+    $cursor = $null
+    [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
+    [Microsoft.PowerShell.PSConsoleReadLine]::AddToHistory($line)
+    [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
+}
 
 # Dynamic Help - https://learn.microsoft.com/en-us/powershell/scripting/learn/shell/dynamic-help
 # Set-PSReadLineKeyHandler -chord 'Ctrl+h' -Function ShowCommandHelp
