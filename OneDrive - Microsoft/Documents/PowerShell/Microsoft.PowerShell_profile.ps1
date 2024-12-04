@@ -240,3 +240,45 @@ function New-PullRequest {
     Start-Process $url
 }
 Set-Alias -Name npr -Value New-PullRequest
+
+function Enter-VirtualEnvironment {
+    param(
+        [Parameter(Mandatory=$false)]
+        [string]$name
+    )
+    
+    $venvPath = Join-Path -Path (Get-Location) -ChildPath ".venv"
+    
+    if (-not (Test-Path $venvPath)) {
+        Write-Error "No virtual environments found. The .venv directory does not exist."
+        return
+    }
+
+    $availableEnvironments = Get-ChildItem -Path $venvPath -Directory
+
+    if ($availableEnvironments.Count -eq 0) {
+        Write-Error "No virtual environments found in .venv directory."
+        return
+    }
+
+    if (-not $name) {
+        if ($availableEnvironments.Count -eq 1) {
+            $name = $availableEnvironments[0].Name
+        } else {
+            Write-Error "Multiple virtual environments found. Please specify one of: $($availableEnvironments.Name -join ', ')"
+            return
+        }
+    } elseif (-not ($availableEnvironments.Name -contains $name)) {
+        Write-Error "Virtual environment '$name' not found. Available environments: $($availableEnvironments.Name -join ', ')"
+        return
+    }
+
+    $activateScript = Join-Path -Path $venvPath -ChildPath "$name\Scripts\Activate.ps1"
+    
+    if (Test-Path $activateScript) {
+        & $activateScript
+    } else {
+        Write-Error "Activation script not found at: $activateScript"
+    }
+}
+Set-Alias -Name venv -Value Enter-VirtualEnvironment
