@@ -1,6 +1,9 @@
 
 $MaximumHistoryCount = 32767 # 32768 items is the max
 
+# --- Env --- #
+$env:AIDER_VENV_PATH = "D:\src\aider\.venv\aider"
+
 # --- Modules --- #
 # Import-Module CompletionPredictor
 Import-Module PSFzf
@@ -282,3 +285,9 @@ function Enter-VirtualEnvironment {
     }
 }
 Set-Alias -Name venv -Value Enter-VirtualEnvironment
+
+function Enter-Aider {
+    & $env:AIDER_VENV_PATH\Scripts\Activate.ps1
+}
+
+Set-Alias -Name aid -Value Enter-Aider
