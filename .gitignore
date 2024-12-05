@@ -1,0 +1,23 @@
+# -*- mode: gitignore; -*-
+
+# -- Emacs -- #
+*~
+\#*\#
+.#*
+
+# -- General -- #
+.ignore
+
+# -- Python -- #
+.venv
+venv
+__pycache__/
+*.py[cod]
+
+# -- dotfiles -- #
+.dotfiles
+
+# -- Aider -- #
+.aider.chat.history.md
+.aider.input.history
+
