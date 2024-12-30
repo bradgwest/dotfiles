@@ -1,10 +1,13 @@
-;; TODO consider moving off ivy, counsel, swiper
+;; TODO consider adding consult, embark, and orderless
+;; TODO color left and right edge better
+;; TODO drop any ivy, consul, and swiper references
+;; TODO better whitespace highlighting
 ;; TODO better projectile support
 ;; TODO flyspell on all text files
 ;; TODO lsp for C#
 ;; TODO format this file
 ;; TODO show current window more clearly (update mode line)
-;; TODO can we just use rg instead of swiper?
+;; TODO better search
 
 ;; Set garbage collection threshold higher during startup
 (setq gc-cons-threshold (* 50 1024 1024))
@@ -58,33 +61,54 @@
   (doom-themes-visual-bell-config)
   ;; (setq doom-themes-treemacs-theme "doom-atom")
   ;; TODO: re-enable when you figure out why no icons
-  ;; (doom-themes-treemacs-config)
+  ;; (doom-themes-treemacs-config
   (doom-themes-org-config))
 
+(custom-set-faces
+ '(whitespace-space ((t (:foreground "gray60"))))
+ '(whitespace-tab ((t (:foreground "gray60"))))
+ '(whitespace-newline ((t (:foreground "gray60")))))
+;; turn off long line indicator
+(setq whitespace-style '(face tabs spaces trailing space-before-tab newline indentation empty space-after-tab space-mark tab-mark newline-mark missing-newline-at-eof))
+
+(use-package vertico
+  :init
+  (vertico-mode))
+
+(use-package savehist
+  :after vertico
+  :init
+  (savehist-mode))
+
+(use-package marginalia
+  :after vertico
+  :init
+  (marginalia-mode))
+
 ;; Ivy - https://github.com/abo-abo/swiper
-(use-package ivy
-  :config
-  (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-count-format "(%d/%d) ")
-  (setq ivy-case-fold-search 'always))
+;(use-package ivy
+;  :config
+;  (ivy-mode 1)
+;  (setq ivy-use-virtual-buffers t)
+;  (setq ivy-count-format "(%d/%d) ")
+;  (setq ivy-case-fold-search 'always))
 
 ;; Configure swiper (see Ivy above)
-(use-package swiper
-  :ensure t
-  :after ivy ; Ensure swiper is loaded after ivy
-  :bind (("C-s" . swiper) ; Bind swiper to Ctrl-s
-         ("C-r" . swiper-backward))) ; Bind swiper-backward to Ctrl-r
+; (use-package swiper
+;  :ensure t
+;  :after ivy ; Ensure swiper is loaded after ivy
+;  :bind (("C-s" . swiper) ; Bind swiper to Ctrl-s
+;         ("C-r" . swiper-backward))) ; Bind swiper-backward to Ctrl-r
 
 ;; Better UI for Ivy
-(use-package counsel
-  :bind (("M-x" . counsel-M-x)
-	 ("C-x b" . counsel-ibuffer)
-	 ("C-x C-f" . counsel-find-file)
-	 :map minibuffer-local-map
-	 ("C-r" . counsel-minibuffer-history))
-  :config
-  (setq ivy-initial-inputs-alist nil)) ;; Don't start searches with ^
+;(use-package counsel
+;  :bind (("M-x" . counsel-M-x)
+;  ("C-x b" . counsel-ibuffer)
+;  ("C-x C-f" . counsel-find-file)
+;  :map minibuffer-local-map
+;   ("C-r" . counsel-minibuffer-history))
+;  :config
+;  (setq ivy-initial-inputs-alist nil)) ;; Don't start searches with ^
 
 ;; See https://github.com/Alexander-Miller/treemacs?tab=readme-ov-file#installation
 ;; (use-package treemacs
@@ -153,6 +177,11 @@
 ;;   :init
 ;;   (ivy-rich-mode 1))
 
+(use-package company
+  :ensure t
+  :config
+  (global-company-mode 1))
+
 ;; Code
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
@@ -160,17 +189,28 @@
   (setq lsp-keymap-prefix "C-c l")
   :hook ((powershell-mode . lsp)
          ;; if you want which-key integration
-         (lsp-mode . lsp-enable-which-key-integration)))
+          (lsp-mode . lsp-enable-which-key-integration)))
+
+(use-package lsp-pyright
+  :ensure t
+  :custom (lsp-pyright-langserver-command "pyright") ;; or basedpyright
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp-deferred))))  ; or lsp-deferred
+
+(add-hook 'python-mode-hook
+          (lambda ()
+            (auto-revert-mode 1)))
 
 ;; Better help files
-(use-package helpful
-   :custom
-   (counsel-describe-function-function #'helpful-callable)
-   (counsel-describe-variable-function #'helpful-variable)
-   :bind (("C-h f" . counsel-describe-function)
-	  ("C-h x" . #'helpful-command)
-	  ("C-h v" . counsel-describe-variable)
-	  ("C-h k" . #'helpful-key)))
+;(use-package helpful
+;   :custom
+;   (counsel-describe-function-function #'helpful-callable)
+;   (counsel-describe-variable-function #'helpful-variable)
+;   :bind (("C-h f" . counsel-describe-function)
+;	  ("C-h x" . #'helpful-command)
+;	  ("C-h v" . counsel-describe-variable)
+;	  ("C-h k" . #'helpful-key)))
 
 ;; Huge pain on Windows.
 ;; 1. First download hunspell
@@ -246,10 +286,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("4e2e42e9306813763e2e62f115da71b485458a36e8b4c24e17a2168c45c9cf9d" default))
+ '(custom-safe-themes t nil nil "Customized with use-package doom-themes")
  '(package-selected-packages
-   '(plantuml-mode org-bullets key-chord evil yaml-mode rg counsel-projectile projectile all-the-icons doom-themes helpful counsel ivy-rich which-key rainbow-delimiters nerd-icons doom-modeline swiper ivy)))
+   '(marginalia company lsp-pyright plantuml-mode org-bullets key-chord evil yaml-mode rg counsel-projectile projectile all-the-icons doom-themes helpful counsel ivy-rich which-key rainbow-delimiters nerd-icons doom-modeline swiper ivy)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
