@@ -289,5 +289,7 @@ Set-Alias -Name venv -Value Enter-VirtualEnvironment
 function Enter-Aider {
     & $env:AIDER_VENV_PATH\Scripts\Activate.ps1
 }
-
 Set-Alias -Name aid -Value Enter-Aider
+
+Set-Alias -Name touch -Value New-Item
+
