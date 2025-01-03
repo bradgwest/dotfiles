@@ -1,5 +1,4 @@
-;; TODO consider adding consult, embark, and orderless
-;; TODO color left and right edge better
+;; TODO consider adding consult, embark
 ;; TODO drop any ivy, consul, and swiper references
 ;; TODO better whitespace highlighting
 ;; TODO better projectile support
@@ -19,15 +18,16 @@
 (setq inhibit-startup-message t)
 
 (tool-bar-mode -1)         ; Disable the toolbar
-(set-fringe-mode -1)       ; Give some breathing room
 (menu-bar-mode -1)         ; Disable the menu bar
+(scroll-bar-mode -1)
+(fringe-mode 0)
 
 (setq mouse-wheel-tilt-scroll t)
 ;; Prevent Extraneous Tabs
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 
-(set-face-attribute 'default nil :font "SauceCodePro NF" :height 100) ; height is in 1/10th of a pt
+(set-face-attribute 'default nil :font "SauceCodePro NF" :height 95) ; height is in 1/10th of a pt
 
 ;; Initialize package sources
 (require 'package)
@@ -64,10 +64,33 @@
   ;; (doom-themes-treemacs-config
   (doom-themes-org-config))
 
+;; Set some space on windows
+(defvar bgw-window-divider-color "white" "Custom color for window borders")
+(defvar bgw-window-divider-width 13 "Custom width for window borders")
+(setq window-divider-default-places 'all-frames)
+(setq window-divider-default-right-width bgw-window-divider-width
+      window-divider-default-left-width bgw-window-divider-width
+      window-divider-default-bottom-width bgw-window-divider-width)
+;; Set left and top border on frame
+(set-frame-parameter nil 'internal-border-width bgw-window-divider-width)
+(setq window-divider-default-places t)
+(window-divider-mode t)
+
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(internal-border ((t (:background "white"))))
+ '(line-number ((t (:inherit default :background "#E8E8E8" :foreground "#585C6C" :slant italic :weight normal))))
+ '(mode-line-active ((t (:inherit mode-line :background "aquamarine"))))
+ '(mode-line-inactive ((t (:background "#D3D3D3" :foreground "#4E4E4E" :box nil))))
+ '(whitespace-newline ((t (:foreground "gray60"))))
  '(whitespace-space ((t (:foreground "gray60"))))
  '(whitespace-tab ((t (:foreground "gray60"))))
- '(whitespace-newline ((t (:foreground "gray60")))))
+ `(window-divider ((t (:inherit vertical-border :foreground ,bgw-window-divider-color))))
+ `(window-divider-first-pixel ((t (:foreground "black"))))
+ `(window-divider-last-pixel ((t (:foreground "black")))))
 ;; turn off long line indicator
 (setq whitespace-style '(face tabs spaces trailing space-before-tab newline indentation empty space-after-tab space-mark tab-mark newline-mark missing-newline-at-eof))
 
@@ -84,6 +107,11 @@
   :after vertico
   :init
   (marginalia-mode))
+
+(use-package orderless
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion)))))
 
 ;; Ivy - https://github.com/abo-abo/swiper
 ;(use-package ivy
@@ -288,10 +316,5 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes t nil nil "Customized with use-package doom-themes")
  '(package-selected-packages
-   '(marginalia company lsp-pyright plantuml-mode org-bullets key-chord evil yaml-mode rg counsel-projectile projectile all-the-icons doom-themes helpful counsel ivy-rich which-key rainbow-delimiters nerd-icons doom-modeline swiper ivy)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+   '(orderless marginalia company lsp-pyright plantuml-mode org-bullets key-chord evil yaml-mode rg counsel-projectile projectile all-the-icons doom-themes helpful counsel ivy-rich which-key rainbow-delimiters nerd-icons doom-modeline swiper ivy)))
+
