@@ -1,12 +1,10 @@
 ;; TODO consider adding consult, embark
 ;; TODO drop any ivy, consul, and swiper references
-;; TODO better whitespace highlighting
-;; TODO better projectile support
 ;; TODO flyspell on all text files
 ;; TODO lsp for C#
 ;; TODO format this file
-;; TODO show current window more clearly (update mode line)
-;; TODO better search
+;; TODO minibuffer color
+;; TODO terminal colors dark, icons/unicode
 
 ;; Set garbage collection threshold higher during startup
 (setq gc-cons-threshold (* 50 1024 1024))
@@ -149,6 +147,9 @@
 
 ;; (use-package treemacs-icons-dired
 ;;   :hook (dired-mode . treemacs-icons-dired-enable-once))
+
+(when (eq system-type 'windows-nt)
+  (setq explicit-shell-file-name "C:/Program Files/PowerShell/7/pwsh.exe"))
 
 ;; Install and configure powershell-mode
 (use-package powershell
