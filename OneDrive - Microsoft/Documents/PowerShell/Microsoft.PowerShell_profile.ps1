@@ -9,6 +9,11 @@ $env:AIDER_VENV_PATH = "D:\src\aider\.venv\aider"
 Import-Module PSFzf
 Import-Module PSReadline
 
+# import scripts that shouldn't be version controlled
+Get-ChildItem -Path "$HOME\scripts" -Filter *.ps1 | ForEach-Object {
+    . $_.FullName
+}
+
 # allow scripts to run
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
@@ -54,7 +59,7 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory
 
 # --- Path --- #
 function Update-EmacsPath {
-    $versions = Get-ChildItem -Path ${Env:ProgramFiles}\Emacs -Directory -Filter "emacs-*" | 
+    $versions = Get-ChildItem -Path ${Env:ProgramFiles}\Emacs -Directory -Filter "emacs-*" |
       ForEach-Object { Join-Path $_.FullName "bin" }
 
     if (-not $versions) {
@@ -142,7 +147,7 @@ function Get-DotfilesRepo {
     )
 
     git clone --bare $RepoUrl $env:USERPROFILE/.dotfiles
-    
+
     Invoke-DotfilesGit config --local status.showUntrackedFiles no
 }
 
@@ -152,7 +157,7 @@ function ConvertFrom-Base64String {
         [Parameter(Mandatory=$true)]
         [string]$Base64String
     )
-    
+
     try {
         $bytes = [System.Convert]::FromBase64String($Base64String)
         $decodedString = [System.Text.Encoding]::UTF8.GetString($bytes)
@@ -168,7 +173,7 @@ function ConvertTo-PrettyXML {
         [Parameter(Mandatory=$true)]
         [string]$XmlString
     )
-    
+
     try {
         # Load the XML from the string
         $xmlDocument = New-Object System.Xml.XmlDocument
@@ -231,7 +236,7 @@ function New-PullRequest {
         [string]$organization = "msdata",
         [string]$project = "Database Systems"
     )
-    
+
     $repository = git config --get remote.origin.url | Split-Path -LeafBase
     $branch = git rev-parse --abbrev-ref HEAD
     $encodedProject =  [System.Uri]::EscapeDataString($project)
@@ -249,9 +254,9 @@ function Enter-VirtualEnvironment {
         [Parameter(Mandatory=$false)]
         [string]$name
     )
-    
+
     $venvPath = Join-Path -Path (Get-Location) -ChildPath ".venv"
-    
+
     if (-not (Test-Path $venvPath)) {
         Write-Error "No virtual environments found. The .venv directory does not exist."
         return
@@ -277,7 +282,7 @@ function Enter-VirtualEnvironment {
     }
 
     $activateScript = Join-Path -Path $venvPath -ChildPath "$name\Scripts\Activate.ps1"
-    
+
     if (Test-Path $activateScript) {
         & $activateScript
     } else {
@@ -292,4 +297,3 @@ function Enter-Aider {
 Set-Alias -Name aid -Value Enter-Aider
 
 Set-Alias -Name touch -Value New-Item
-
