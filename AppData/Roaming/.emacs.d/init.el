@@ -45,9 +45,6 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-;; (use-package all-the-icons)
-;; tango is a good builtin theme
-
 (use-package doom-themes
   :custom
   (custom-safe-themes t)
@@ -56,9 +53,6 @@
         doom-themes-enable-italic t) ; if nil, italics univerally disabled
   (load-theme 'doom-acario-light)
   (doom-themes-visual-bell-config)
-  ;; (setq doom-themes-treemacs-theme "doom-atom")
-  ;; TODO: re-enable when you figure out why no icons
-  ;; (doom-themes-treemacs-config
   (doom-themes-org-config))
 
 ;; Set some space on windows
@@ -143,7 +137,6 @@
 (dolist (mode '(org-mode-hook
 		term-mode-hook
 		eshell-mode-hook))
-		;; treemacs-mode-hook)
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 (use-package rainbow-delimiters
