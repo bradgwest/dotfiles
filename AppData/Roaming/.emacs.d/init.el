@@ -1,5 +1,4 @@
 ;; TODO consider adding consult, embark
-;; TODO drop any ivy, consul, and swiper references
 ;; TODO flyspell on all text files
 ;; TODO lsp for C#
 ;; TODO format this file
@@ -111,43 +110,6 @@
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
 
-;; Ivy - https://github.com/abo-abo/swiper
-;(use-package ivy
-;  :config
-;  (ivy-mode 1)
-;  (setq ivy-use-virtual-buffers t)
-;  (setq ivy-count-format "(%d/%d) ")
-;  (setq ivy-case-fold-search 'always))
-
-;; Configure swiper (see Ivy above)
-; (use-package swiper
-;  :ensure t
-;  :after ivy ; Ensure swiper is loaded after ivy
-;  :bind (("C-s" . swiper) ; Bind swiper to Ctrl-s
-;         ("C-r" . swiper-backward))) ; Bind swiper-backward to Ctrl-r
-
-;; Better UI for Ivy
-;(use-package counsel
-;  :bind (("M-x" . counsel-M-x)
-;  ("C-x b" . counsel-ibuffer)
-;  ("C-x C-f" . counsel-find-file)
-;  :map minibuffer-local-map
-;   ("C-r" . counsel-minibuffer-history))
-;  :config
-;  (setq ivy-initial-inputs-alist nil)) ;; Don't start searches with ^
-
-;; See https://github.com/Alexander-Miller/treemacs?tab=readme-ov-file#installation
-;; (use-package treemacs
-;;   :config
-;;   (setq treemacs-wrap-around nil)
-;;   (setq treemacs-space-between-root-notes nil))
-
-;; (use-package treemacs-projectile
-;;   :after (treemacs projectile))
-
-;; (use-package treemacs-icons-dired
-;;   :hook (dired-mode . treemacs-icons-dired-enable-once))
-
 (when (eq system-type 'windows-nt)
   (setq explicit-shell-file-name "C:/Program Files/PowerShell/7/pwsh.exe"))
 
@@ -169,10 +131,6 @@
   :custom
   (lsp-ui-doc-position 'bottom))
 
-;; need to learn how to use this
-;; (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
-;; (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
-
 (use-package nerd-icons) ; (required for doom-modeline)
 (use-package doom-modeline
   :ensure t
@@ -188,9 +146,6 @@
 		;; treemacs-mode-hook)
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
-;; (dolist (mode '(treemacs-mode-hook))
-;;   (add-hook mode (lambda () (scroll-bar-mode -1))))
-
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
@@ -201,17 +156,11 @@
   :config (which-key-mode)
   :config (setq which-key-idle-delay 1))
 
-;; Maybe add this later
-;; (use-package ivy-rich
-;;   :init
-;;   (ivy-rich-mode 1))
-
 (use-package company
   :ensure t
   :config
   (global-company-mode 1))
 
-;; Code
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :init
@@ -230,16 +179,6 @@
 (add-hook 'python-mode-hook
           (lambda ()
             (auto-revert-mode 1)))
-
-;; Better help files
-;(use-package helpful
-;   :custom
-;   (counsel-describe-function-function #'helpful-callable)
-;   (counsel-describe-variable-function #'helpful-variable)
-;   :bind (("C-h f" . counsel-describe-function)
-;	  ("C-h x" . #'helpful-command)
-;	  ("C-h v" . counsel-describe-variable)
-;	  ("C-h k" . #'helpful-key)))
 
 ;; Huge pain on Windows.
 ;; 1. First download hunspell
@@ -317,5 +256,5 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes t nil nil "Customized with use-package doom-themes")
  '(package-selected-packages
-   '(orderless marginalia company lsp-pyright plantuml-mode org-bullets key-chord evil yaml-mode rg counsel-projectile projectile all-the-icons doom-themes helpful counsel ivy-rich which-key rainbow-delimiters nerd-icons doom-modeline swiper ivy)))
+   '(orderless marginalia company lsp-pyright plantuml-mode org-bullets key-chord evil yaml-mode rg projectile all-the-icons doom-themes helpful which-key rainbow-delimiters nerd-icons doom-modeline)))
 
