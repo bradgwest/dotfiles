@@ -1,9 +1,11 @@
 ;; TODO consider adding consult, embark
-;; TODO flyspell on all text files
+;; TODO flyspell on all text files?
 ;; TODO lsp for C#
 ;; TODO format this file
 ;; TODO minibuffer color
 ;; TODO terminal colors dark, icons/unicode
+;; TODO update setq to customize where variables can be customized
+;; TODO projectile don't search .git
 
 ;; Set garbage collection threshold higher during startup
 (setq gc-cons-threshold (* 50 1024 1024))
@@ -30,8 +32,8 @@
 (require 'package)
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-			 ("org" . "https://orgmode.org/elpa")
-			 ("elpa" . "https://elpa.gnu.org/packages/")))
+                         ("org" . "https://orgmode.org/elpa")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
 
 ;; Note need to run package-refresh-contents before downloading new packages
 (package-initialize)
@@ -79,9 +81,9 @@
  '(whitespace-newline ((t (:foreground "gray60"))))
  '(whitespace-space ((t (:foreground "gray60"))))
  '(whitespace-tab ((t (:foreground "gray60"))))
- `(window-divider ((t (:inherit vertical-border :foreground ,bgw-window-divider-color))))
- `(window-divider-first-pixel ((t (:foreground "black"))))
- `(window-divider-last-pixel ((t (:foreground "black")))))
+ '(window-divider ((t (:inherit vertical-border :foreground "white"))))
+ '(window-divider-first-pixel ((t (:foreground "black"))))
+ '(window-divider-last-pixel ((t (:foreground "black")))))
 ;; turn off long line indicator
 (setq whitespace-style '(face tabs spaces trailing space-before-tab newline indentation empty space-after-tab space-mark tab-mark newline-mark missing-newline-at-eof))
 
@@ -189,19 +191,23 @@
   (setq hunspell-default-dict "en_US")
   (setq ispell-hunspell-dictionary-alist '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8))))
 
-;; (use-package projectile
-;;   :diminish projectile-mode
-;;   :config (projectile-mode)
-;;   :bind-keymap
-;;   ("C-c p" . projectile-command-map)
-;;   :init
-;;   (when (file-directory-p "C:/Users/bradwest/src")
-;;     (setq projectile-project-search-path '("C:/Users/bradwest/src")))
-;;   (setq projectile-switch-project-action #'projectile-dired))
+;; TODO Add vertico for completions support
+(use-package projectile
+  :diminish projectile-mode
+  :config (projectile-mode)
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
+  :init
+  (setq projectile-project-search-path '("D:/src"))
+  (setq projectile-switch-project-action #'projectile-dired))
 
 ;; Need to install ripgrep: winget install --id BurntSushi.ripgrep.MSVC
 (use-package rg
   :defer t)
+
+(use-package projectile-ripgrep
+  :defer t
+  :after (rg projectile))
 
 (defun bgw/org-mode-setup ()
   (setq fill-column 120)
@@ -226,9 +232,9 @@
   :mode ("\\.plantuml\\'" "\\.puml\\'")
   :config
   (add-hook 'plantuml-mode-hook (lambda ()
-				  (electric-indent-local-mode -1)
-				  (tab-width 4)
-				  (indent-tabs-mode nil)))
+                                  (electric-indent-local-mode -1)
+                                  (tab-width 4)
+                                  (indent-tabs-mode nil)))
   :custom
   (plantuml-jar-path "C:/Users/bradwest/AppData/Roaming/PlantUML/plantuml-1.2024.5.jar")
   (plantuml-default-exec-mode 'jar))
@@ -241,7 +247,7 @@
                     (time-subtract after-init-time before-init-time)))
            gcs-done))
 (add-hook 'emacs-startup-hook #'bgw/display-startup-time)
- 
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -249,5 +255,5 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes t nil nil "Customized with use-package doom-themes")
  '(package-selected-packages
-   '(orderless marginalia company lsp-pyright plantuml-mode org-bullets key-chord evil yaml-mode rg projectile all-the-icons doom-themes helpful which-key rainbow-delimiters nerd-icons doom-modeline)))
+   '(projectile-ripgrep orderless marginalia company lsp-pyright plantuml-mode org-bullets key-chord evil yaml-mode rg projectile all-the-icons doom-themes helpful which-key rainbow-delimiters nerd-icons doom-modeline)))
 
