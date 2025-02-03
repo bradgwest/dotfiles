@@ -6,59 +6,10 @@
         {
             "command": 
             {
-                "action": "copy",
-                "singleLine": false
+                "action": "commandPalette"
             },
-            "id": "User.copy.644BA8F2",
-            "keys": "ctrl+c"
-        },
-        {
-            "command": "unbound",
-            "keys": "alt+shift+plus"
-        },
-        {
-            "command": "unbound",
-            "keys": "alt+down"
-        },
-        {
-            "command": "unbound",
-            "keys": "alt+left"
-        },
-        {
-            "command": "unbound",
-            "keys": "alt+j"
-        },
-        {
-            "command": "unbound",
-            "keys": "alt+h"
-        },
-        {
-            "command": "unbound",
-            "keys": "alt+up"
-        },
-        {
-            "command": "unbound",
-            "keys": "alt+right"
-        },
-        {
-            "command": "paste",
-            "id": "User.paste",
-            "keys": "ctrl+v"
-        },
-        {
-            "command": "find",
-            "id": "User.find",
-            "keys": "ctrl+shift+f"
-        },
-        {
-            "command": 
-            {
-                "action": "splitPane",
-                "split": "auto",
-                "splitMode": "duplicate"
-            },
-            "id": "User.splitPane.A6751878",
-            "keys": "alt+shift+d"
+            "id": "User.commandPalette.D3F0B923",
+            "keys": "alt+x"
         },
         {
             "command": 
@@ -72,11 +23,16 @@
         {
             "command": 
             {
-                "action": "splitPane",
-                "split": "right"
+                "action": "moveFocus",
+                "direction": "up"
             },
-            "id": "User.splitPane.864CD510",
-            "keys": "alt+shift+\\"
+            "id": "User.moveFocus.6CD791B",
+            "keys": "ctrl+k"
+        },
+        {
+            "command": "find",
+            "id": "User.find",
+            "keys": "ctrl+s"
         },
         {
             "command": 
@@ -91,24 +47,31 @@
             "command": 
             {
                 "action": "moveFocus",
-                "direction": "up"
-            },
-            "id": "User.moveFocus.6CD791B",
-            "keys": "ctrl+k"
-        },
-        {
-            "command": 
-            {
-                "action": "moveFocus",
                 "direction": "right"
             },
             "id": "User.moveFocus.87C324ED",
             "keys": "ctrl+l"
+        },
+        {
+            "command": "paste",
+            "id": "User.paste",
+            "keys": "ctrl+y"
+        },
+        {
+            "command": "copy",
+            "id": "User.copy",
+            "keys": "alt+w"
+        },
+        {
+            "command": "cut",
+            "id": "User.cut",
+            "keys": "ctrl+w"
         }
     ],
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "launchMode": "focus",
     "newTabMenu": 
     [
         {
@@ -129,6 +92,10 @@
                 "face": "SauceCodePro Nerd Font",
                 "size": 9,
                 "weight": "normal"
+            },
+            "unfocusedAppearance": 
+            {
+                "background": "#4A4C57"
             }
         },
         "list": 
