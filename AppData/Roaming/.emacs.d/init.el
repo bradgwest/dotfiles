@@ -1,11 +1,12 @@
 ;; TODO consider adding consult, embark
-;; TODO flyspell on all text files?
+;; TODO flyspell on org mode
+;; TODO lsp for emacs lisp
 ;; TODO lsp for C#
 ;; TODO format this file
-;; TODO minibuffer color
 ;; TODO terminal colors dark, icons/unicode
 ;; TODO update setq to customize where variables can be customized
 ;; TODO projectile don't search .git
+;; TODO Occur mode for a project
 
 ;; Set garbage collection threshold higher during startup
 (setq gc-cons-threshold (* 50 1024 1024))
@@ -46,6 +47,13 @@
 
 (require 'use-package)
 (setq use-package-always-ensure t)
+
+(use-package whitespace
+  :config
+  (global-whitespace-mode -1)
+  :hook
+  ((yaml-mode
+    python-mode) . (lambda () (whitespace-mode t))))
 
 (use-package doom-themes
   :custom
@@ -137,8 +145,8 @@
 (global-display-fill-column-indicator-mode t)
 
 (dolist (mode '(org-mode-hook
-		term-mode-hook
-		eshell-mode-hook))
+                term-mode-hook
+                eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 (use-package rainbow-delimiters
@@ -154,7 +162,8 @@
 (use-package company
   :ensure t
   :config
-  (global-company-mode 1))
+  (global-company-mode 1)
+  (setq company-dabbrev-downcase nil))
 
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
@@ -191,7 +200,7 @@
   (setq hunspell-default-dict "en_US")
   (setq ispell-hunspell-dictionary-alist '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8))))
 
-;; TODO Add vertico for completions support
+;; Use project.el instead
 (use-package projectile
   :diminish projectile-mode
   :config (projectile-mode)
@@ -213,6 +222,7 @@
   (setq fill-column 120)
   (org-indent-mode)
   (auto-fill-mode 1)
+  (org-display-inline-images t)
   (display-fill-column-indicator-mode 1))
 
 (use-package org
