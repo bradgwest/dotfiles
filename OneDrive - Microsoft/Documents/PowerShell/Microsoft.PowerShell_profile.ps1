@@ -10,7 +10,7 @@ Import-Module PSFzf
 Import-Module PSReadline
 
 # import scripts that shouldn't be version controlled
-Get-ChildItem -Path "$HOME\scripts" -Filter *.ps1 | ForEach-Object {
+Get-ChildItem -Path "$HOME\scripts\imported" -Filter *.ps1 | ForEach-Object {
     . $_.FullName
 }
 
@@ -70,6 +70,10 @@ function Update-EmacsPath {
     $env:Path += ';' + $versions -join ';'
 }
 Update-EmacsPath
+
+$env:Path += ';' + "$HOME\AppData\Roaming\Python\Scripts"
+$env:Path += ';' + "C:\Program Files\microsoft.servicemap.cli\24.11.23009\lib\net472"
+$env:Path += ';' + "$HOME\AppData\Roaming\.emacs.d\elpa\lsp-mode-20241015.1503"
 
 # --- Aliases --- #
 # Git
