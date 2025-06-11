@@ -131,6 +131,9 @@ New-Alias -Name ggf -Value GitPushOriginCurrentBranchForce
 function GitRebaseOntoDefaultBranch { git rebase $(GitDefaultBranch) @args }
 New-Alias -Name grbm -Value GitRebaseOntoDefaultBranch
 
+function GitBranchOnelineNoDefault { (git branch | Sort-Object | ForEach-Object { $_.Trim() -replace '^\* ', '' } | Where-Object { $_ -ne $(GitDefaultBranch) }) -join ' ' }
+New-Alias -Name gbo -Value GitBranchOnelineNoDefault
+
 # PlantUML
 function Invoke-PlantUML { java -jar C:\Users\bradwest\AppData\Roaming\PlantUML\plantuml-1.2024.5.jar @args }
 New-Alias -Name plantuml -Value Invoke-PlantUML
