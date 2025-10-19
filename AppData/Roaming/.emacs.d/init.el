@@ -3,7 +3,6 @@
 ;; TODO lsp for emacs lisp
 ;; TODO lsp for C#
 ;; TODO format this file
-;; TODO terminal colors dark, icons/unicode
 ;; TODO update setq to customize where variables can be customized
 ;; TODO projectile don't search .git
 ;; TODO Occur mode for a project
@@ -170,7 +169,7 @@
   :init
   (setq lsp-keymap-prefix "C-c l")
   :hook ((powershell-mode . lsp)
-         ;;(csharp-mode . lsp)
+         (csharp-mode . lsp)
          ))
 
 ;; optionally
@@ -251,6 +250,14 @@
   (plantuml-jar-path "C:/Users/bradwest/AppData/Roaming/PlantUML/plantuml-1.2024.5.jar")
   (plantuml-default-exec-mode 'jar))
 
+(defun bgw/markdown-mode-setup ()
+  "Custom settings for `markdown-mode`."
+  (setq fill-column 120)
+  (display-fill-column-indicator-mode 1))
+(add-hook 'markdown-mode-hook #'bgw/markdown-mode-setup)
+
+(use-package markdown-toc)
+
 ;; Huge pain on Windows.
 ;; 1. First download hunspell
 ;; 2. Figure out where hunspell stores dictionaries `hunspell -D`
@@ -285,5 +292,5 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes t nil nil "Customized with use-package doom-themes")
  '(package-selected-packages
-   '(projectile-ripgrep orderless marginalia company lsp-pyright plantuml-mode org-bullets key-chord evil yaml-mode rg projectile all-the-icons doom-themes helpful which-key rainbow-delimiters nerd-icons doom-modeline)))
+   '(markdown-toc projectile-ripgrep orderless marginalia company lsp-pyright plantuml-mode org-bullets key-chord evil yaml-mode rg projectile all-the-icons doom-themes helpful which-key rainbow-delimiters nerd-icons doom-modeline)))
 
