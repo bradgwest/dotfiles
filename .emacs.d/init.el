@@ -10,8 +10,8 @@
 (require 'package)
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-			 ("org" . "https://orgmode.org/elpa")
-			 ("elpa" . "https://elpa.gnu.org/packages/")))
+             ("org" . "https://orgmode.org/elpa")
+             ("elpa" . "https://elpa.gnu.org/packages/")))
 
 ;; Note need to run package-refresh-contents before downloading new packages
 (package-initialize)
@@ -144,14 +144,14 @@
               (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
 
 (dolist (mode '(org-mode-hook
-		term-mode-hook
-		eshell-mode-hook))
-		;; treemacs-mode-hook)
+        term-mode-hook
+        eshell-mode-hook))
+        ;; treemacs-mode-hook)
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; https://github.com/Fanael/rainbow-delimiters
-;; (use-package rainbow-delimiters
-;;   :hook (prog-mode . rainbow-delimiters-mode))
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package whitespace
    :config
