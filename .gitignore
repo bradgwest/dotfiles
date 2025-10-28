@@ -32,4 +32,25 @@ __pycache__/
 .DS_Store
 
 todo.txt
+todo.org
+
+# emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*ls
+
+# node
+node_modules/
+
+# Build output
+dist/
+
+# Logs
+*.log
+npm-debug.log*
 
