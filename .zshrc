@@ -44,15 +44,21 @@ export GPG_TTY=$(tty)
 # autoload -Uz compinit && compinit
 
 # use vim mode for zle
-bindkey -v
+bindkey -e
 # support ^e
 bindkey '^f' vi-forward-char
 
 # starship start up
 eval "$(starship init zsh)"
 
-source <(pkgx --shellcode)  #docs.pkgx.sh/shellcode
 
 hash -d jn=$HOME/src/job-notifier
 hash -d swe=$HOME/src/swepay
 hash -d resume=$HOME/src/resume
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+eval "$(pkgx --quiet dev --shellcode)"  # https://github.com/pkgxdev/dev
