@@ -1,32 +1,28 @@
-;; TODO consider adding consult, embark, wgrep
+;; TODO consider adding embark, wgrep
 ;; TODO flyspell on org mode
 ;; TODO lsp for emacs lisp
-;; TODO lsp for C#
-;; TODO format this file
 ;; TODO update setq to customize where variables can be customized
-;; TODO projectile don't search .git
-;; TODO Occur mode for a project
 
-;; Set garbage collection threshold higher during startup
-
-;; ### STARTUP ###
+;; Set garbage collection high initially for faster startup
 (setq gc-cons-threshold (* 50 1024 1024))
 ;; Lower it after startup
 (add-hook 'after-init-hook
           (lambda ()
             (setq gc-cons-threshold (* 8 1024 1024))))
 
-;; ### PACKAGE MANAGEMENT ###
+(let ((secret-file (expand-file-name "secrets.el" user-emacs-directory)))
+  (when (file-exists-p secret-file)
+    (load secret-file)))
 
-;; Initialize package sources
 (require 'package)
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                         ("org" . "https://orgmode.org/elpa")
-                         ("elpa" . "https://elpa.gnu.org/packages/")))
+             ("org" . "https://orgmode.org/elpa")
+             ("elpa" . "https://elpa.gnu.org/packages/")))
 
 ;; Note need to run package-refresh-contents before downloading new packages
 (package-initialize)
+
 (unless package-archive-contents
  (package-refresh-contents))
 
@@ -35,16 +31,16 @@
   (package-install 'use-package))
 
 (require 'use-package)
+
 (setq use-package-always-ensure t)
-
-;; ### UI ###
-
 (setq inhibit-startup-message t)
 
-(tool-bar-mode -1)         ; Disable the toolbar
-(menu-bar-mode -1)         ; Disable the menu bar
-(scroll-bar-mode -1)
-(fringe-mode 0)
+(tool-bar-mode -1)         ; No toolbar
+(menu-bar-mode -1)         ; No menu bar
+(scroll-bar-mode -1)       ; No scroll bar
+(fringe-mode 0)            ; No fringes
+;; (global-display-line-numbers-mode t) ; Turn line num
+(which-key-mode t)
 
 (setq mouse-wheel-tilt-scroll t)
 ;; Prevent Extraneous Tabs
@@ -52,76 +48,66 @@
 (setq-default tab-width 4)
 (electric-indent-mode -1)
 
-;; needed to work with emacsclient
+;; needed to work with emacsclient on windows
 (setq default-frame-alist '((font . "SauceCodePro NF-9.5")))
 
-(use-package doom-themes
-  :custom
-  (custom-safe-themes t)
-  :config
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics univerally disabled
-  (load-theme 'doom-acario-light)
-  (doom-themes-visual-bell-config)
-  (doom-themes-org-config))
+(recentf-mode 1)            ;; remember recent files
+(global-auto-revert-mode 1) ;; Automatically refresh files
 
-;; Set some space on windows
-(defvar bgw-window-divider-color "white" "Custom color for window borders")
-(defvar bgw-window-divider-width 13 "Custom width for window borders")
-(setq window-divider-default-places 'all-frames)
-(setq window-divider-default-right-width bgw-window-divider-width
-      window-divider-default-left-width bgw-window-divider-width
-      window-divider-default-bottom-width bgw-window-divider-width)
-;; Set left and top border on frame
-(set-frame-parameter nil 'internal-border-width bgw-window-divider-width)
-(setq window-divider-default-places t)
-(window-divider-mode t)
+(global-display-fill-column-indicator-mode t)
+;; (setq global-auto-revert-non-file-buffers 0)  ;; disable, messing with buffer list
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(internal-border ((t (:background "white"))))
- '(line-number ((t (:inherit default :background "#E8E8E8" :foreground "#585C6C" :slant italic :weight normal))))
- '(mode-line-active ((t (:inherit mode-line :background "aquamarine"))))
- '(mode-line-inactive ((t (:background "#D3D3D3" :foreground "#4E4E4E" :box nil))))
- '(whitespace-newline ((t (:foreground "gray60"))))
- '(whitespace-space ((t (:foreground "gray60"))))
- '(whitespace-tab ((t (:foreground "gray60"))))
- '(window-divider ((t (:inherit vertical-border :foreground "white"))))
- '(window-divider-first-pixel ((t (:foreground "black"))))
- '(window-divider-last-pixel ((t (:foreground "black")))))
-;; turn off long line indicator
-(setq whitespace-style '(face tabs spaces trailing space-before-tab newline indentation empty space-after-tab space-mark tab-mark newline-mark missing-newline-at-eof))
+(setq custom-file (locate-user-emacs-file "custom-vars.el")) ;; Store custom vars elsewhere
+(load custom-file 'noerror 'nomessage)
 
+(setq history-length 100)
+
+;; https://protesilaos.com/emacs/modus-themes
+(load-theme 'modus-operandi)
+
+;; https://github.com/minad/vertico
 (use-package vertico
   :init
   (vertico-mode))
+
+;; https://github.com/minad/consult
+;; TODO revisit keybindings - lots of useful ones
+(use-package consult
+  :bind (("M-s r" . consult-ripgrep)
+         ("M-s l" . consult-line)
+         ("C-x b" . consult-buffer)
+         ("M-g i" . consult-imenu)))
+
+;; https://github.com/minad/corfu
+(use-package corfu
+  :custom
+  (corfu-auto t)
+  :init
+  (global-corfu-mode))
+
+;; https://github.com/minad/marginalia
+(use-package marginalia
+  :after vertico
+  :init
+  (marginalia-mode))
+
+;; https://github.com/oantolin/orderless
+(use-package orderless
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion))))
+  (completion-category-defaults nil) ;; Disable defaults, use corfu settings
+  (completion-pcm-leading-wildcard t)) ;; needed for Emacs 31
 
 (use-package savehist
   :after vertico
   :init
   (savehist-mode))
 
-(use-package marginalia
-  :after vertico
-  :init
-  (marginalia-mode))
-
-(use-package orderless
-  :custom
-  (completion-styles '(orderless basic))
-  (completion-category-overrides '((file (styles basic partial-completion)))))
-
 (when (eq system-type 'windows-nt)
   (setq explicit-shell-file-name "C:/Program Files/PowerShell/7/pwsh.exe"))
 
-(use-package nerd-icons) ; (required for doom-modeline)
-(use-package doom-modeline
-  :init (doom-modeline-mode 1))
-
-(column-number-mode)
+;; (column-number-mode)
 (global-display-line-numbers-mode t)
 (global-display-fill-column-indicator-mode t)
 
@@ -130,24 +116,12 @@
                 eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
-(use-package which-key
-  :defer 0
-  :diminish which-key-mode
-  :init (which-key-mode)
-  :config
-  (setq which-key-idle-delay 1)
-  (setq which-key-side-window-max-height 0.33)
-  (setq which-key-popup-type 'side-window)
-  (setq which-key-side-window-location 'bottom))
+(use-package rg
+  :defer t)
 
-(use-package company
-  :config
-  (global-company-mode 1)
-  (setq company-dabbrev-downcase nil))
-
-;; ### CODE ###
 (use-package flycheck
-  :init (global-flycheck-mode))
+  :config
+  (global-flycheck-mode 1))
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -184,40 +158,43 @@
                           (require 'lsp-pyright)
                           (lsp-deferred))))  ; or lsp-deferred
 
-(add-hook 'python-mode-hook
-          (lambda ()
-            (auto-revert-mode 1)))
-
 (use-package csharp-mode)
-
-;; ### PROJECTS ###
-;; Need to install ripgrep: winget install --id BurntSushi.ripgrep.MSVC
-(use-package rg
-  :defer t)
-
-;; Use project.el instead
-(use-package projectile
-  :diminish projectile-mode
-  :config (projectile-mode)
-  :bind-keymap
-  ("C-c p" . projectile-command-map)
-  :init
-  (setq projectile-project-search-path '("D:/src"))
-  (setq projectile-switch-project-action #'projectile-dired))
-
-(use-package projectile-ripgrep
-  :defer t
-  :after (rg projectile))
 
 (use-package whitespace
    :config
    (global-whitespace-mode -1)
    :hook
    ((yaml-mode
-     python-mode
-     csharp-mode
-     nxml-mode
-     emacs-lisp-mode) . (lambda () (whitespace-mode t))))
+     python-mode) . (lambda () (whitespace-mode t))))
+
+(use-package gptel
+  :config
+  (defvar az-gpt-5-mini
+    (gptel-make-azure "azure-gpt-5-mini"
+                   :host bw/azure-openai-host
+                   :endpoint "/openai/deployments/gpt-5-mini/chat/completions?api-version=2025-01-01-preview"
+                   :stream t
+                   :key #'gptel-api-key  ; This reads from authinfo
+                   :models '(gpt-5-mini)))
+  (defvar az-gpt-5-codex
+    (gptel-make-azure "azure-gpt-5.1-codex"
+                   :host bw/azure-openai-host
+                   :endpoint "/openai/deployments/gpt-5.1-codex/chat/completions?api-version=2025-01-01-preview"
+                   :stream t
+                   :key #'gptel-api-key
+                   :models '(gpt-5.1-codex)))
+  (defvar az-gpt-5.1
+    (gptel-make-azure "azure-gpt-5.1"
+                   :host bw/azure-openai-host
+                   :endpoint "/openai/deployments/gpt-5.1/chat/completions?api-version=2025-01-01-preview"
+                   :stream t
+                   :key #'gptel-api-key
+                   :models '(gpt-5.1)))
+  (defvar gh-copilot
+    (gptel-make-gh-copilot "copilot"))
+  (setq gptel-backend az-gpt-5.1)
+  (setq gptel-model 'gpt-5.1)
+  (setq gptel-default-mode 'org-mode))
 
 ;; ### DOCS ###
 (defun bgw/org-mode-setup ()
@@ -274,7 +251,6 @@
   (setq hunspell-default-dict "en_US")
   (setq ispell-hunspell-dictionary-alist '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8))))
 
-;; ### STARTUP ###
 (defun bgw/display-startup-time ()
   (message "Emacs loaded in %s with %d garbage collections."
            (format "%.2f seconds"
@@ -282,15 +258,3 @@
                     (time-subtract after-init-time before-init-time)))
            gcs-done))
 (add-hook 'emacs-startup-hook #'bgw/display-startup-time)
-
-;; ### SYSTEM ADDED ###
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes t nil nil "Customized with use-package doom-themes")
- '(package-selected-packages
-   '(markdown-toc projectile-ripgrep orderless marginalia company lsp-pyright plantuml-mode org-bullets key-chord evil yaml-mode rg projectile all-the-icons doom-themes helpful which-key rainbow-delimiters nerd-icons doom-modeline)))
-
