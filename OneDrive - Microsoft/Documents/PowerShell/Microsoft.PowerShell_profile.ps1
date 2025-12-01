@@ -1,4 +1,3 @@
-
 $MaximumHistoryCount = 32767 # 32768 items is the max
 
 # --- Env --- #
@@ -58,7 +57,7 @@ Invoke-Expression (&starship init powershell)
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 
 # --- Path --- #
-function Update-EmacsPath {
+function Get-EmacsPaths {
     $versions = Get-ChildItem -Path ${Env:ProgramFiles}\Emacs -Directory -Filter "emacs-*" |
       ForEach-Object { Join-Path $_.FullName "bin" }
 
@@ -67,13 +66,20 @@ function Update-EmacsPath {
         return
     }
 
-    $env:Path += ';' + $versions -join ';'
+    # reverse to ensure the latest is resolved first
+    return ($versions | Sort-Object -Descending) -join ';'
 }
-Update-EmacsPath
+$env:Path += ';' + (Get-EmacsPaths)
 
 $env:Path += ';' + "$HOME\AppData\Roaming\Python\Scripts"
-$env:Path += ';' + "C:\Program Files\microsoft.servicemap.cli\24.11.23009\lib\net472"
+$env:Path += ';' + "C:\.tools\.nuget\packages\microsoft.azure.cis.buildoutmap.cli\25.11.12003\lib\net8.0"
 $env:Path += ';' + "$HOME\AppData\Roaming\.emacs.d\elpa\lsp-mode-20241015.1503"
+$env:PATH += ';' + "$HOME\.local`\bin"  # uv
+
+# following is necessary to start Visual Studo Code from command line
+$env:PATH += ';' + "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin"
+$env:PATH += ';' + "C:\.tools\dotnet\"
+$env:PATH += ';' + "C:\Program Files\Microsoft Visual Studio\2022\BuildTools\Common7\IDE\Extensions\TestPlatform\"
 
 # --- Aliases --- #
 # Git
