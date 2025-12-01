@@ -153,10 +153,9 @@
                    :stream t
                    :key #'gptel-api-key
                    :models '(gpt-5.1)))
-  :custom
-   (gptel-backend az-gpt-5.1)
-   (gptel-model 'gpt-5.1)
-   (gptel-default-mode 'org-mode))
+  (setq gptel-backend az-gpt-5.1)
+  (setq gptel-model 'gpt-5.1)
+  (setq gptel-default-mode 'org-mode))
 
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
