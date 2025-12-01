@@ -1,11 +1,13 @@
-;; TODO flyspell or ispell on all text files
-
 ;; Set garbage collection high initially for faster startup
 (setq gc-cons-threshold (* 50 1024 1024))
 ;; Lower it after startup
 (add-hook 'after-init-hook
           (lambda ()
             (setq gc-cons-threshold (* 8 1024 1024))))
+
+(let ((secret-file (expand-file-name "secrets.el" user-emacs-directory)))
+  (when (file-exists-p secret-file)
+    (load secret-file)))
 
 (require 'package)
 
@@ -19,7 +21,7 @@
 (unless package-archive-contents
  (package-refresh-contents))
 
-;; Initialize use-package on non-Linux platforms
+;; Initialize use-package on non-Linux platforms test is
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
@@ -32,8 +34,9 @@
 (menu-bar-mode -1)         ; No menu bar
 (scroll-bar-mode -1)       ; No scroll bar
 (fringe-mode 0)            ; No fringes
-;; (global-display-line-numbers-mode t) ; Turn line num
+(global-display-line-numbers-mode t) ; Turn line num
 (which-key-mode t)
+(setq visible-bell 1)
 
 (setq mouse-wheel-tilt-scroll t)
 ;; Prevent Extraneous Tabs
@@ -54,7 +57,6 @@
 (global-auto-revert-mode 1) ;; Automatically refresh files
 
 (global-display-fill-column-indicator-mode t)
-(setq global-auto-revert-non-file-buffers t)  ;; Automatically refresh non-file (e.g. Dired) buffers
 
 (setq custom-file (locate-user-emacs-file "custom-vars.el")) ;; Store custom vars elsewhere
 (load custom-file 'noerror 'nomessage)
@@ -62,9 +64,7 @@
 (setq history-length 100)
 
 ;; https://protesilaos.com/emacs/modus-themes
-(use-package modus-themes
-  :config
-  (load-theme 'modus-operandi))
+(load-theme 'modus-operandi)
 
 ;; https://github.com/minad/vertico
 (use-package vertico
@@ -107,17 +107,56 @@
 
 (use-package rg)
 
-(use-package projectile
-  :diminish projectile-mode
-  :config (projectile-mode)
-  :bind-keymap
-  ("C-c p" . projectile-command-map)
-  :init
-  (setq projectile-project-search-path '("~/src")))
-
 (use-package projectile-ripgrep
   :defer t
   :after (rg projectile))
+
+;; first brew install tree-sitter
+;; sometimes required with lsp modes
+(setq treesit-language-source-alist
+      '((tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
+        (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
+        ;; (python "https://github.com/tree-sitter/tree-sitter-python" "master" "src")
+        (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")))
+
+;; Install missing grammars at startup
+;; This is incorrect. Keeps reinstalling
+;; (dolist (lang-config treesit-language-source-alist)
+;;   (let ((lang (car lang-config)))
+;;     (unless (treesit-language-available-p lang)
+;;       (treesit-install-language-grammar lang))))
+
+(use-package flycheck
+  :config
+  (add-hook 'after-init-hook #'global-flycheck-mode))
+
+(use-package gptel
+  :config
+  (defvar az-gpt-5-mini
+    (gptel-make-azure "azure-gpt-5-mini"
+                   :host bw/azure-openai-host
+                   :endpoint "/openai/deployments/gpt-5-mini/chat/completions?api-version=2025-01-01-preview"
+                   :stream t
+                   :key #'gptel-api-key  ; This reads from authinfo
+                   :models '(gpt-5-mini)))
+  (defvar az-gpt-5-codex
+    (gptel-make-azure "azure-gpt-5.1-codex"
+                   :host bw/azure-openai-host
+                   :endpoint "/openai/deployments/gpt-5.1-codex/chat/completions?api-version=2025-01-01-preview"
+                   :stream t
+                   :key #'gptel-api-key
+                   :models '(gpt-5.1-codex)))
+  (defvar az-gpt-5.1
+    (gptel-make-azure "azure-gpt-5.1"
+                   :host bw/azure-openai-host
+                   :endpoint "/openai/deployments/gpt-5.1/chat/completions?api-version=2025-01-01-preview"
+                   :stream t
+                   :key #'gptel-api-key
+                   :models '(gpt-5.1)))
+  :custom
+   (gptel-backend az-gpt-5.1)
+   (gptel-model 'gpt-5.1)
+   (gptel-default-mode 'org-mode))
 
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
@@ -125,15 +164,18 @@
   (setq lsp-keymap-prefix "C-c l")
   :hook (
          (powershell-mode . lsp)
+         (python-mode . lsp)
+         (typescript-ts-mode . lsp)
+         (tsx-ts-mode . lsp)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration)))
+
+;; (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
 
 (use-package lsp-ui
   :commands lsp-ui-mode)
 
-(use-package lsp-ivy
-  :commands lsp-ivy-workspace-symbol)
-;; (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
 
 ;; yaml
 (use-package yaml-mode
@@ -179,6 +221,20 @@
   (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
 
 (require 'ox-md)  ;; required for export from org to markdown
+
+;; need to first brew install hunspell
+;; then place dictionaries in the right directory: https://formulae.brew.sh/formula/hunspell
+(use-package flyspell
+  :hook
+  ((text-mode . flyspell-mode)
+   (prog-mode . flyspell-prog-mode))
+  :custom
+  (ispell-program-name "aspell")
+  (ispell-dictionary "en_US")
+  (ispell-extra-args '("--sug-mode=ultra" "--lang=en_US"))
+  (ispell-local-dictionary "en_US")
+  :config
+  (add-hook 'flyspell-mode-hook #'corfu-mode))
 
 (defun bgw/display-startup-time ()
   (message "Emacs loaded in %s with %d garbage collections."
