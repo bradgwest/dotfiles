@@ -7,6 +7,7 @@
 
 # -- General -- #
 .ignore
+.todo
 
 # -- Python -- #
 .venv
