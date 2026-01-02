@@ -34,6 +34,7 @@
 
 (setq use-package-always-ensure t)
 (setq inhibit-startup-message t)
+(setq package-install-upgrade-built-in t) ;; ensure that builtins are upgraded
 
 (tool-bar-mode -1)         ; No toolbar
 (menu-bar-mode -1)         ; No menu bar
@@ -168,6 +169,7 @@
      python-mode) . (lambda () (whitespace-mode t))))
 
 (use-package gptel
+  :bind (("C-c l" . gptel-send))
   :config
   (defvar az-gpt-5-mini
     (gptel-make-azure "azure-gpt-5-mini"
@@ -192,7 +194,7 @@
                    :models '(gpt-5.1)))
   (defvar gh-copilot
     (gptel-make-gh-copilot "copilot"))
-  (setq gptel-backend az-gpt-5.1)
+  (setq gptel-backend gh-copilot)
   (setq gptel-model 'gpt-5.1)
   (setq gptel-default-mode 'org-mode))
 
