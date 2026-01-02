@@ -1,10 +1,7 @@
 $MaximumHistoryCount = 32767 # 32768 items is the max
 
-# --- Env --- #
-$env:AIDER_VENV_PATH = "D:\src\aider\.venv\aider"
-
 # --- Modules --- #
-# Import-Module CompletionPredictor
+Import-Module CompletionPredictor
 Import-Module PSFzf
 Import-Module PSReadline
 
@@ -19,7 +16,10 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 # PSReadline
 Set-PSReadLineOption -EditMode Emacs
 Set-PSReadLineOption -BellStyle None
-Set-PSReadLineOption -PredictionViewStyle InlineView # use fzf for searching history in list view
+# Completions (from CompletionPredictor plugin) render in the list view
+# while History is only visible via fzf (Ctrl-R)
+Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadLineOption -PredictionSource Plugin
 
 # Page through history with Emacs keys
 Set-PSReadLineKeyHandler -Key "Alt+p" -Function HistorySearchBackward
@@ -139,6 +139,31 @@ New-Alias -Name grbm -Value GitRebaseOntoDefaultBranch
 
 function GitBranchOnelineNoDefault { (git branch | Sort-Object | ForEach-Object { $_.Trim() -replace '^\* ', '' } | Where-Object { $_ -ne $(GitDefaultBranch) }) -join ' ' }
 New-Alias -Name gbo -Value GitBranchOnelineNoDefault
+
+# Auto-complete git
+$gitCheckoutCompleter = {
+    param($wordToComplete, $commandAst, $cursorPosition)
+
+    if (-not (git rev-parse --is-inside-work-tree 2>$null)) {
+        return
+    }
+
+    $branches = git branch --all --format="%(refname:short)" 2>$null |
+        Sort-Object -Unique |
+        Where-Object { $_ -like "$wordToComplete*" }
+
+    foreach ($b in $branches) {
+        [System.Management.Automation.CompletionResult]::new(
+            $b,        # text inserted on completion
+            $b,        # display text
+            'ParameterValue',
+            $b         # tooltip
+        )
+    }
+}
+
+Register-ArgumentCompleter -CommandName git -ScriptBlock $gitCheckoutCompleter
+Register-ArgumentCompleter -CommandName @('gco', 'grb', 'gcb', 'gl') -ScriptBlock $gitCheckoutCompleter
 
 # PlantUML
 function Invoke-PlantUML { java -jar C:\Users\bradwest\AppData\Roaming\PlantUML\plantuml-1.2024.5.jar @args }
