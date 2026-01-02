@@ -6,14 +6,6 @@
         {
             "command": 
             {
-                "action": "moveFocus",
-                "direction": "up"
-            },
-            "id": "User.moveFocus.6CD791B"
-        },
-        {
-            "command": 
-            {
                 "action": "commandPalette"
             },
             "id": "User.commandPalette.D3F0B923"
@@ -21,13 +13,10 @@
         {
             "command": 
             {
-                "action": "copy"
+                "action": "moveFocus",
+                "direction": "up"
             },
-            "id": "User.copy"
-        },
-        {
-            "command": "find",
-            "id": "User.find"
+            "id": "User.moveFocus.6CD791B"
         },
         {
             "command": 
@@ -38,6 +27,17 @@
             "id": "User.moveFocus.F747588A"
         },
         {
+            "command": "find",
+            "id": "User.find"
+        },
+        {
+            "command": 
+            {
+                "action": "copy"
+            },
+            "id": "User.copy"
+        },
+        {
             "command": 
             {
                 "action": "moveFocus",
@@ -46,16 +46,16 @@
             "id": "User.moveFocus.2A0DA8E0"
         },
         {
-            "command": "paste",
-            "id": "User.paste"
-        },
-        {
             "command": 
             {
                 "action": "moveFocus",
                 "direction": "right"
             },
             "id": "User.moveFocus.87C324ED"
+        },
+        {
+            "command": "paste",
+            "id": "User.paste"
         }
     ],
     "copyFormatting": "none",
@@ -64,12 +64,12 @@
     "keybindings": 
     [
         {
-            "id": "User.moveFocus.F747588A",
-            "keys": "ctrl+j"
-        },
-        {
             "id": "User.commandPalette.D3F0B923",
             "keys": "alt+x"
+        },
+        {
+            "id": "User.moveFocus.F747588A",
+            "keys": "ctrl+j"
         },
         {
             "id": "User.moveFocus.6CD791B",
@@ -78,6 +78,10 @@
         {
             "id": "User.find",
             "keys": "ctrl+s"
+        },
+        {
+            "id": "User.paste",
+            "keys": "ctrl+v"
         },
         {
             "id": "User.moveFocus.2A0DA8E0",
@@ -90,10 +94,6 @@
         {
             "id": "User.paste",
             "keys": "ctrl+y"
-        },
-        {
-            "id": "User.paste",
-            "keys": "ctrl+v"
         },
         {
             "id": "User.copy",
@@ -164,6 +164,12 @@
                 "hidden": false,
                 "name": "Git Bash",
                 "source": "Git"
+            },
+            {
+                "guid": "{16208362-94fc-5b1f-a491-5b2624d5ab56}",
+                "hidden": true,
+                "name": "Visual Studio Debug Console",
+                "source": "VSDebugConsole"
             }
         ]
     },
@@ -217,6 +223,5 @@
         }
     ],
     "showTabsInTitlebar": true,
-    "startOnUserLogin": true,
     "themes": []
 }
